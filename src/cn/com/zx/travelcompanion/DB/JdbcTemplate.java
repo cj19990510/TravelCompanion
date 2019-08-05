@@ -1,0 +1,64 @@
+package cn.com.zx.travelcompanion.DB;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class JdbcTemplate {
+	public <T> List<T> queryForList(RowMapper<T> mapper, String sql, Object[] params) throws ClassNotFoundException, IOException, SQLException{
+		List<T> returnResult = new ArrayList<T>();
+		Connection conn = null;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		try {
+			conn = DbUtil.getConnection();
+			pre = conn.prepareStatement(sql);
+			setParams(params, pre);
+			rs = pre.executeQuery();
+			int rownum = 0;
+			while (rs.next()) {
+				rownum++;
+				returnResult.add(mapper.mappingRow(rs, rownum));
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DbUtil.closeConnection(conn, pre, rs);
+		}
+
+		return returnResult;
+	}
+	public <T> int set(String sql, Object[] params) throws ClassNotFoundException, IOException, SQLException{
+		Connection conn = null;
+		PreparedStatement pre = null;
+		try {
+			conn = DbUtil.getConnection();
+			pre = conn.prepareStatement(sql);
+			setParams(params, pre);
+			pre.execute();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DbUtil.closeConnection(conn, pre,null);
+		}
+		return 1;
+	}
+
+	private void setParams(Object[] params, PreparedStatement pre) throws SQLException {
+		if (params != null) {
+			for (int i = 0; i < params.length; i++) {
+				pre.setObject(i + 1, params[i]);
+			}
+		}
+	}
+
+}
