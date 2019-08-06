@@ -15,9 +15,9 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.wxggt.dao.SmallVideoDAO;
-import com.wxggt.dto.SmallVideo;
-import com.wxggt.util.GetFile;
+import cn.com.zx.travelcompanion.DB.GetFile;
+import cn.com.zx.travelcompanion.bean.PictureInfoBean;
+import cn.com.zx.travelcompanion.dao.PictureInfoDao;
 
 /**
  * Servlet implementation class PictureUploadServlet
@@ -55,10 +55,10 @@ public class PictureUploadServlet extends HttpServlet {
 				user = items.get(1).getString("UTF-8");
 				content = items.get(0).getString("UTF-8");
 				username = items.get(2).getString("UTF-8");
-				String url = file.uploadFile(items.get(3), user);
-				SmallVideoDAO smallvideo = new SmallVideoDAO();
-				SmallVideo sv = new SmallVideo(username, user, url, 0, 0, 0, null, content);
-				smallvideo.uploadSmallVideo(sv);
+				String url = file.uploadFile(items.get(3), user);//上传文件，获得路径
+				PictureInfoDao picture = new PictureInfoDao();
+				PictureInfoBean sv = new PictureInfoBean();
+				//调用上传数据库方法
 			} catch (FileUploadException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
