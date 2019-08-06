@@ -55,4 +55,10 @@ public class HotelInfoDao extends JdbcTemplate implements HotelInfoDaoImp{
 		return 0;
 	}
 
+	@Override
+	public List<HotelInfoBean> getHotelInfo(String type, String city) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
