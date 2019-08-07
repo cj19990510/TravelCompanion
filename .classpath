@@ -10,19 +10,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/jdom.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/httpcore-4.3.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/commons-io-1.3.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/commons-fileupload-1.2.1.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/aliyun-java-sdk-cloudapi-4.3.0.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/aliyun-java-sdk-core-4.1.0.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/aliyun-java-sdk-domain-2.3.0.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/aliyun-java-sdk-nas-3.1.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/aliyun-sdk-oss-2.8.3-javadoc.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/aliyun-sdk-oss-2.8.3-sources.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/aliyun-sdk-oss-2.8.3.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/servlet-api.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/mysql-connector-java-5.1.41-bin.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aliyun-java-sdk-cloudapi-4.3.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aliyun-java-sdk-core-4.1.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aliyun-java-sdk-domain-2.3.0.jar"/>
