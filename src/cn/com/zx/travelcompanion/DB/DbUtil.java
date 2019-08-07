@@ -21,7 +21,11 @@ public class DbUtil {
 		String user = dbconfig.getProperty("jdbc.user");
 		String pwd = dbconfig.getProperty("jdbc.password");
 		conn = DriverManager.getConnection(url, user, pwd);
+		System.out.println("链接成功");
 		return conn;
+	}
+	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException {
+	          DbUtil.getConnection();
 	}
 	public static void closeConnection(Connection conn, PreparedStatement pre, ResultSet rs) {
 		try {
