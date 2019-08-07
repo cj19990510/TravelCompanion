@@ -3,6 +3,7 @@ package cn.com.zx.travelcompanion.daoimp;
 import java.util.List;
 
 import cn.com.zx.travelcompanion.bean.HotelInfoBean;
+import cn.com.zx.travelcompanion.bean.HotelInfoPictureBean;
 
 public interface HotelInfoDaoImp {
 
@@ -14,6 +15,6 @@ public interface HotelInfoDaoImp {
 		public int deleteHotelInfo(HotelInfoBean hotel);
 		//按城市查询酒店信息
 		public List<HotelInfoBean> getHotelInfo(String type, String city);
-		List<HotelInfoBean> getHotelInfo(String type);
-
+		public List<HotelInfoPictureBean> getHotelInfo(String type);
+		//热度值的更新
 }
