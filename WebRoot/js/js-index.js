@@ -10,6 +10,15 @@ $(document).ready(function(){
 	     },
 	     success:function(data){
 	    	 console.log(data);
+	    	 $.head.poster(data);
 	     }
 	})
+	$.head={
+		poster:function(e){
+			var obj = eval('(' + e + ')');
+			$.each(obj,function(i,item){
+				$("#travel").append;
+			       })
+		}
+	}
 })

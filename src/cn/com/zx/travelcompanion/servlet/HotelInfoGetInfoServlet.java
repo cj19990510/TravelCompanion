@@ -45,7 +45,6 @@ public class HotelInfoGetInfoServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String type=request.getParameter("type");
-		System.out.println(type);
 		HotelInfoDao hotelDao=new HotelInfoDao();
 		List<HotelInfoPictureBean> list=hotelDao.getHotelInfo(type);
 		Gson gson=new Gson();

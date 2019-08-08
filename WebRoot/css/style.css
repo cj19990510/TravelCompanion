@@ -920,6 +920,7 @@ a {
 
 [class~=v_place_img] img {
 	width: 100% !important;
+	height:200px;
 }
 
 [class~=home_form] form ul li input {
@@ -7949,7 +7950,7 @@ fieldset {
 }
 
 [class~=rating]>[class~=half]:before {
-	content: "";
+	content: "飩�";
 }
 
 [class~=tour_social] ul li a i {
@@ -8678,7 +8679,7 @@ label {
 }
 
 .rating>label:before {
-	content: "";
+	content: "飥�";
 }
 
 [class~=hot-page2-alp-p3-btn-h],
