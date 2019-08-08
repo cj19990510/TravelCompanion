@@ -6,7 +6,17 @@ public class UserInfoBean {
     private  String userPassword;//用户密码
     private  String userPhone;//用户手机号
     private  String userPicture;//用户头像
-    public int getUserId() {
+    public UserInfoBean(){};
+    
+    public UserInfoBean(int userId, String userName, String userPassword, String userPhone, String userPicture) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.userPhone = userPhone;
+		this.userPicture = userPicture;
+	}
+	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
