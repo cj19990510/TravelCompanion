@@ -36,5 +36,10 @@ public class UserInfoBean {
 	public void setUserPicture(String userPicture) {
 		this.userPicture = userPicture;
 	}
+	@Override
+	public String toString() {
+		return "UserInfoBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
+				+ ", userPhone=" + userPhone + ", userPicture=" + userPicture + "]";
+	}
        
 }
