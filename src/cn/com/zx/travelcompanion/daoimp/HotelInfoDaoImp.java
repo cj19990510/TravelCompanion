@@ -17,4 +17,6 @@ public interface HotelInfoDaoImp {
 		public List<HotelInfoBean> getHotelInfo(String type, String city);
 		public List<HotelInfoPictureBean> getHotelInfo(String type);
 		//热度值的更新
+		//获取排名前二十的酒店
+		public List<HotelInfoPictureBean> getTop20HotelInfo(String type, String city);
 }

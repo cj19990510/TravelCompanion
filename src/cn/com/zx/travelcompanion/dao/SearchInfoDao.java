@@ -1,13 +1,16 @@
 package cn.com.zx.travelcompanion.dao;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+import cn.com.zx.travelcompanion.DB.GetNowTime;
 import cn.com.zx.travelcompanion.DB.JdbcTemplate;
 import cn.com.zx.travelcompanion.DB.RowMapper;
+import cn.com.zx.travelcompanion.bean.SearchInfoBean;
 import cn.com.zx.travelcompanion.daoimp.SearchInfoDaoImp;
 
 public class SearchInfoDao  extends JdbcTemplate implements SearchInfoDaoImp {
@@ -47,10 +50,10 @@ public class SearchInfoDao  extends JdbcTemplate implements SearchInfoDaoImp {
 		Object[] object=new Object[] {id};
 		String sql=null;
 		if(type.equals("酒店")){
-			sql="SELECT COUNT(*) FROM searchinfo WHERE hotelid=? AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= DATE(searchtime)";
+			sql="SELECT MAX(searchtime) FROM searchinfo WHERE hotelId=? AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= DATE(searchtime)";
 		}
 		else{
-			sql="SELECT COUNT(*) FROM searchinfo WHERE cityid=? AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= DATE(searchtime)";
+			sql="SELECT MAX(searchtime) FROM searchinfo WHERE cityId=? AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= DATE(searchtime)";
 		}
 		List<Timestamp> list=null;
 		try {
@@ -73,8 +76,16 @@ public class SearchInfoDao  extends JdbcTemplate implements SearchInfoDaoImp {
 	}
 
 	@Override
-	public int addSerchInfo(int hotelId, int Cityid, Timestamp time) {
-		// TODO Auto-generated method stub
+	public int addSerchInfo(SearchInfoBean search) {
+		Date date=new Date(System.currentTimeMillis());
+		Object[] object=new Object[]{search.getHotelId(),search.getCityId(),GetNowTime.getNowTime()};
+		String sql="insert into searchinfo(hotelId,cityId,searchtime) values(?,?,?)";
+		try {
+			this.set(sql,object);
+		} catch (ClassNotFoundException | IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
 

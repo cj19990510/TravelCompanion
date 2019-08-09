@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.com.zx.travelcompanion.bean.SearchInfoBean;
+
 
 public class JdbcTemplate {
 	public <T> List<T> queryForList(RowMapper<T> mapper, String sql, Object[] params) throws ClassNotFoundException, IOException, SQLException{
