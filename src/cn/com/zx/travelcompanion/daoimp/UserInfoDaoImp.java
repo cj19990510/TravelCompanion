@@ -7,4 +7,7 @@ public interface UserInfoDaoImp {
  	 * 根据userName获取用户信息
  	 */
  	 public UserInfoBean getUserName(String userName);
+ 	 
+ 	 //更新用户信息
+ 	 public int updateUserInfo(UserInfoBean userinfo);
 }
