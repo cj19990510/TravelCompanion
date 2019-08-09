@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/fronts/matrix-login.css" />
 <link rel="stylesheet" href="css/fronts/font-awesome.css" />
 <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
-
+<script type="text/javascript" src="js/jquery.js"></script>
 <link rel="stylesheet" href="css/fronts/jquery.idcode.css" />
 
 <script type="text/javascript" src="js/jquery.idcode.js"></script>
@@ -20,24 +20,29 @@
  <script>
      $(document).ready(function(){
           $.idcode.setCode();//加载生成验证码方法
-          $("form").submit(function(){
+          $("#login").click(function(){
                 var isBy=$.idcode.validateCode();//调用返回值，返回值结果为true或者false
+                alert("isBy+"+isBy);
                 if(!isBy){
                    alert("验证码错误，请注意大小写！");
                    return false;
-                }
+                } 
+             
+                var username=$("#username").val(); 
+                var userpassword=$("#userpassword").val();
                 $.ajax({
                     type:"post",
-                    url:"UserInfoLoginServlet",
+                    url:"LoginServlet",
                     data:{username:username,
                           userpassword:userpassword
                          },
                     success:function(data){
+                        alert("data:"+data);
                         var c=data;
                         if(c=="0"){
                            alert("输入的账号密码有误，请重新输入！");
                         }else{
-                            windows.location.href="";
+                            window.location.href="index.html";
                         }
                     }
                 });
@@ -72,27 +77,21 @@
                  
                 </div>
                 <div>
-                    <div class="input validate" id="validate">
-                      <tr>
-                        <td>
-                            <lable for="validate">验证码&nbsp;&nbsp;</lable>
-                        </td>
-                        <td>
-                             <input type="text" id="Txticode" class="txtVerification" style="width:110px;">
-                        </td>
-                        <td>
-                              &nbsp;&nbsp;&nbsp;&nbsp;<span id="idcode" class="image"></span>
-                        </td>
-                      </tr>
-                    </div>
-                    <div class="form-actions">
-                       <span><input type="submit" value="登录" id="login">&nbsp;&nbsp; &nbsp;&nbsp; 
-                       </span>
-                       <button style="border:1px solid white;"><a href="" >注册</a>
-                       </button>
+                   <div class="input validate" id="validate" style="display:flex">
+                           
+							<label for="valiDate" style="margin-left: 140px;margin-top:5px;">&nbsp;验证码&nbsp;&nbsp;</label> 
+							<input type="text" id="Txtidcode" class="txtVerification" style="width:110px;"> 
+							<span id="idcode" class="image" style="margin-top: 5px;margin-left:20px;"></span> <!-- class="image" id="randCode" /> -->
+				   </div>                 
+                 </div>
+                 <div class="form-actions">
+                       <span><input type="button" value="登录" id="login">&nbsp;&nbsp; &nbsp;&nbsp; 
+                       </span>                     
+                       <button style="border:1px solid white;"><a href="userregister.html" > 注册 </a></button> 
+                     
                        
-                    </div>
-                </div>
+                 </div>
+              </div>
           </form>
       </div>
       </div>

@@ -6,5 +6,8 @@ public interface UserInfoDaoImp {
      /**
  	 * 根据userName获取用户信息
  	 */
- 	 public UserInfoBean getUserName(String userName);
+ 	 public UserInfoBean getUserInfoByuserName(String userName,String userPassword);
+ 	 
+ 	 //修改个人信息
+ 	 public int updateUserInfo(UserInfoBean userinfo);	
 }

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>登陆</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="css/fronts/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/fronts/camera.css" />
+		<link rel="stylesheet" href="css/fronts/bootstrap-responsive.min.css" />
+		<link rel="stylesheet" href="css/fronts/matrix-login.css" />
+		<link rel="stylesheet" href="css/fronts/font-awesome.css" />
+
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700%7CMontserrat:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/mob.css">
+		<link rel="stylesheet" href="css/animate.css">
+		<script src="js/jquery-latest.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/wow.min.js"></script>
+		<script src="js/custom.js"></script>
+		<link rel="stylesheet" href="css/fronts/jquery.idcode.css" />
+		<script type="text/javascript" src="js/jquery.idcode.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<style>
+			.div1{position: absolute;left:50%;top:50%;margin-left:-200px;margin-top:-100px;}</style>
+		<script>
+		$(document).ready(function(){
+          $.idcode.setCode();//加载生成验证码方法
+          $("#userpassword").click(function(){
+             var username=$("#username").val();
+             alert(username);
+             if(username==""){
+                 $("#remind").html("用户名不能为空");
+             }else{
+                $.ajax({
+                    type:"post",
+                    url:"IsUserNameServlet",
+                    data:{username:username},
+                    success:function(result){
+                       //alert("result+"+result);
+                       $("#remind").html(result);
+                    }
+                });
+             }
+          });
+          $("#reuserpassword").click(function(){
+          		var reuserpassword=document.getElementById("reuserpassword").value;
+             	var userpassword=document.getElementById("userpassword").value;
+             	if(userpassword==""){
+             		document.getElementById("userRemind").innerHTML="<font color='red'><b>原密码不能为空</b></font>";
+             	}else if(reuserpassword==""){
+					document.getElementById("userAgainRemind").innerHTML="<font color='red'><b>确认密码不能为空</b></font>";
+             	}else if(reuserpassword!=userpassword){
+             		document.getElementById("userAgainRemind").innerHTML="<font color='red'><b>两次密码不一致</b></font>";
+             	}else if(reuserpassword==userpassword){
+             		document.getElementById("userAgainRemind").innerHTML="<font color='red'><b>两次密码一致</b></font>";
+             	}          		
+          });
+          //注册
+          $("#register").click(function(){
+			    alert("11111");
+                var isBy=$.idcode.validateCode();//调用返回值，返回值结果为true或者false
+                alert("isBy+"+isBy);
+                if(!isBy){
+                   alert("验证码错误，请注意大小写！");
+                   return false;
+                } 
+                var username=$("#username").val(); 
+                var userpassword=$("#userpassword").val();
+                var reuserpassword=$("#reuserpassword").val();
+                var userphone=$("#userphone").val();
+                var useremail=$("#useremail").val();
+                
+                if(username==null){
+                  alert("用户名不能为空");
+                }
+                if(userpassword!==reuserpassword){
+                    alert("密码不一致，请重新输入");
+                    return false;
+                }
+                if(userphone==null){
+                  alert("用户号码不能为空");
+                }
+                if(useremail==null){
+                  alert("用户邮箱不能为空");
+                }
+                $.ajax({
+                    type:"post",
+                    url:"userRegisterServlet",
+                    data:{username:username,
+                          userpassword:userpassword,
+                          userphone:userphone,
+                          useremail:useremail
+                         },
+                  
+                    success:function(data){
+                        alert("data:"+data);                                              
+                         alert("账号注册成功！");
+                           window.location.href="userlogin.html";
+                       
+                    }
+                });        
+           });
+           
+           //更换验证码
+           $("#idcode").click(function(){
+              $.idcode.setCode();
+           });
+          
+          
+     
+     });
+ 
+ </script>
+	</head>
+	<body>
+		<div id="preloader">
+			<div id="status">&nbsp;</div>
+		</div>
+		<!--==导航栏========== -->
+		<section>
+			<div class="rows head" data-spy="affix" data-offset-top="120" style="background-color:#1B6D85">
+				<div class="container" style="margin-left: 10px;width: 90%;">
+					<div style="display: flex;">
+						<!--====== BRANDING LOGO ==========-->
+						<div class="col-md-4 col-sm-12 col-xs-12 col-lg-4" style="display: flex;">
+							<a href="index.html"><img alt="" src="images/logo.png" style="position: absolute;"></a>
+							<p style="color:white;margin-left:60px;margin-top: 10px;">爱生活，爱旅行</p>
+						</div>
+						<!--
+                        	作者：1875763391@qq.com
+                        	时间：2019-08-06
+                        	描述：
+                      -->
+						<!-- NAVIGATION MENU -->
+						<div class="collapse navbar-collapse " id="myNavbar" style="width: 80%;margin-left: 100px;">
+							<ul class="nav navbar-nav ">
+								<li>
+									<a href="index.html ">主页</a>
+								</li>
+								<li>
+									<a href="family-package.html ">旅游</a>
+								</li>
+								<li>
+									<a href="hotels-list.html ">酒店</a>
+								<li>
+									<a href="blog.html ">轰趴</a>
+								</li>
+								<li>
+									<a href="places.html ">农家乐</a>
+								</li>
+								<li>
+									<a href="contact.html ">联系我们</a>
+								</li>
+							</ul>
+						</div>
+						<!--描述：搜索框-->
+						<div class="col-lg-6">
+							<div class="input-group" style="margin-top: 9px;">
+								<input type="text" class="form-control" style="height: 34px;" placeholder="搜索...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">搜索</button>
+								</span>
+							</div>
+							<!-- /input-group -->
+						</div>
+						<!--====== HELP LINE & EMAIL ID ==========-->
+						<div class="col-md-3 col-sm-4 col-xs-4 head_right head_right_all">
+							<ul>
+								<li>
+									<div class="dropdown ">
+										<button class="dropbtn " style="width: 80px; margin-top: 10px;margin-left: 20px;">个人中心</button>
+										<div class="dropdown-content " style="margin-left: 130px; ">
+											<a href="# "><i class="fa fa-sign-in " aria-hidden="true "></i>登录</a>
+											<a href="# "><i class="fa fa-address-book-o " aria-hidden="true "></i> 注册</a>
+											<a href="# "><i class="fa fa-bookmark-o " aria-hidden="true "></i> 个人中心</a>
+											<a href="# "><i class="fa fa-umbrella " aria-hidden="true "></i>我的订单</a>
+											<a href="# "><i class="fa fa-bed " aria-hidden="true "></i>账单</a>
+											<a href="# "><i class="fa fa-ban " aria-hidden="true "></i> 我的消息</a>
+
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+					</nav>
+				</div>
+
+			</div>
+			</div>
+
+		</section>
+		<div class="jumbotron" style="background-color: white;margin-left: 10%;">
+  <h2>欢迎加入伴旅!</h2>
+  <p>遍及全球3800个城市，带你体验各地风情</p>
+</div>
+		<!--注册-->
+		<div  class="div1">
+			<span class="" aria-hidden="true"></span>
+			<h3 style="color:red;margin-left:100px;" > 旅游用户注册系统</h3>
+			<div class="input-group input-group-lg" style="margin-top: 20px;">
+				<span class="input-group-addon glyphicon glyphicon-user" id="sizing-addon1"></span>
+				<input type="text" class="form-control" placeholder="用户名" aria-describedby="sizing-addon1" style="width:400px;" name="username" id="username">
+			    <span id="rremind" > <p id="remind" style="color:red;font-size:25px;margin-top:6px;"></p></span>
+			</div>
+			<div class="input-group input-group-lg" style="margin-top: 20px;">
+				<span class="input-group-addon glyphicon glyphicon-th" id="sizing-addon1"></span>
+				<input type="password" class="form-control" placeholder="密码" aria-describedby="sizing-addon1" style="width:400px;" name="userpassword" id="userpassword">
+			</div>
+			<div class="input-group input-group-lg" style="margin-top: 20px;">
+				<span class="input-group-addon glyphicon glyphicon-th" id="sizing-addon1"></span>
+				<input type="password" class="form-control" placeholder="确认密码" aria-describedby="sizing-addon1" style="width:400px;" name="reuserpassword" id="reuserpassword">
+			    <span id="userAgainRemind" style="color:red;font-size:25px;"></span>
+			</div>
+			<div class="input-group input-group-lg" style="margin-top: 20px;">
+				<span class="input-group-addon glyphicon glyphicon-phone-alt" id="sizing-addon1"></span>
+				<input type="text" class="form-control" placeholder="电话" aria-describedby="sizing-addon1" style="width:400px;" name="userphone" id="userphone">
+			</div>
+			<div class="input-group input-group-lg" style="margin-top: 20px;">
+				<span class="input-group-addon glyphicon glyphicon-folder-open" id="sizing-addon1"></span>
+				<input type="text" class="form-control" placeholder="邮箱" aria-describedby="sizing-addon1" style="width:400px;" name="useremail" id="useremail">
+			</div>
+			<div class="input-group input-group-lg" style="margin-top: 20px;">
+			    <label for="valiDate" style="margin-left: 10px;margin-top:5px;">&nbsp;验证码&nbsp;&nbsp;&nbsp;</label>
+				<input type="text" id="Txtidcode" class="txtVerification" style="width:200px;height:40px;" placeholder="验证码" >
+				
+				<span id="idcode" class="image" style="margin-top:-500px;margin-left:20px;height:60px;"></span>
+			</div>
+			
+		
+				<button class="input-group-addon"  style="margin-top:20px;width:450px;height:45px; border: #000000 solid 0.5px;border-radius: 5px;" id="register">注册</button>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--
+		<div style="width:100%;text-align: center;margin: 10 auto;position:relative; color:white">
+			<div id="loginbox">
+				<form action="" method="post">
+					<div>
+						<img src="images/fronts/logo.png" alt="logo" />旅游用户注册界面
+					</div>
+					<div class="register" style="margin-left:-50px">
+						<tr>
+							<td>用&nbsp;户&nbsp;&nbsp;名:&nbsp;&nbsp;</td>
+							<td>
+								<input type="text" name="username" id="username" />
+								<span id="remind"></span>
+							</td><br>
+						</tr>
+						<tr>
+							<td>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;</td>
+							<td>
+								<input type="password" name="userpassword" id="userpassword" maxlength="20" />
+								<span id="userRemind"></span>
+							</td><br>
+						</tr>
+						<tr style="margin-top:5px">
+							<td>重输密码:&nbsp;</td>
+							<td>
+								<input type="password" name="reuserpassword" id="reuserpassword" maxlength="20" />
+								<span id="userAgainRemind"></span>
+							</td>
+						</tr>
+					</div>
+					<div>
+						<div class="input validate" id="validate" style="display:flex ;margin-left:15px">
+
+							<label for="valiDate" style="margin-left: 95px;margin-top:5px;">&nbsp;验证码&nbsp;&nbsp;&nbsp;</label>
+							<input type="text" id="Txtidcode" class="txtVerification" style="width:110px;">
+							<span id="idcode" class="image" style="margin-top: 5px;margin-left:20px;"></span>
+							<!-- class="image" id="randCode" /> -->
+		<!--</div>
+					</div>
+					<div class="form-actions">
+						<span><input type="button" value="免费注册" id="register">&nbsp;&nbsp; &nbsp;&nbsp;
+						</span>
+						<button style="border:1px solid white;">
+							<a href="userlogin.html"> 登录</a>
+						</button>
+					</div>
+			</div>-->
+		</form>
+		</div>
+		</div>
+
+	</body>
+
+</html>
