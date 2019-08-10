@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -19,37 +19,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 
-  </head>
-  
-  <body>
-  <div class="d1" style="width:180px;height:700px;position: fixed;float:left;background-color: midnightblue; ">
-		<img src="images/logo.png" style="left:12px;top:10px;" />
-		<h1 style="text-align: center; color:rosybrown;font-family:STXingkai;top:50px;position: absolute;">后台管理</h1>
-		
-		<div class="d2" style="top:130px;position: absolute;">
-		
-		<button type="button" class="btn btn-default btn-lg ">
-		<span class="glyphicon glyphicon-star" aria-hidden="true"></span> <a href="shouyi.jsp">查看收益</a>
-		</button></br></br>
-		
-		<button type="button" class="btn btn-default btn-lg ">
-		<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <a href="dingdan.jsp">查看订单</a>
-		</button></br></br>
-		
-		<button type="button" class="btn btn-default btn-lg ">
-		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <a href="chaping.jsp">查看差评</a>
-		</button></br></br>
-		
-		<button type="button" class="btn btn-default btn-lg ">
-		<span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="yonghu.jsp">用户管理</a>
-		</button></br></br>
-		
-		<button type="button" class="btn btn-default btn-lg ">
-		<span class="glyphicon glyphicon-glass" aria-hidden="true"></span><a href="jiudian.jsp"> 酒店管理</a>
-		</button></br></br>
-		
-		</div>	
-		</div>
+  <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+  <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+</head>
+
+<body>
+		<div style="display: flex;">
+			<div style="width:13%;background-color:#265A88;height:750px;text-align: center;position:fixed;">
+				<div class="jumbotron" style="background-color:#265A88;">
+					<h2 style="font-family:STXingkai;font-size:30px;left:25px;top:20px;position: absolute; color:rosybrown;">
+					伴旅后台</br>管理系统</h2>
+				</div>
+				<ul class="nav nav-pills nav-stacked" >
+					<li role="presentation" >
+						<a href="shouyi.jsp">
+							<h4>收益管理</h4></a>
+					</li>
+					<li role="presentation">
+						<a href="dingdan.jsp">
+							<h4>订单管理</h4></a>
+					</li>
+					<li role="presentation">
+						<a href="yonghu.jsp">
+							<h4>用户管理</h4></a>
+					</li>
+					<li role="presentation">
+						<a href="jiudian.jsp">
+							<h4>酒店管理</h4></a>
+					</li>
+					<li role="presentation">
+						<a href="chaping.jsp">
+							<h4>差评管理</h4></a>
+					</li>
+					<li role="presentation">
+						<a href="#">
+							<h4>关于我们</h4></a>
+					</li>
+				</ul>
+			</div>
 		
 	<div id="d1" style="width:1100px;height:900px;background-color: white;float:right ">
 	<a >  
@@ -62,25 +69,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</a>
 	
 	<div class="d3" style="background:#f5f5fa;width:1150px;height:700px; left:190px;top:80px;position: fixed;">
-    <span class="menu">
-	 <a href="houtai?method=chaxun" style="color:brown;font-size:25px;position: absolute;left:30px;top:20px;font-family:FZShuTi;">查询:</a></span>
-	 <input TYPE="text" NAME="jiudianid" style="position: absolute;left:90px;top:26px">
-     <span>${msg2}</span>
-
+    <form action="chaping" method="post">
+    <div style="border-top: 1px solid  black;">
+	    
+					<div style="text-align: center;background-color: white;width: 100%;" >
+					
+					 <select name="s1" style="position:absolute;height:30px;top:30px;left:60px;" >
+		                <option value="请选择查询类型" selected>请选择查询类型</option>
+		                <option value="按用户查询">按用户查询</option>
+		                <option value="按酒店查询">按酒店查询</option>
+		              </select>
+		             
+						<div class="input-group input-group-sm" style="width:250px; margin-left:35%;margin-top:30px;">
+							<input type="text" class="form-control" aria-describedby="sizing-addon1" name="userid1">
+							<button class="input-group-addon" TYPE="submit" id="btn" 
+							style="top:0;left:250px;position:absolute;width:40px;" >查询</button>
+	                 <span style="color: red;">${msg1}</span>
+	</div>
+</div>
      <div align="center" >
-         <table class="divTab" width="100%" align="center" style="position: absolute;top:100px;">
+         <table class="sui-table table-primary"  width="100%" align="center" style="position: absolute;top:100px;">
+            <thead>
             <tr>
-                <td><b>评论id</b></td>
-                <td><b>评论用户</b></td>
-				<td><b>评论时间</b></td>
-                <td><b>评论商家</b></td>
-                <td><b>评论</b></td>
+                <th  style="width:15%"><b>评论id</b></th>
+                <th  style="width:15%"><b>评论用户</b></th>
+				<th  style="width:15%"><b>评论时间</b></th>
+                <th  style="width:15%"><b>评论商家</b></th>
+                <th  style="width:40%; text-align:center;"><b>评论</b></th>
             </tr>
-            
+            </thead>
+            <tbody>
+					<c:forEach var="item" items="${list3}">
+						<tr>
+							<td><b><c:out value="${item.remarkId}"></c:out></b></td>
+							<td><b><c:out value="${item.userId}"></c:out></b></td>
+							<td><b><c:out value="${item.remarkTime}"></c:out></b></td>
+						    <td><b><c:out value="${item.hotleName}"></c:out></b></td>
+						    <td><b><c:out value="${item.remark}"></c:out></b></td>
+						</tr>
+					
+					</c:forEach>
+				</tbody>
             
         </table>
+        </form>
     </div>
      </div>	
+	</div>
 	</div>
   </body>
   <script src="js/core/jquery.3.2.1.min.js">	</script>

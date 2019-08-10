@@ -11,5 +11,5 @@ public interface YongHuGLDao {
 	
 	public List<YongHuGL> chaxunDingDan(int userId);
 
-	public void shanchu(int userId);
+	public String show(int userId) ;
 }
