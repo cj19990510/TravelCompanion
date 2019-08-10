@@ -68,9 +68,9 @@ public class HotelInfoDao extends JdbcTemplate implements HotelInfoDaoImp{
 	}
 
 	@Override
-	public List<HotelInfoPictureBean> getTop20HotelInfo(String type, String city) {
-		Object[] object=new Object[] {type,city};
-		String sql="SELECT c.cityname,h.hotelid,h.hotelInfomation,h.hotelLevel,h.hotelname,h.hotelPhone,p.pictureurl FROM hotelinfo h,pictureinfo p,cityinfo c WHERE h.type=? AND h.cityid=? and h.cityid=c.cityid AND p.hotelid=h.hotelid  GROUP BY h.`hotelId` order by hotelLevel LIMIT 20";
+	public List<HotelInfoPictureBean> getTop20HotelInfo(String type) {
+		Object[] object=new Object[] {type};
+		String sql="SELECT c.cityname,h.hotelid,h.hotelInfomation,h.hotelLevel,h.hotelname,h.hotelPhone,p.pictureurl FROM hotelinfo h,pictureinfo p,cityinfo c WHERE h.type=? and h.cityid=c.cityid AND p.hotelid=h.hotelid  GROUP BY h.`hotelId` order by hotelLevel desc LIMIT 10";
 		List<HotelInfoPictureBean> list=null;
 		try {
 			list = this.queryForList(new RowMapper<HotelInfoPictureBean>() {
