@@ -32,26 +32,23 @@ public class YongHuServlet extends HttpServlet {
 		
 		String userid=req.getParameter("userid");
 		int userId=Integer.parseInt(userid);
-		System.out.println(userid);
 
 		YongHuService yongHuService=new YongHuService();
 		List<UserInfoBean> list=yongHuService.chaxun(userId);
 		
 		List<YongHuGL> list1=yongHuService.chaxunDingDan(userId);
-		for(int i=0; i<list.size(); i++){
-			System.out.println(list.get(i).toString());
-		}
-		for(int i=0; i<list1.size(); i++){
-			System.out.println(list1.get(i).toString());
+		String res=yongHuService.show(userId);
+		
+		if(res.equals("0")) {
+			req.setAttribute("msg", "输入账号有误！");
+			req.getRequestDispatcher("/yonghu.jsp").forward(req, resp);
+    	 }else {
+    		 HttpSession session = req.getSession();
+    		session.setAttribute("list", list);
+    		session.setAttribute("list1", list1);
+    		req.getRequestDispatcher("/yonghu.jsp").forward(req, resp);
 		}
 		
-		HttpSession session = req.getSession();
-
-		//String i="123";
-		session.setAttribute("list", list);
-		session.setAttribute("list1", list1);
-         
-		req.getRequestDispatcher("/yonghu.jsp").forward(req, resp);
 	}
 	
 	

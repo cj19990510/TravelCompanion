@@ -13,6 +13,7 @@ public class OrderInfoBean {
     public Timestamp orderTime;//订单时间
     public String orderState;//订单状态
     public Timestamp inTime;//入住时间
+    public String hotelName;//酒店名
     
 	public int getOrderId() {
 		return orderId;
@@ -68,6 +69,19 @@ public class OrderInfoBean {
 	public void setInTime(Timestamp inTime) {
 		this.inTime = inTime;
 	}
+	public String getHotelName() {
+		return hotelName;
+	}
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
+	@Override
+	public String toString() {
+		return "OrderInfoBean [orderId=" + orderId + ", userId=" + userId + ", hotelId=" + hotelId + ", roomId="
+				+ roomId + ", dayNum=" + dayNum + ", orderMoney=" + orderMoney + ", orderTime=" + orderTime
+				+ ", orderState=" + orderState + ", inTime=" + inTime + ", hotelName=" + hotelName + "]";
+	}
+	
 	
     
 }

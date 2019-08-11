@@ -20,10 +20,11 @@ public class YongHuGLDaoImpl implements YongHuGLDao{
 
 	@Override
 	public List<UserInfoBean> chaxun(int userId) {
-		String sql="select userinfo.userid,userinfo.username,userinfo.userphone,COUNT(orderinfo.orderId),count(orders.orderId)\r\n"
-                    +"from userinfo,orderinfo,(select orderId from orderinfo where orderinfo.orderState='预订成功') as orders\r\n"
-                   +" where  userinfo.userid=?\r\n"
-                    +"and userinfo.userid=orderinfo.userId";
+		String sql="select userinfo.userid,userinfo.username,userinfo.userphone,COUNT(orderinfo.orderId),orders.c "
+                    +"from userinfo,orderinfo,(select count(*) c  from orderinfo where orderinfo.orderState='预订成功') as orders "
+                    +"where  orderinfo.userid=?"
+                    +" and userinfo.userid=orderinfo.userId";
+
 		List<UserInfoBean> list=new ArrayList<UserInfoBean>();
 
 		Connection con = null;
@@ -39,6 +40,8 @@ public class YongHuGLDaoImpl implements YongHuGLDao{
                user.setUserId(rs.getInt(1));
                user.setUserName(rs.getString(2));
                user.setUserPhone(rs.getString(3));
+               user.setCount(rs.getString(4));
+               user.setCountSuccess(rs.getString(5));
                
                list.add(user);
             }
@@ -52,29 +55,28 @@ public class YongHuGLDaoImpl implements YongHuGLDao{
 	}
 
 	@Override
-	public void shanchu(int userId) {
-		String sql="delete from userinfo where userinfo.userId=?";
+	public String show(int userId) {
+		String sql ="select * from userinfo where userid=?";
+		
 		Connection con = null;
-	    PreparedStatement pre = null;
-	    ResultSet rs = null;
-	    try {
-	    	con = DbUtil.getConnection();
-	        pre = con.prepareStatement(sql);
-	        pre.setObject(1,userId);
-	        pre.executeUpdate();
-	    } catch (SQLException e) {
-	      // TODO Auto-generated catch block
-	      e.printStackTrace();
-	    } catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-	        DbUtil.closeConnection(con,pre,rs);
-	    }
-	}
+        PreparedStatement pre = null;
+        ResultSet rs = null;
+        String res="0";
+        try {
+            con = DbUtil.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setObject(1,userId);
+            rs = pre.executeQuery();
+            while (rs.next()){
+                res="1";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DbUtil.closeConnection(con,pre,rs);
+        }
+        return res;
+		}
 
 	@Override
 	public List<YongHuGL> chaxunDingDan(int userId) {
