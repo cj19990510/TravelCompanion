@@ -44,6 +44,7 @@ $(document).ready(function(){
 		poster:function(e){
 			var obj = eval('(' + e + ')');
 			$.each(obj,function(i,item){
+				$($("div[name='spot']")[i]).attr('id',item.hotelId);
 				$($("img[name='im']")[i]).attr('src',item.picture);
 				$($("img[name='spotLevel']")[i]).attr('title',"景区排名："+item.hotelLevel);
 				$($("img[name='spotInfomation']")[i]).attr('title',"景区介绍："+item.hotelInfomation);
@@ -72,4 +73,10 @@ $(document).ready(function(){
 			})
 		}
 	}
+	$("#3").click(function(){
+		alert(11111)
+	})
 })
+	function turnToSpot(e){
+		window.location.href="GetDetailSpotServlet?hotelId="+e.id;
+	}

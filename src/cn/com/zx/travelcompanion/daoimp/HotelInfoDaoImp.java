@@ -20,4 +20,7 @@ public interface HotelInfoDaoImp {
 		//获取排名前二十的酒
 		List<HotelInfoPictureBean> getTop20HotelInfo(String type);
 		//获取智能推荐的值
+		List<HotelInfoPictureBean> getRecommendHotelInfo(String type,String[] recimmendiion);
+		//获取智能推荐的值
+	   List<HotelInfoPictureBean> getHotelInfo(int hotelid);
 }
