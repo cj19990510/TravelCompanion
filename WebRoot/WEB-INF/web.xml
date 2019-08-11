@@ -13,6 +13,13 @@
     <description>This is the description of my J2EE component</description>
     <servlet-class>cn.com.zx.travelcompanion.servlet.GetDetailSpotServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>j</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>cn.com.zx.travelcompanion.servlet.hotelAdmin.j</servlet-class>
+  </servlet>
+
 
 
   <servlet-mapping>
@@ -22,6 +29,10 @@
   <servlet-mapping>
     <servlet-name>GetDetailSpotServlet</servlet-name>
     <url-pattern>/servlet/GetDetailSpotServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>j</servlet-name>
+    <url-pattern>/servlet/j</url-pattern>
   </servlet-mapping>
 
 </web-app>
