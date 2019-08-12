@@ -2,7 +2,7 @@
 <html lang="en">
 
 	<head>
-		<title>登陆</title>
+		<title>个人中心</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -24,9 +24,91 @@
 		<script src="js/custom.js"></script>
 
 		<script src="js/bootstrap.js"></script>
-		<style>
-			.div1{position: absolute;left:50%;top:50%;margin-left:-200px;margin-top:-100px;}</style>
 	
+		<link rel="shortcut icon" type="image/x-icon" href="theme/icon/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="theme/css/base.css">
+		<link rel="stylesheet" type="text/css" href="theme/css/member.css">
+		<style type="text/css">
+		     a:link{font-family:Verdana, Geneva, sans-serif; color:#000;}
+		     a.visited{font-family:"黑体"; color:#F00;}
+		</style>
+		<script>
+			 $(document).ready(function(){
+			    
+			 	$.ajax({
+			 	   type:"post",
+			 	   url:"GetUserInfoServlet",
+			 	   success:function(data){
+			 	      console.log(data);                             
+			 	      var obj=eval('('+data+')');
+			 	         $("#userna").append(obj.userName);
+			 	         $("#username").val(obj.userName);
+			 	         $("#userpassword").val(obj.userPassword);
+			 	         $("#reuserpassword").val(obj.userPassword);
+			 	         $("#userphone").val(obj.userPhone); 
+			 	         $("#useremail").val(obj.userEmail);
+			 	         $("#userid").val(obj.userId);
+ 
+			 	   }
+			 	});
+			 	
+			   /*  function showDivs(divId){  //隐藏和显示
+			 	    var divs=["div2","div3"];
+			 	    for(var i=0;i<2;i++){
+			 	       if(divs[i]!=divId){
+			 	          $("#"+divs[i]).hide();
+			 	       }
+			 	       $("#"+divs[i]).show();
+			 	    }
+			 	}; */
+			 	
+			 	//修改个人信息
+			   $("#xiugai").click(function(){
+			   	  alert("hh");
+			      
+			      $("#username").removeAttr("readOnly");
+			      $("#userpassword").removeAttr("readOnly");
+			      $("#reuserpassword").removeAttr("readOnly");
+			      $("#userphone").removeAttr("readOnly");
+			      $("#useremail").removeAttr("readOnly");			  
+			      
+			   });
+			   
+			   //确定修改个人信息
+			   $("#qdxiugai").click(function(){
+			   	  alert("修改个人信息");
+			   	  var userid=$("#userid").val();
+			   	  var username=$("#username").val();
+			   	  var userpassword=$("#userpassword").val();
+			   	  var reuserpassword=$("#reuserpassword").val();
+			   	  var userphone=$("#userphone").val();
+			   	  var useremail=$("#useremail").val();
+			   	  if(userpassword!==reuserpassword){
+			   	       alert("密码不一致，请重新输入");
+			   	  }
+			      $.ajax({
+			         type:"post",
+			         url:"UpdateUserInfoServlet",
+			         data:{
+			               userid:userid,
+			               username:username,
+			               userpassword:userpassword,
+			               userphone:userphone,
+			               useremail:useremail
+			              },
+			         success:function(da){
+			             alert("da+"+da);
+			             if(da==1){
+			               window.location.href="userlogin.html";
+			             }    
+			         }
+			      });
+
+			      			  
+			      
+			  });
+	    });
+		</script>
 		
 
 	</head>
@@ -51,9 +133,9 @@
                       -->
 						<!-- NAVIGATION MENU -->
 						<div class="collapse navbar-collapse " id="myNavbar" style="width: 80%;margin-left: 100px;">
-							<ul class="nav navbar-nav ">
+							<ul class="nav navbar-nav " >
 								<li>
-									<a href="index.html ">主页</a>
+									<a href="index.html " >主页</a>
 								</li>
 								<li>
 									<a href="family-package.html ">旅游</a>
@@ -106,52 +188,117 @@
 			</div>
 	    </section>
 		
-       <div id="react">
-           <div class="page index" data-reactroot="">
-           <div class="orders-container">
-              <div style="float:left">
-                 <div class="orders-link-box">
-                 <div class="link-group">
-                     <p class="title"><a href="https://www.meituan.com/account/userinfo/">我的美团</a></p>
-                     <p class="title"><a href="https://www.meituan.com/orders/#status=0">我的订单</a></p>
-                     <ul class="link-ul">
-                           <li><a href="https://www.meituan.com/orders/#status=0">全部订单</a><i class="icon-right"></i></li>
-                           <li><a href="https://www.meituan.com/orders/#status=1">待付款</a><i class="icon-right"></i></li>
-                           <li><a href="https://www.meituan.com/orders/#status=2">待使用</a><i class="icon-right"></i></li>
-                           <li><a href="https://www.meituan.com/orders/#status=3">待评价</a>
-                           <span class="num">25</span><i class="icon-right"></i> </li>
-                           <li><a href="https://www.meituan.com/orders/#status=4">退款/售后</a><i class="icon-right"></i></li>
-                      </ul>
-                 </div>
-                 <div class="link-group">
-                      <p class="title">
-                         <a href="https://www.meituan.com/collections/">我的收藏</a>
-                      </p>
-                      <ul class="link-ul">
-                          <li><a href="https://www.meituan.com/collections/#tab=poi">收藏的商家</a><span class="num"></span><i class="icon-right"></i></li>
-                          <li><a href="https://www.meituan.com/collections/#tab=deal">收藏的团购</a><span class="num"></span><i class="icon-right"></i></li>
-                      </ul>
-                  </div>
-               
-                  <div class="link-group">
-                        <p class="title">
-                              <a href="https://www.meituan.com/account/settings">个人信息</a>
-                        </p>
-                        <ul class="link-ul">
-                             <li><a href="https://www.meituan.com/account/settings">账户设置</a><span class="num"></span><i class="icon-right"></i></li>
-                        </ul>
-                  </div>
-                </div>
-                <div class="download-app">
-                </div>
-                </div>
-                <div class="orders-box clearfix">
-                   <div class="orders"><div class="orders-head"><ul class="orders-ul clearfix"><li class="active">全部订单</li><li class="">待付款</li><li class="">待使用</li><li class="">待评价<span class="num">25</span></li><li class="">退款/售后</li></ul></div><div class="orders-body"><div><div class="order-item clearfix"><div class="order-img">
-                <a href="https://www.meituan.com/order/view/5242285686/" class="link" target="_blank">
-                <div><img src="%E6%88%91%E7%9A%84%E8%AE%A2%E5%8D%95_files/5d5b455df3ea370d1f28c09a261f5c2353266.jpg" class="image"></div></a>
+		
+		
+		<div class="containers"  style="margin-top:10px;" >
+		   <div class="pc-nav-item" style="font-size:20px;"><a href="#" style="font-size:20px;">首页</a> &gt; <a href="#" style="font-size:20px;">个人中心 </a></div>
+		</div>
 
-		
-		
+
+		<!-- 个人中心 begin -->
+		<section id="member" style="margin-top:15px;">
+		    <div class="member-center clearfix">
+		        <div class="member-left fl" >
+		            <div class="member-apart clearfix" >
+		                <div class="fl"><a href="#"><img src="theme/img/bg/mem.png"></a></div>
+		                <div class="fl" style="margin-left:10px;margin-top:10px;font-size:30px">
+		                    <p>用&nbsp;&nbsp;户：</p>
+		                    <text id="userna"></text>
+		                    
+		                </div>
+		            </div>
+		            <div class="member-lists" style="margin-top:40px;">
+		                <dl style="margin-top:40px;+;">
+		                    <dt>个人中心</dt>
+		                    <dd class="cur" ><a href="#userinfo.html">我的信息</a></dd>
+		                    <dd><a href="#myOrder.jsp">我的订单</a></dd>		                    
+		                    <dd><a href="#myProperty.jsp">我的财产</a></dd> 
+		                    <!--  <dd id="dingdan" onclick="showDivs('div2')">我的订单</dd>          
+		                    <dd id="caichan" onclick="showDivs('div3')">我的财产</dd> -->
+		                  
+		                   
+		                </dl>
+		                <dl>
+		                    <dt>客户服务</dt>
+		                    <dd><a href="#">退货申请</a></dd>
+		                    <dd><a href="#">退货/退款记录</a></dd>
+		                </dl>
+		                
+		            </div>
+		        </div>
+		        
+		        <!-- 我的信息 -->
+		        <div class="member-right fr id="div1">
+		            <div class="member-head" >
+		                <div class="member-heels fl">
+		                    <h3 style="display:inline;">&nbsp;个人中心</h3>
+		                    <button style="margin-left:320px;margin-top:-12px;height:30px;width:80px;" id="xiugai"><p style="margin-top:5px;color:#8B0A50">修改</p></button>
+		                </div>
+		                
+		            </div>
+		            <div class="member-border">
+		               <div class="member-order">
+		                  
+		                   <dl class="member-custom clearfix ">
+		                       <dt>
+                                  
+		                            <b>用户名：&nbsp;&nbsp;&nbsp;&nbsp;</b>
+		                            <input type="text" name="username" id="username" readonly="readonly">
+		                            <span ></span>
+		                            <input type="hidden" name="userid" id="userid" > 
+                               </dt>
+		                      
+		                   </dl>
+		                   <dl class="member-custom clearfix ">
+		                       <dt>
+		                         
+		                             <b>用户密码：</b>
+		                             <input type="password" name="userpassword" id="userpassword" readonly="readonly" >  
+		                             <span ></span>                              
+		                       </dt>
+		                      
+		                   </dl>
+		                   <dl class="member-custom clearfix ">
+		                       <dt>
+		                             <b>重输密码：</b>
+		                             <input type="password" name="reuserpassword" id="reuserpassword" readonly="readonly" > 
+		                             <span ></span>                                   
+		                       </dt>		                      
+		                   </dl>
+		                   <dl class="member-custom clearfix ">
+		                       <dt>
+		                             <b>用户手机：</b>
+		                             <input type="text" name="userphone" id="userphone"  readonly="readonly">
+		                             <span ></span>                                  
+		                       </dt>		                      
+		                   </dl>
+		                   <dl class="member-custom clearfix ">
+		                       <dt>
+		                              <b>用户邮箱：</b>
+		                             <input type="text" name="useremail" id="useremail" readonly="readonly" > 
+		                             <span ></span>                                
+		                       </dt> 
+		                   </dl>
+		                   
+		                          
+ 
+
+		                   
+                          <div style="margin-left:200px;height:50px;">
+		                        <button style="height:30px;font-size:20px;background:#AFEEEE" id="qdxiugai">确定修改</button>
+		                        <button style="margin-left:100px;height:30px;font-size:20px;background:#AFEEEE;width:80px;">取消</button>
+		                   </div>
+		               </div>
+		            </div>
+		           
+		        </div>
+		        
+		        
+		        
+
+		    </div>
+		</section>
+     
 		
 		
 

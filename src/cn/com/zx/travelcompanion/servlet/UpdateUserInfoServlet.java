@@ -29,8 +29,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -38,13 +37,14 @@ public class UpdateUserInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("Content-type", "text/html;;charset=utf-8");
-		String userName=request.getParameter("userName");
-		String userPassword=request.getParameter("userPassword");
-		String userPhone=request.getParameter("userPhone");
-		String userPicture=request.getParameter("userPicture");
-		String userEmail=request.getParameter("userEmail");
-		int userid=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserId();
-		UserInfoBean userinfobean=new UserInfoBean(userid, userName, userPassword, userPhone, userPicture,userEmail);
+		String userName=request.getParameter("username");
+		String userPassword=request.getParameter("userpassword");
+		String userPhone=request.getParameter("userphone");
+		String userPicture=request.getParameter("userpicture");
+		String userEmail=request.getParameter("useremail");
+		int userId=Integer.parseInt(request.getParameter("userid"));
+		//int userid=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserId();
+		UserInfoBean userinfobean=new UserInfoBean(userId, userName, userPassword, userPhone, userPicture,userEmail);
 		UserInfoDao userinfo=new UserInfoDao();
 		int i=userinfo.updateUserInfo(userinfobean);
 		if(i==1){

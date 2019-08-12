@@ -98,10 +98,14 @@
                          },
                   
                     success:function(data){
-                        alert("data:"+data);                                              
-                         alert("账号注册成功！");
+                        alert("data:"+data); 
+                        if(data==1){
+                          alert("账号注册成功！");
                            window.location.href="userlogin.html";
-                       
+                        }else{                                           
+                           alert("账号注册失败！用户名，密码，手机号不能为空");
+                           window.location.href="userregister.html";
+                       }
                     }
                 });        
            });

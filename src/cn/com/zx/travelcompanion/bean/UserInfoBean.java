@@ -11,7 +11,12 @@ public class UserInfoBean {
     public UserInfoBean(){
     	
     }
-    public UserInfoBean(int userId, String userName, String userPassword, String userPhone, String userPicture,
+    @Override
+	public String toString() {
+		return "UserInfoBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
+				+ ", userPhone=" + userPhone + ", userPicture=" + userPicture + ", userEmail=" + userEmail + "]";
+	}
+	public UserInfoBean(int userId, String userName, String userPassword, String userPhone, String userPicture,
 			String userEmail) {
 		super();
 		this.userId = userId;
