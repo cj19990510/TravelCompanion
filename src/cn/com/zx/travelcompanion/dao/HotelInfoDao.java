@@ -68,9 +68,9 @@ public class HotelInfoDao extends JdbcTemplate implements HotelInfoDaoImp{
 	}
 
 	@Override
-	public List<HotelInfoPictureBean> getTop20HotelInfo(String type, String city) {
-		Object[] object=new Object[] {type,city};
-		String sql="SELECT c.cityname,h.hotelid,h.hotelInfomation,h.hotelLevel,h.hotelname,h.hotelPhone,p.pictureurl FROM hotelinfo h,pictureinfo p,cityinfo c WHERE h.type=? AND h.cityid=? and h.cityid=c.cityid AND p.hotelid=h.hotelid  GROUP BY h.`hotelId` order by hotelLevel LIMIT 20";
+	public List<HotelInfoPictureBean> getTop20HotelInfo(String type) {
+		Object[] object=new Object[] {type};
+		String sql="SELECT c.cityname,h.hotelid,h.hotelInfomation,h.hotelLevel,h.hotelname,h.hotelPhone,p.pictureurl FROM hotelinfo h,pictureinfo p,cityinfo c WHERE h.type=? and h.cityid=c.cityid AND p.hotelid=h.hotelid  GROUP BY h.`hotelId` order by hotelLevel desc LIMIT 10";
 		List<HotelInfoPictureBean> list=null;
 		try {
 			list = this.queryForList(new RowMapper<HotelInfoPictureBean>() {
@@ -89,6 +89,43 @@ public class HotelInfoDao extends JdbcTemplate implements HotelInfoDaoImp{
 			
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(list.isEmpty())
+			return null;
+		else
+		return list;
+	}
+
+	@Override
+	public List<HotelInfoPictureBean> getRecommendHotelInfo(String type, String[] recimmendiion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<HotelInfoPictureBean> getHotelInfo(int hotelid) {
+		Object[] object=new Object[] {hotelid};
+		String sql="SELECT c.cityname,h.hotelid,h.hotelInfomation,h.hotelLevel,h.hotelname,h.hotelPhone,p.pictureurl FROM hotelinfo h,pictureinfo p,cityinfo c WHERE h.hotelid=? AND h.cityid=c.cityid AND p.hotelid=h.hotelid";
+		List<HotelInfoPictureBean> list=null;
+		try {
+			list = this.queryForList(new RowMapper<HotelInfoPictureBean>() {
+				public HotelInfoPictureBean mappingRow(ResultSet rs, int rownum) throws SQLException {
+					HotelInfoPictureBean hotel= new HotelInfoPictureBean();
+				    hotel.setCityName(rs.getString("cityname"));
+				    hotel.setHotelId(rs.getInt("hotelId"));
+				    hotel.setHotelInfomation(rs.getString("hotelInfomation"));
+				    hotel.setHotelLevel(rs.getInt("hotelLevel"));
+				    hotel.setHotelName(rs.getString("hotelname"));
+				    hotel.setHotelPhone(rs.getString("hotelPhone"));
+				    hotel.setPicture(rs.getString("pictureurl"));
+					return hotel;
+				}
+				
+			},sql,object);
+			
+		} catch (ClassNotFoundException | IOException | SQLException e) {
+			//TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(list.isEmpty())

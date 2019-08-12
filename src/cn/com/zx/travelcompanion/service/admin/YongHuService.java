@@ -19,9 +19,9 @@ public class YongHuService {
     	return yongHuGLDao.chaxunDingDan(userId);
 	}
 
-	public void shanchu(int userId){
+	public String show(int userId) {
 		YongHuGLDao yongHuGLDao=new YongHuGLDaoImpl();
-		yongHuGLDao.shanchu(userId);
+		return yongHuGLDao.show(userId);
 	}
 
 }

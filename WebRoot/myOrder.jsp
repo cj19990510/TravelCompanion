@@ -59,61 +59,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 	   }
 			 	});
 			 	
-			   /*  function showDivs(divId){  //隐藏和显示
-			 	    var divs=["div2","div3"];
-			 	    for(var i=0;i<2;i++){
-			 	       if(divs[i]!=divId){
-			 	          $("#"+divs[i]).hide();
-			 	       }
-			 	       $("#"+divs[i]).show();
-			 	    }
-			 	}; */
+			
 			 	
-			 	//修改个人信息
-			   $("#xiugai").click(function(){
-			   	  alert("hh");
-			      
-			      $("#username").removeAttr("readOnly");
-			      $("#userpassword").removeAttr("readOnly");
-			      $("#reuserpassword").removeAttr("readOnly");
-			      $("#userphone").removeAttr("readOnly");
-			      $("#useremail").removeAttr("readOnly");			  
-			      
-			   });
-			   
-			   //确定修改个人信息
-			   $("#qdxiugai").click(function(){
-			   	  alert("修改个人信息");
-			   	  var userid=$("#userid").val();
-			   	  var username=$("#username").val();
-			   	  var userpassword=$("#userpassword").val();
-			   	  var reuserpassword=$("#reuserpassword").val();
-			   	  var userphone=$("#userphone").val();
-			   	  var useremail=$("#useremail").val();
-			   	  if(userpassword!==reuserpassword){
-			   	       alert("密码不一致，请重新输入");
-			   	  }
-			      $.ajax({
-			         type:"post",
-			         url:"UpdateUserInfoServlet",
-			         data:{
-			               userid:userid,
-			               username:username,
-			               userpassword:userpassword,
-			               userphone:userphone,
-			               useremail:useremail
-			              },
-			         success:function(da){
-			             alert("da+"+da);
-			             if(da==1){
-			               window.location.href="userlogin.html";
-			             }    
-			         }
-			      });
-
-			      			  
-			      
-			  });
+			 
+			 
 	    });
 		</script>
 		
@@ -238,29 +187,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                <div class="member-heels fl">
 		                    <h3 style="display:inline;">&nbsp;我的订单</h3>
 		                    <button style="margin-left:320px;margin-top:-12px;height:30px;width:80px;" id="xiugai"><p style="margin-top:5px;color:#8B0A50">修改</p></button>
-		                </div>
-		                
+		                </div>  
 		            </div>
 		            <div class="member-border">
 		               <div class="member-order">
-		                  
 		                   <dl class="member-custom clearfix ">
 		                       <dt>
 		                            <input >
 		                            <input type="text" name="username" id="username" readonly="readonly">
 		                            <span ></span>
 		                            <input type="hidden" name="userid" id="userid" > 
-                               </dt>
-		                      
+                               </dt>		                      
 		                   </dl>
 		                   <dl class="member-custom clearfix ">
 		                       <dt>
-		                         
 		                             <b>用户密码：</b>
 		                             <input type="password" name="userpassword" id="userpassword" readonly="readonly" >  
 		                             <span ></span>                              
 		                       </dt>
-		                      
 		                   </dl>
 		                   <dl class="member-custom clearfix ">
 		                       <dt>
@@ -269,29 +213,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                             <span ></span>                                   
 		                       </dt>		                      
 		                   </dl>
-		                   <dl class="member-custom clearfix ">
-		                       <dt>
-		                             <b>用户手机：</b>
-		                             <input type="text" name="userphone" id="userphone"  readonly="readonly">
-		                             <span ></span>                                  
-		                       </dt>		                      
-		                   </dl>
-		                   <dl class="member-custom clearfix ">
-		                       <dt>
-		                              <b>用户邮箱：</b>
-		                             <input type="text" name="useremail" id="useremail" readonly="readonly" > 
-		                             <span ></span>                                
-		                       </dt> 
-		                   </dl>
-		                   
-		                          
- 
-
-		                   
-                          <div style="margin-left:200px;height:50px;">
-		                        <button style="height:30px;font-size:20px;background:#AFEEEE" id="qdxiugai">确定修改</button>
-		                        <button style="margin-left:100px;height:30px;font-size:20px;background:#AFEEEE;width:80px;">取消</button>
-		                   </div>
 		               </div>
 		            </div>
 		           

@@ -8,6 +8,7 @@ public class RemarkInfoBean {
     public String remark;//评论
 	public double remarkLevel;//评论等级
     public Timestamp remarkTime;//评论时间
+    private String hotleName;
     
 	public int getRemarkId() {
 		return remarkId;
@@ -39,5 +40,17 @@ public class RemarkInfoBean {
 	public void setRemarkTime(Timestamp remarkTime) {
 		this.remarkTime = remarkTime;
 	}
+	public String getHotleName() {
+		return hotleName;
+	}
+	public void setHotleName(String hotleName) {
+		this.hotleName = hotleName;
+	}
+	@Override
+	public String toString() {
+		return "RemarkInfoBean [remarkId=" + remarkId + ", userId=" + userId + ", remark=" + remark + ", remarkLevel="
+				+ remarkLevel + ", remarkTime=" + remarkTime + ", hotleName=" + hotleName + "]";
+	}
+	
 	
 }
