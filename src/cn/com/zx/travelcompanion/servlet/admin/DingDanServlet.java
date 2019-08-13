@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.com.zx.travelcompanion.bean.OrderInfoBean;
 import cn.com.zx.travelcompanion.service.admin.DingDanService;
+import cn.com.zx.travelcompanion.service.admin.ShouYiService;
 
 @WebServlet("/dingdan")
 public class DingDanServlet extends HttpServlet {
@@ -37,10 +38,13 @@ public class DingDanServlet extends HttpServlet {
 		String time=req.getParameter("time");
 		session.setAttribute("time1", time);
 		DingDanService dingDanService=new DingDanService();
+		ShouYiService shouYiService=new ShouYiService();
 		int totalPage=0;
 		List<OrderInfoBean> list=null;
+		int money=0;
 		try {
 			list = dingDanService.chaXunDan(time,currentPage);
+			money=shouYiService.chauxun(time);
 			totalPage=dingDanService.totapage(time);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -49,6 +53,7 @@ public class DingDanServlet extends HttpServlet {
 		
 		req.setAttribute("totalPage", totalPage%2 == 0 ?(totalPage/2):(totalPage/2+1));
 		req.setAttribute("list2", list);
+		req.setAttribute("money", money);
 		req.setAttribute("curPage", currentPage);
         
 		req.getRequestDispatcher("/dingdan.jsp").forward(req, resp);

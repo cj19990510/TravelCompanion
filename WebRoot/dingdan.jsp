@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -31,10 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					伴旅后台</br>管理系统</h2>
 				</div>
 				<ul class="nav nav-pills nav-stacked" >
-					<li role="presentation" >
-						<a href="shouyi.jsp">
-							<h4>收益管理</h4></a>
-					</li>
+					
 					<li role="presentation">
 						<a href="dingdan.jsp">
 							<h4>订单管理</h4></a>
@@ -44,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<h4>用户管理</h4></a>
 					</li>
 					<li role="presentation">
-						<a href="jiudian.jsp">
+						<a href="hotel">
 							<h4>酒店管理</h4></a>
 					</li>
 					<li role="presentation">
@@ -81,10 +78,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<span style="color: red;">${msg2}</span>
 				</div>
+				<span style="color: skyblue;top:100px;left:430px;position:absolute;font-family:STXingkai;font-size:30px;">收益:<span color="yellowgreen">${money}</span></span>
 
      <div align="center" >
     
-         <table class="table table-hover" width="100%" align="center" style="position: absolute;top:100px;">
+         <table class="sui-table table-primary" width="100%" align="center" style="position: absolute;top:140px;">
             <thead>
             <tr>
                 <th><b>订单号</b></th>
@@ -109,17 +107,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						</tr>
 					</c:forEach>
-			<tr align = "center">
-				<td colspan="5">
-				第<c:out value="${curPage }"/>页/共<c:out value="${ totalPage}" />页
+			<tr align = "center" style="position: absolute;left:350px;">
+				<td colspan="8" style="width:400px;">
+				第<c:out value="${curPage }"/>页/<c:out value="${ totalPage}" />页
 				<c:if test="${curPage != 1 }">
-					<a href="dingdan?page=1&time=<%= session.getAttribute("time1")%>">首页</a> | 
+					<a href="dingdan?page=1&time=<%= session.getAttribute("time1")%>">首页</a>| 
 					<a href="dingdan?page=<c:out value="${curPage -1 }" />&time=<%= session.getAttribute("time1")%>">上一页</a>|
 				</c:if>
 				
 				<c:if test="${curPage != totalPage }">
-				 	<a href="dingdan?page=<c:out value="${curPage + 1 }" />&time=<%= session.getAttribute("time1")%>">下一页</a> |
-				 	<a href="dingdan?page=<c:out value="${totalPage }" />&time=<%= session.getAttribute("time1")%>">尾页</a> | 
+				 	<a href="dingdan?page=<c:out value="${curPage + 1 }" />&time=<%= session.getAttribute("time1")%>">下一页</a>|
+				 	<a href="dingdan?page=<c:out value="${totalPage }" />&time=<%= session.getAttribute("time1")%>">尾页</a>  
 				</c:if>
 				</td>
 			</tr>

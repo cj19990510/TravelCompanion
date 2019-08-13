@@ -13,5 +13,10 @@ public interface ChaPingDao {
 	public String show(String hotelname);
 	
 	public String show1(String userid);
+	
+	public double remarkuser(String userid);
+	
+	public double remarkhotel(String hotelname);
+
 
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -31,10 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					伴旅后台</br>管理系统</h2>
 				</div>
 				<ul class="nav nav-pills nav-stacked" >
-					<li role="presentation" >
-						<a href="shouyi.jsp">
-							<h4>收益管理</h4></a>
-					</li>
 					<li role="presentation">
 						<a href="dingdan.jsp">
 							<h4>订单管理</h4></a>
@@ -44,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<h4>用户管理</h4></a>
 					</li>
 					<li role="presentation">
-						<a href="jiudian.jsp">
+						<a href="hotel">
 							<h4>酒店管理</h4></a>
 					</li>
 					<li role="presentation">
@@ -70,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<div class="d3" style="background:#f5f5fa;width:1150px;height:700px; left:190px;top:80px;position: fixed;">
     <form action="chaping" method="post">
-    <div style="border-top: 1px solid  black;">
+    <div style="border-top: 1px solid  black;"></div>
 	    
 					<div style="text-align: center;background-color: white;width: 100%;" >
 					
@@ -86,9 +82,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							style="top:0;left:250px;position:absolute;width:40px;" >查询</button>
 	                 <span style="color: red;">${msg1}</span>
 	</div>
+	<span style="color: skyblue;top:90px;left:430px;position:absolute;font-family:STXingkai;font-size:30px;">差评率:<span color="yellowgreen">${remark}</span></span>
+	
 </div>
      <div align="center" >
-         <table class="sui-table table-primary"  width="100%" align="center" style="position: absolute;top:100px;">
+         <table class="sui-table table-primary"  width="100%" align="center" style="position: absolute;top:140px;">
             <thead>
             <tr>
                 <th  style="width:15%"><b>评论id</b></th>

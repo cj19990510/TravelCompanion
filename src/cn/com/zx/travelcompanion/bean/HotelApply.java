@@ -1,14 +1,24 @@
 package cn.com.zx.travelcompanion.bean;
 
 public class HotelApply {
+	private int applyId;
 	private String hotelName;//	酒店名
 	private String hotelPhone;//	酒店电话
 	private int cityId;//	所属城市
 	private String hotelInfomation;//	酒店信息
 	private String type;//	类型
-	private String Apply;//	申请内容
+	private String apply;//	申请内容
 	private String licenseNumber;//	营业执照号
 	private String licensePicture;//	营业执照图片
+	private String cityName;
+	
+	
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
 	public String getHotelName() {
 		return hotelName;
 	}
@@ -39,12 +49,7 @@ public class HotelApply {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getApply() {
-		return Apply;
-	}
-	public void setApply(String apply) {
-		Apply = apply;
-	}
+	
 	public String getLicenseNumber() {
 		return licenseNumber;
 	}
@@ -57,5 +62,26 @@ public class HotelApply {
 	public void setLicensePicture(String licensePicture) {
 		this.licensePicture = licensePicture;
 	}
+	public int getApplyId() {
+		return applyId;
+	}
+	public void setApplyId(int applyId) {
+		this.applyId = applyId;
+	}
+	public String getApply() {
+		return apply;
+	}
+	public void setApply(String apply) {
+		this.apply = apply;
+	}
+	@Override
+	public String toString() {
+		return "HotelApply [applyId=" + applyId + ", hotelName=" + hotelName + ", hotelPhone=" + hotelPhone
+				+ ", cityId=" + cityId + ", hotelInfomation=" + hotelInfomation + ", type=" + type + ", apply=" + apply
+				+ ", licenseNumber=" + licenseNumber + ", licensePicture=" + licensePicture + ", cityName=" + cityName
+				+ "]";
+	}
+	
+	
 
 }

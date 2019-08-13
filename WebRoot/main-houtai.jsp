@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,16 +12,13 @@
 
 <body>
 		<div style="display: flex;">
-			<div style="width:13%;background-color:#265A88;height:750px;text-align: center;">
+			<div style="width:13%;background-color:#265A88;height:750px;text-align: center;position:fixed;">
 				<div class="jumbotron" style="background-color:#265A88;">
 					<h2 style="font-family:STXingkai;font-size:30px;left:25px;top:20px;position: absolute; color:rosybrown;">
 					伴旅后台</br>管理系统</h2>
 				</div>
 				<ul class="nav nav-pills nav-stacked" >
-					<li role="presentation" class="active">
-						<a href="shouyi.jsp">
-							<h4>收益管理</h4></a>
-					</li>
+					
 					<li role="presentation">
 						<a href="dingdan.jsp">
 							<h4>订单管理</h4></a>
@@ -31,7 +28,7 @@
 							<h4>用户管理</h4></a>
 					</li>
 					<li role="presentation">
-						<a href="jiudian.jsp">
+						<a href="hotel">
 							<h4>酒店管理</h4></a>
 					</li>
 					<li role="presentation">
@@ -54,8 +51,7 @@
            </script></span>
 	<span style="right:30px;top:20px;position: fixed; font-size:30px;">${adminid}号管理员</span>
 	</a>
-	<hr/>	
-	<div class="d3" style="background:#f5f5fa;width:1150px;height:400px; left:190px;top:80px;position: absolute;">
+	<div class="d3" style="background:#f5f5fa;width:1150px;height:600px; left:190px;top:80px;position: absolute;">
 		<h1 style="font-size:60px;font-family:STXingkai;top:30px;left:50px;position: absolute;color: skyblue;">欢迎登录伴旅后台管理页面</h1>
 	</div>
 		

@@ -5,6 +5,8 @@ public class HotelAdminInfoBean {
 	public int hotelAdminId;//酒管id	
 	public String hotelAdminName;//酒管名
     public String hotelAdminPsw;//酒管密码
+    private int hotelId;
+    
     
     public int getHotelAdminId() {
 		return hotelAdminId;
@@ -24,4 +26,13 @@ public class HotelAdminInfoBean {
 	public void setHotelAdminPsw(String hotelAdminPsw) {
 		this.hotelAdminPsw = hotelAdminPsw;
 	}
+	public int getHotelId() {
+		return hotelId;
+	}
+
+	public void setHotelId(int hotelId) {
+		// TODO Auto-generated method stub
+		this.hotelId= hotelId;
+	}
+
 }

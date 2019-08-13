@@ -1,9 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -24,16 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 		<div style="display: flex;">
-			<div style="width:13%;background-color:#265A88;height:750px;text-align: center;">
+			<div style="width:13%;background-color:#265A88;height:750px;text-align: center;position:fixed;">
 				<div class="jumbotron" style="background-color:#265A88;">
 					<h2 style="font-family:STXingkai;font-size:30px;left:25px;top:20px;position: absolute; color:rosybrown;">
 					伴旅后台</br>管理系统</h2>
 				</div>
 				<ul class="nav nav-pills nav-stacked" >
-					<li role="presentation" >
-						<a href="shouyi.jsp">
-							<h4>收益管理</h4></a>
-					</li>
+					
 					<li role="presentation">
 						<a href="dingdan.jsp">
 							<h4>订单管理</h4></a>
@@ -43,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<h4>用户管理</h4></a>
 					</li>
 					<li role="presentation">
-						<a href="jiudian.jsp">
+						<a href="hotel">
 							<h4>酒店管理</h4></a>
 					</li>
 					<li role="presentation">
@@ -70,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="d3" style="background:#f5f5fa;width:1150px;height:700px; left:190px;top:80px;position: fixed;">
 	
 	<div align="center" >
-         <table class="divTab" width="100%" align="center" style="position: absolute;top:130px;">
+         <table class="sui-table table-primary" width="100%" align="center" style="position: absolute;top:30px;">
             <thead>
             <tr>
                 <th><b>申请id</b></th>
@@ -80,16 +77,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <th><b>酒店信息</b></th>
                 <th><b>类型</b></th>
                 <th><b>申请内容</b></th>
+                <th><b>营业执照</b></th>
                 <th><b>是否同意</b></th>
             </tr>
             </thead>
-            
+            <tbody>
+					<c:forEach var="item1" items="${list4}">
+						<tr>
+							<td><b><c:out value="${item1.applyId}"></c:out></b></td>
+							<td><b><c:out value="${item1.hotelName}"></c:out></b></td>
+							<td><b><c:out value="${item1.hotelPhone}"></c:out></b></td>
+							<td><b><c:out value="${item1.cityName}"></c:out></b></td>
+							<td><b><c:out value="${item1.hotelInfomation}"></c:out></b></td>
+							<td><b><c:out value="${item1.type}"></c:out></b></td>
+							<td><b><c:out value="${item1.apply}"></c:out></b></td>
+							<td><b><c:out value="${item1.licenseNumber}"></c:out></b></td>
+							<td><a href="hotelapply1?applyId=${item1.applyId}&hotelName=${item1.hotelName}&hotelPhone=${item1.hotelPhone}&hotelInfomation=${item1.hotelInfomation}&type=${item1.type}&cityId=${item1.cityId}">是</a>&emsp;&emsp;
+							<a href="hotelapply?applyId=${item1.applyId}">否</a></td>
+
+						</tr>
+					</c:forEach>
+			</tbody>
         </table>
     </div>
   </div>  
 	</div>	
 	</div>
   </body>
+ 
   <script src="js/core/jquery.3.2.1.min.js">	</script>
 <script src="js/bootstrap.js">	</script>
 </html>
