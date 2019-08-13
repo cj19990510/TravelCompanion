@@ -53,9 +53,8 @@ public class LoginServlet extends HttpServlet {
 			int hotelid=hai1.getHotelId();
 			session.setAttribute("hotel",hib);	
 			session.setAttribute("hotelid", hotelid);
-		    session.setAttribute("user", haib);
-			System.out.println("hotel保存的内容是"+session.getAttribute("hotelid"));		    
-			req.getRequestDispatcher("main.jsp").forward(req, resp);
+		    session.setAttribute("user", haib);	    
+			req.getRequestDispatcher("dist/html/index.jsp").forward(req, resp);
 				
 				
 		

@@ -41,9 +41,8 @@ public class OrderInfoServlet extends HttpServlet {
 	     System.out.println("oi保存的ֵ"+oi.get(0).getOrderState());
 	     
 	     session.setAttribute("oi", oi);
-		req.getRequestDispatcher("index.jsp").forward(req, resp);
-		req.getRequestDispatcher("index.jsp").forward(req, resp);
-		//href=\"table/datatable.html\"
+		req.getRequestDispatcher("dist/html/datatable.jsp").forward(req, resp);
+	
 	}
 
 	
