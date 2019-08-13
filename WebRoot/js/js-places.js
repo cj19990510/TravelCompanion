@@ -1,7 +1,8 @@
 /**
- * 主页js方法
+ * 
  */
 $(document).ready(function(){
+/*	alert(111);
 	var map = new BMap.Map("container");
 	var point = new BMap.Point(116.3964,39.9093);
 	map.centerAndZoom(point,13);
@@ -19,11 +20,14 @@ $(document).ready(function(){
 		else {
 			alert('failed'+this.getStatus());
 		}        
-	});
+	});*/
 	//获得用户信息
-	$.ajax({
+/*	$.ajax({
 	     type:"post",
 	     url:"getUserInfoServlet",
+	     data:{
+	    	 type:"景点" 
+	     },
 	     success:function(data){
 	    	if(data==0){
 	    		$("#login").css("display","none")
@@ -35,7 +39,7 @@ $(document).ready(function(){
 	    		})
 	    	}
 	     }
-	})
+	})*/
 	//获得景点信息
 	$.ajax({
 	     type:"post",
@@ -45,17 +49,6 @@ $(document).ready(function(){
 	     },
 	     success:function(data){
 	    	 $.head.poster(data);
-	     }
-	})
-	//获得景点排行榜
-		$.ajax({
-	     type:"post",
-	     url:"HotelInfoLevelServlet",
-	     data:{
-	    	 type:"景点" 
-	     },
-	     success:function(data){
-	    	 $.spotLevel.poster(data);
 	     }
 	})
 	$.head={
@@ -74,27 +67,8 @@ $(document).ready(function(){
 			})
 		}
 	}
-	$.spotLevel={
-		poster:function(e){
-			console.log(e)
-			var obj = eval('(' + e + ')');
-			$.each(obj,function(i,item){
-				var c=Number(i)+Number(1);
-				$("#myTablebody").append("<tr><td>"+c+
-				"</td><td><img src='"+item.picture+"'/>"+
-				"<a href=''class='events-title'>"+item.hotelName+"</a></td>"+
-				"<td class='e_h1 '>"+item.hotelLevel+"</td>"+
-				"<td class='e_h1 '>"+item.hotelPhone+"</td>"+
-				"<td class='e_h1 '>"+item.cityName+"</td>"+
-				"<td><a href=''booking.html' class='link-btn'>查看详细</a></td></tr>"
-			)
-			})
-		}
-	}
-	$("#3").click(function(){
-		alert(11111)
+
 	})
-})
-	function turnToSpot(e){
+		function turnToSpot(e){
 		window.location.href="GetDetailSpotServlet?hotelId="+e.id;
 	}
