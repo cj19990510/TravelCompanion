@@ -125,4 +125,60 @@ public class ChaPingDaoImpl implements ChaPingDao {
         }
         return res;
 		}
+
+	@Override
+	public double remarkuser(String userid) {
+
+		String sql="select remark.c/remarks.cs "
+                   +"from (select count(*) c from remarkinfo where remarkinfo.remarkLevel<'3' and userId=?) as remark,"
+                   +"(select count(*) cs from remarkinfo where userId=?) as remarks";
+		
+		Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet rs = null;
+        double count=0;
+        try {
+            con = DbUtil.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setObject(1,userid);
+            pre.setObject(2,userid);
+            rs = pre.executeQuery();
+            while (rs.next()){
+               count=rs.getDouble(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DbUtil.closeConnection(con,pre,rs);
+        }
+		return count;
+	}
+
+	@Override
+	public double remarkhotel(String hotelname) {
+
+		String sql="select hot.h/hots.hs "
+                    +"from (select count(*) hs from remarkinfo,hotelinfo where remarkinfo.hotelid=hotelinfo.hotelId and hotelinfo.hotelname=?) as hots,"
+                    +"(select count(*) h from remarkinfo,hotelinfo where remarkinfo.hotelid=hotelinfo.hotelId and hotelinfo.hotelname=? and remarkinfo.remarkLevel<'3') as hot";  
+
+		Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet rs = null;
+        double count=0;
+        try {
+            con = DbUtil.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setObject(1,hotelname);
+            pre.setObject(2,hotelname);
+            rs = pre.executeQuery();
+            while (rs.next()){
+            	count=rs.getDouble(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DbUtil.closeConnection(con,pre,rs);
+        }
+		return count;
+	}
 }

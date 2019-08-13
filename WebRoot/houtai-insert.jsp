@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,12 +7,13 @@
 <title>管理员注册</title>
 </head>
 <body>
-  <div style="text-align:center; background-image:url(images/login.jpg);width:100%;height:100%;position: absolute; ">
-     <img src="images/logo_3.png" style="left:12px;top:10px;position: absolute;" />
+  <div style="text-align:center; background-image:url(images/bg7.jpg);width:100%;height:100%;position: absolute; ">
+     <img src="images/logo.png" style="left:12px;top:10px;position: absolute;" />
    <br/><br/><br/>
    <h1 style="color:steelblue;font-size:40px; font-family:LiSu">伴旅后台管理注册</h1>
    <div id="link_student" align="center" >
    <form id="form1" action="insert" method="post" onsubmit="">
+   
    <table style="text-align:center;" width="500" >
        
        <TR>
@@ -23,33 +24,30 @@
        <TR>
           <TD align="right" width="35%" >名称：</TD>
           <TD align="left" width="65%">
-          <INPUT TYPE="text" name="accountName" id="adminid" onblur="fun1()"></TD>
+          <INPUT TYPE="text" name="accountName" id="adminid" onblur=fun1()></TD>
        </TR>
        <TR>
           <TD align="right" width="35%" >密码：</TD>
           <TD align="left" width="65%">
-          <INPUT TYPE="password" id="password1" NAME="password1" onblur="fun2()"></TD>
+          <INPUT TYPE="password" id="password1" NAME="password1" onblur=fun2()></TD>
        </TR>
        <TR>
           <TD align="right" width="35%" >再次输入密码：</TD>
           <TD align="left" width="65%">
-          <INPUT TYPE="password" id="password2" NAME="password2" onblur="fun3()"></TD>
+          <INPUT TYPE="password" id="password2" NAME="password2" onblur=fun3()></TD>
        </TR>
+      
        <TR>
           <TD colspan="2" align="center" style="font-size:30px;">
              <INPUT id="submit" TYPE="submit" value="注      册">
              <INPUT TYPE="reset" value="重　　置">
           </TD>
        </TR>
-       
    </table>
-   
    </form>
  </div>  
  
 </div>
-</body>
-</html>
 
 <script src="js/jquery-latest.min.js" ></script>
 
@@ -102,3 +100,6 @@
 			}
 			
 </script>
+</body>
+</html>
+

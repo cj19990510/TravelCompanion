@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +8,8 @@
 </head>
 <body>
 <script src="js/jquery-latest.min.js"></script>
-<div style="text-align:center; background-image:url(images/login.jpg);width:100%;height:100%;position: absolute; ">
-<img src="images/logo_3.png" style="left:12px;top:10px;position: absolute;" />
+<div style="text-align:center; background-image:url(images/bg7.jpg);width:100%;height:100%;position: absolute; ">
+<img src="images/logo.png" style="left:12px;top:10px;position: absolute;" />
    <br/><br/><br/>
    <h1 style="color:steelblue;font-size:40px; font-family:LiSu">伴旅后台管理登录</h1>
    <div id="link_student" align="center" >

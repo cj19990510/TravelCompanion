@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<h4>用户管理</h4></a>
 					</li>
 					<li role="presentation">
-						<a href="jiudian.jsp">
+						<a href="hotel">
 							<h4>酒店管理</h4></a>
 					</li>
 					<li role="presentation">

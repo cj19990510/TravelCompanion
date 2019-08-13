@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -33,10 +33,7 @@
 					伴旅后台</br>管理系统</h2>
 				</div>
 				<ul class="nav nav-pills nav-stacked" >
-					<li role="presentation" >
-						<a href="shouyi.jsp">
-							<h4>收益管理</h4></a>
-					</li>
+					
 					<li role="presentation">
 						<a href="dingdan.jsp">
 							<h4>订单管理</h4></a>
@@ -46,7 +43,7 @@
 							<h4>用户管理</h4></a>
 					</li>
 					<li role="presentation">
-						<a href="jiudian.jsp">
+						<a href="hotel">
 							<h4>酒店管理</h4></a>
 					</li>
 					<li role="presentation">
@@ -98,7 +95,7 @@
 					<div style="position:absolute;top:80px;left:200px;">
 						<c:forEach var="item" items="${list}">
 						<h2>${item.userName}</h2>
-						<h2>${item.userPhone}</h2>
+						<h2 style="margin-left:130px;">${item.userPhone}</h2>
 						<h2>${item.count}</h2>
 						<h2>${item.countSuccess}</h2>
 						</c:forEach>

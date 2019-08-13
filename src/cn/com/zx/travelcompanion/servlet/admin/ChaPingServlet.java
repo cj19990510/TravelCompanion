@@ -1,6 +1,7 @@
 package cn.com.zx.travelcompanion.servlet.admin;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -39,27 +40,35 @@ public class ChaPingServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		ChaPingService chaPingService=new ChaPingService();
 
+		NumberFormat num = NumberFormat.getPercentInstance(); 
+		num.setMaximumIntegerDigits(3); 
+		num.setMaximumFractionDigits(2);
+		
 		if(s1.equals("请选择查询类型")){
 			req.setAttribute("msg1", "请选择查询类型！");
 			req.getRequestDispatcher("/chaping.jsp").forward(req, resp);
 		}else if(s1.equals("按用户查询")){
              String res=chaPingService.show1(userid);
 			if(res.equals("0")){
-				req.setAttribute("msg", "输入账号有误！");
+				req.setAttribute("msg1", "输入账号有误！");
 				req.getRequestDispatcher("/chaping.jsp").forward(req, resp);
 			}else{
 			List<RemarkInfoBean> list=chaPingService.chaxun(userid);
+			double count=chaPingService.remarkuser(userid);
+			session.setAttribute("remark", num.format(count));
 			session.setAttribute("list3", list);
     		req.getRequestDispatcher("/chaping.jsp").forward(req, resp);
 			}
 		}else {
 			String res=chaPingService.show(userid);
 			if(res.equals("0")){
-				req.setAttribute("msg", "输入酒店名有误！");
+				req.setAttribute("msg1", "输入酒店名有误！");
 				req.getRequestDispatcher("/chaping.jsp").forward(req, resp);
 			}else{
 			
 			List<RemarkInfoBean> list=chaPingService.chaxunName(userid);
+			double count = chaPingService.remarkhotel(userid);
+			session.setAttribute("remark", num.format(count));
 			session.setAttribute("list3", list);
     		req.getRequestDispatcher("/chaping.jsp").forward(req, resp);
 		}
