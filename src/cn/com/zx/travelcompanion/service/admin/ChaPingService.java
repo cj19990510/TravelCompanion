@@ -28,4 +28,13 @@ public class ChaPingService {
 		return ChaPingDao.show1(userid);
 	}
 
+    public double remarkuser(String userid){
+		ChaPingDao ChaPingDao=new ChaPingDaoImpl();
+         return ChaPingDao.remarkuser(userid);
+    }
+	
+	public double remarkhotel(String hotelname){
+		ChaPingDao ChaPingDao=new ChaPingDaoImpl();
+        return ChaPingDao.remarkhotel(hotelname);
+	}
 }

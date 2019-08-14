@@ -20,6 +20,23 @@ $(document).ready(function(){
 			alert('failed'+this.getStatus());
 		}        
 	});
+	//获得用户信息
+	$.ajax({
+	     type:"post",
+	     url:"getUserInfoServlet",
+	     success:function(data){
+	    	if(data==0){
+	    		$("#login").css("display","none")
+	    		$("#regin").css("display","none")
+	    	}
+	    	else{
+	    		$(document).click(function(){
+	    			window.location.href="login.html";
+	    		})
+	    	}
+	     }
+	})
+	//获得景点信息
 	$.ajax({
 	     type:"post",
 	     url:"HotelInfoGetInfoServlet",
@@ -30,6 +47,7 @@ $(document).ready(function(){
 	    	 $.head.poster(data);
 	     }
 	})
+	//获得景点排行榜
 		$.ajax({
 	     type:"post",
 	     url:"HotelInfoLevelServlet",

@@ -1,27 +1,35 @@
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-
-<head>
-    <title>�Ƶ����ϵͳ</title>
+  <head>
+     <title>酒店管理系统</title>
+   <base href="<%=basePath%>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
     <!-- CSS Libs -->
-    <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap-switch.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/css/checkbox3.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/css/dataTables.bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../lib/css/select2.min.css">
+     
+    <link rel="stylesheet" type="text/css" href="dist/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/lib/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/lib/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/lib/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/lib/css/checkbox3.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/lib/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/lib/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="dist/lib/css/select2.min.css">
     <!-- CSS App -->
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/themes/flat-blue.css">
-</head>
-
-<body class="flat-blue">
+    <link rel="stylesheet" type="text/css" href="dist/css/style.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/themes/flat-blue.css">
+  </head>
+  
+ <body class="flat-blue">
     <div class="app-container">
         <div class="row content-container">
             <nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -31,7 +39,7 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li class="active">����</li>
+                            <li class="active">您好,${hotel.hotelName}${hotel.type}</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -45,10 +53,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="title">
-                                   ����Ϣ <span class="badge pull-right">0</span>
+                                   新消息 <span class="badge pull-right">0</span>
                                 </li>
                                 <li class="message">
-                                   û������Ϣ
+                                   没有新消息
                                 </li>
                             </ul>
                         </li>
@@ -111,7 +119,7 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">
                                 <div class="icon fa fa-paper-plane"></div>
-                                <div class="title">�Ƶ����</div>
+                                <div class="title">酒店管理</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -120,54 +128,21 @@
                         <ul class="nav navbar-nav">
                             <li class="active">
                                 <a href="index.html">
-                                    <span class="icon fa fa-tachometer"></span><span class="title">��ҳ</span>
+                                    <span class="icon fa fa-tachometer"></span><span class="title">主页</span>
                                 </a>
                             </li>
-                             <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon fa fa-desktop"></span><span class="title">UI Kits</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-element" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="ui-kits/theming.html">Theming</a>
-                                            </li>
-                                            <li><a href="ui-kits/grid.html">Grid</a>
-                                            </li>
-                                            <li><a href="ui-kits/button.html">Buttons</a>
-                                            </li>
-                                            <li><a href="ui-kits/card.html">Cards</a>
-                                            </li>
-                                            <li><a href="ui-kits/list.html">Lists</a>
-                                            </li>
-                                            <li><a href="ui-kits/modal.html">Modals</a>
-                                            </li>
-                                            <li><a href="ui-kits/alert.html">Alerts & Toasts</a>
-                                            </li>
-                                            <li><a href="ui-kits/panel.html">Panels</a>
-                                            </li>
-                                            <li><a href="ui-kits/loader.html">Loaders</a>
-                                            </li>
-                                            <li><a href="ui-kits/step.html">Tabs & Steps</a>
-                                            </li>
-                                            <li><a href="ui-kits/other.html">Other</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
+                            
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">������</span>
+                                    <span class="icon fa fa-table"></span><span class="title">订单表</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="table/table.html">������Ҫ�ı���</a>
+                                            <li><a href="dist/html/table/table.html">新的用户订单表</a>
                                             </li>
-                                            <li><a href="table/datatable.html">�Ҹ�������Ϊʲôû��Ӧ  </a>
+                                            <li><a href="OrderInfoServlet">用户订单</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -175,13 +150,13 @@
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">酒店注册</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-form" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="form/ui-kits.html">Form UI Kits</a>
+                                            <li><a href="dist/html/form/HotelzhuCe.jsp">酒店注册表</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -222,33 +197,11 @@
                                 </div>
                             </li>
                             <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-icon">
-                                    <span class="icon fa fa-archive"></span><span class="title">Icons</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-icon" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="icons/glyphicons.html">Glyphicons</a>
-                                            </li>
-                                            <li><a href="icons/font-awesome.html">Font Awesomes</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="license.html">
-                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                          
                     <!-- /.navbar-collapse -->
                 </nav>
             </div>
-            <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+            <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="缃戠珯妯℃澘">缃戠珯妯℃澘</a></div>
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body padding-top">
@@ -437,25 +390,26 @@
             </div>
         </div>
         <footer class="app-footer">
-            <div class="wrapper"> <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+            <div class="wrapper"> <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> 漏 2015 Copyright. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="妯℃澘涔嬪">妯℃澘涔嬪</a> - Collect from <a href="http://www.cssmoban.com/" title="缃戦〉妯℃澘" target="_blank">缃戦〉妯℃澘</a>
             </div>
         </footer>
         <div>
             <!-- Javascript Libs -->
-            <script type="text/javascript" src="../lib/js/jquery.min.js"></script>
-            <script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="../lib/js/Chart.min.js"></script>
-            <script type="text/javascript" src="../lib/js/bootstrap-switch.min.js"></script>
-            <script type="text/javascript" src="../lib/js/jquery.matchHeight-min.js"></script>
-            <script type="text/javascript" src="../lib/js/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" src="../lib/js/dataTables.bootstrap.min.js"></script>
-            <script type="text/javascript" src="../lib/js/select2.full.min.js"></script>
-            <script type="text/javascript" src="../lib/js/ace/ace.js"></script>
-            <script type="text/javascript" src="../lib/js/ace/mode-html.js"></script>
-            <script type="text/javascript" src="../lib/js/ace/theme-github.js"></script>
+            <script type="text/javascript" src="dist/lib/js/jquery.min.js"></script>
+            <script type="text/javascript" src="dist/lib/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="dist/lib/js/Chart.min.js"></script>
+            <script type="text/javascript" src="dist/lib/js/bootstrap-switch.min.js"></script>
+            <script type="text/javascript" src="dist/lib/js/jquery.matchHeight-min.js"></script>
+            <script type="text/javascript" src="dist/lib/js/jquery.dataTables.min.js"></script>
+            <script type="text/javascript" src="dist/lib/js/dataTables.bootstrap.min.js"></script>
+            <script type="text/javascript" src="dist/lib/js/select2.full.min.js"></script>
+            <script type="text/javascript" src="dist/lib/js/ace/ace.js"></script>
+            <script type="text/javascript" src="dist/lib/js/ace/mode-html.js"></script>
+            <script type="text/javascript" src="dist/lib/js/ace/theme-github.js"></script>
             <!-- Javascript -->
-            <script type="text/javascript" src="../js/app.js"></script>
-            <script type="text/javascript" src="../js/index.js"></script>
+            <script type="text/javascript" src="dist/js/app.js"></script>
+            <script type="text/javascript" src="dist/js/index.js"></script>
 </body>
 
 </html>
+
