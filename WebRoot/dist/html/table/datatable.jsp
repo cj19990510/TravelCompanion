@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
       <title>您的订单</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--   <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
@@ -182,12 +182,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                             </li>
                             <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
+                          <!--    <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-example">
                                     <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
-                                <div id="dropdown-example" class="panel-collapse collapse">
+                              <!--   <div id="dropdown-example" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
                                             <li><a href="pages/login.html">Login</a>
@@ -197,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </ul>
                                     </div>
                                 </div>
-                            </li>
+                            </li>-->
                     <!-- /.navbar-collapse -->
                 </nav>
             </div>

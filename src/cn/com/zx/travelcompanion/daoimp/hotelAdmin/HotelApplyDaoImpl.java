@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+import org.eclipse.jdt.internal.compiler.batch.Main;
 
 import cn.com.zx.travelcompanion.DB.DbUtil;
 import cn.com.zx.travelcompanion.DB.JdbcTemplate;
@@ -46,6 +46,9 @@ public class HotelApplyDaoImpl extends JdbcTemplate implements HotelApplyDao{
 			return false;
 	}
 
+	public static void main(String[] args) {
+		System.out.println("");
+	}
 }
 
 	 

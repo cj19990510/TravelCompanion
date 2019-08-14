@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
   </head>
-  <form class="form" action="HotelApply" method="get" >
+  <form class="form" action="HotelApply" method="post" >
  
  <body class="flat-blue">
     <div class="app-container">
