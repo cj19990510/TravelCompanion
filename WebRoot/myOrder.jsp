@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="cn.com.zx.travelcompanion.bean.OrderInfoBean"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>    
@@ -168,8 +169,7 @@
 		            <div class="member-head" >
 		                <div class="member-heels fl">
 		                    <h3 style="display:inline;">&nbsp;我的订单</h3>
-		                    <button style="margin-left:320px;margin-top:-12px;height:30px;width:80px;" id="xiugai"><p style="margin-top:5px;color:#8B0A50">修改</p></button>
-		                </div>  
+		               </div>  
 		            </div>
 		            <div class="order-body" style="height:800px;">
 		               <div style="height:800px;">
@@ -203,9 +203,9 @@
 			                     <br>
 			                </c:forEach>
 			                
-			                <tr align = "center">
-								<td colspan="5">
-								第<c:out value="${curPage }"/>页/共<c:out value="${ totalPage}" />页
+			                <div align = "center">
+								
+								第<c:out value="${curPage}"/>页/共<c:out value="${totalPage}" />页
 								<c:if test="${curPage != 1 }">
 									<a href="OrderInfoPages?page=1">首页</a> | 
 									<a href="OrderInfoPages?page=<c:out value="${curPage -1 }" />">上一页</a>|
@@ -215,10 +215,10 @@
 								 	<a href="OrderInfoPages?page=<c:out value="${curPage + 1 }" />">下一页</a> |
 								 	<a href="OrderInfoPages?page=<c:out value="${totalPage }" />">尾页</a> | 
 								</c:if>
-								</td>
-							</tr>
-								</tbody>
-				        </table>
+								
+							</div>
+						 
+				        
 		              
 		            </div>
 		        </div>	
