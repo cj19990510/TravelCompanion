@@ -2,6 +2,12 @@ package cn.com.zx.travelcompanion.bean;
 
 //酒店信息
 public class HotelInfoBean {
+	@Override
+	public String toString() {
+		return "HotelInfoBean [hotelId=" + hotelId + ", hotelName=" + hotelName + ", hotelPhone=" + hotelPhone
+				+ ", cityId=" + cityId + ", hotelLevel=" + hotelLevel + ", hotelInfomation=" + hotelInfomation
+				+ ", type=" + type + "]";
+	}
 	public int hotelId;//酒店id
     public String hotelName;//名称
     public String hotelPhone;//酒店电话

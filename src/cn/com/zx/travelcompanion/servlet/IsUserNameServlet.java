@@ -11,6 +11,7 @@ import cn.com.zx.travelcompanion.dao.UserInfoDao;
 
 /**
  * 判断用户名是否在数据库已经存在
+ * dai
  */
 @WebServlet("/IsUserNameServlet")
 public class IsUserNameServlet extends HttpServlet {

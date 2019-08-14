@@ -1,14 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="cn.com.zx.travelcompanion.bean.OrderInfoBean"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
+  <head>    
       <title>我的订单</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/mob.css">
 		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/fronts/order.css">
 		<script src="js/jquery-latest.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script src="js/wow.min.js"></script>
@@ -40,30 +37,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     a.visited{font-family:"黑体"; color:#F00;}
 		</style>
 		<script>
-			 $(document).ready(function(){
+			 /* $(document).ready(function(){
 			    
 			 	$.ajax({
-			 	   type:"post",
-			 	   url:"GetUserInfoServlet",
-			 	   success:function(data){
-			 	      console.log(data);                             
-			 	      var obj=eval('('+data+')');
-			 	         $("#userna").append(obj.userName);
-			 	         $("#username").val(obj.userName);
-			 	         $("#userpassword").val(obj.userPassword);
-			 	         $("#reuserpassword").val(obj.userPassword);
-			 	         $("#userphone").val(obj.userPhone); 
-			 	         $("#useremail").val(obj.userEmail);
-			 	         $("#userid").val(obj.userId);
+			 	   type:"get",
+			 	   url:"GetOrderInfoServlet",
+			 	   success:function(data){			 	                            
+			 	      
+			 	         
  
 			 	   }
-			 	});
-			 	
-			
-			 	
-			 
-			 
-	    });
+			 	}); 
+	    	}); */
 		</script>
 		
 	
@@ -153,26 +138,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 		<!-- 个人中心 begin -->
-		<section id="member" style="margin-top:15px;">
-		    <div class="member-center clearfix">
+		<section id="member" style="margin-top:15px;height:800px">
+		    <div class="member-center clearfix" style="height:800px">
 		        <div class="member-left fl" >
 		            <div class="member-apart clearfix" >
 		                <div class="fl"><a href="#"><img src="theme/img/bg/mem.png"></a></div>
 		                <div class="fl" style="margin-left:10px;margin-top:10px;font-size:30px">
 		                    <p>用&nbsp;&nbsp;户：</p>
-		                    <text id="userna"></text>
+		                    <text id="userName">${userinfo.userName}</text>
 		                    
 		                </div>
 		            </div>
 		            <div class="member-lists" style="margin-top:40px;">
-		                <dl style="margin-top:40px;+;">
+		                <dl style="margin-top:40px;">
 		                    <dt>个人中心</dt>
-		                    <dd class="cur" ><a href="#userinfo.html">我的信息</a></dd>
-		                    <dd><a href="#myOrder.jsp">我的订单</a></dd>		                    
-		                    <dd><a href="#myProperty.jsp">我的财产</a></dd> 
-		                   
-		                  
-		                   
+		                    <dd class="cur" ><a href="#userinfo.html"><h3>我的信息</h3></a></dd>
+		                    <dd><a href="#myOrder.jsp"><h3>我的订单</h3></a></dd>		                    
+		                    <dd><a href="#myProperty.jsp"><h3>我的财产</h3></a></dd> 
 		                </dl>
 		                <dl>
 		                    <dt>客户服务</dt>
@@ -182,42 +164,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            </div>
 		        </div>
 		        <!-- 我的订单 -->
-		        <div class="member-right fr id="div1">
+		        <div class="member-right fr id="div1" style="height:800px;">
 		            <div class="member-head" >
 		                <div class="member-heels fl">
 		                    <h3 style="display:inline;">&nbsp;我的订单</h3>
 		                    <button style="margin-left:320px;margin-top:-12px;height:30px;width:80px;" id="xiugai"><p style="margin-top:5px;color:#8B0A50">修改</p></button>
 		                </div>  
 		            </div>
-		            <div class="member-border">
-		               <div class="member-order">
-		                   <dl class="member-custom clearfix ">
-		                       <dt>
-		                            <input >
-		                            <input type="text" name="username" id="username" readonly="readonly">
-		                            <span ></span>
-		                            <input type="hidden" name="userid" id="userid" > 
-                               </dt>		                      
-		                   </dl>
-		                   <dl class="member-custom clearfix ">
-		                       <dt>
-		                             <b>用户密码：</b>
-		                             <input type="password" name="userpassword" id="userpassword" readonly="readonly" >  
-		                             <span ></span>                              
-		                       </dt>
-		                   </dl>
-		                   <dl class="member-custom clearfix ">
-		                       <dt>
-		                             <b>重输密码：</b>
-		                             <input type="password" name="reuserpassword" id="reuserpassword" readonly="readonly" > 
-		                             <span ></span>                                   
-		                       </dt>		                      
-		                   </dl>
-		               </div>
+		            <div class="order-body" style="height:800px;">
+		               <div style="height:800px;">
+			               	
+			               	<c:forEach var="i" begin="0" end="${fn:length(orderlist)-1}" step="1">	
+			               		<div class="order-item clearfix" style="width:100%;display:inline;">	
+			               			           
+			                    <div class="order-img" style="float:left;width:25%;display:inline;">
+			                       	 <a class="link" href="" target="_blank">
+			                       	    <div>
+			                       	         <img src="${hlist.get(i).picture}" style="width:150px;height:100px;"  class="">
+			                       	    </div>
+			                       	 </a>                     
+			                    </div>
+			                    <div class="order-info " style="float:left;width:25%;display:inline;">
+			                       	  <div class="info-box">
+			                       	       <a class="link" href="" target="_blank">
+			                       	           <p class="order-title">酒店名称:${hlist.get(i).hotelName}</p>
+			                       	       </a>
+			                       	       <p class="info">酒店描述</p>
+			                       	       <p class="info">时间:${orderlist.get(i).orderTime}</p>
+			                       	  </div>                      
+			                    </div>
+			                    <div class="order-price" style="float:left;width:25%;display:inline;">预定价格：￥${orderlist.get(i).orderMoney}  
+			                    	                      
+			                    </div>
+			                    <div class="order-state" style="float:left;width:25%;display:inline;">预定状态：${orderlist.get(i).orderState}		                    	                      
+			                    </div>
+			                   
+			                     </div> 
+			                     <br>
+			                </c:forEach>
+			                
+			                <tr align = "center">
+								<td colspan="5">
+								第<c:out value="${curPage }"/>页/共<c:out value="${ totalPage}" />页
+								<c:if test="${curPage != 1 }">
+									<a href="OrderInfoPages?page=1">首页</a> | 
+									<a href="OrderInfoPages?page=<c:out value="${curPage -1 }" />">上一页</a>|
+								</c:if>
+								
+								<c:if test="${curPage != totalPage }">
+								 	<a href="OrderInfoPages?page=<c:out value="${curPage + 1 }" />">下一页</a> |
+								 	<a href="OrderInfoPages?page=<c:out value="${totalPage }" />">尾页</a> | 
+								</c:if>
+								</td>
+							</tr>
+								</tbody>
+				        </table>
+		              
 		            </div>
-		           
-		        </div>
-		     </div>
+		        </div>	
+		     </div>	     
 		</section>
   </body>
 </html>

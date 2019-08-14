@@ -14,7 +14,7 @@ import cn.com.zx.travelcompanion.bean.UserInfoBean;
 import cn.com.zx.travelcompanion.dao.UserInfoDao;
 
 /**
- * Servlet implementation class SelectUserInfoServlet
+ * 获取用户信息dai
  */
 @WebServlet("/SelectUserInfoServlet")
 public class SelectUserInfoServlet extends HttpServlet {

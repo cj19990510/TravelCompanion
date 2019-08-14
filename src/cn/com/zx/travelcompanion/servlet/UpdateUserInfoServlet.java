@@ -11,7 +11,8 @@ import cn.com.zx.travelcompanion.bean.UserInfoBean;
 import cn.com.zx.travelcompanion.dao.UserInfoDao;
 
 /**
- * 更新个人信息
+ * 更新个人信息  
+ * dai
  */
 @WebServlet("/UpdateUserInfoServlet")
 public class UpdateUserInfoServlet extends HttpServlet {

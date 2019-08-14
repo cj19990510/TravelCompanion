@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.com.zx.travelcompanion.dao.UserInfoDao;
 
+/**
+ * 用户注册
+ * dai
+ **
+ **/
 @WebServlet("/userRegisterServlet")
 public class UserRegisterServlet extends HttpServlet{
 
