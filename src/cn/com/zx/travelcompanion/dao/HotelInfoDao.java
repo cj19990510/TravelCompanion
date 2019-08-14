@@ -1,14 +1,23 @@
 package cn.com.zx.travelcompanion.dao;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import cn.com.zx.travelcompanion.DB.DbUtil;
 import cn.com.zx.travelcompanion.DB.JdbcTemplate;
 import cn.com.zx.travelcompanion.DB.RowMapper;
 import cn.com.zx.travelcompanion.bean.HotelInfoBean;
 import cn.com.zx.travelcompanion.bean.HotelInfoPictureBean;
+import cn.com.zx.travelcompanion.bean.OrderInfoBean;
 import cn.com.zx.travelcompanion.daoimp.HotelInfoDaoImp;
 
 public class HotelInfoDao extends JdbcTemplate implements HotelInfoDaoImp{
@@ -133,5 +142,4 @@ public class HotelInfoDao extends JdbcTemplate implements HotelInfoDaoImp{
 		else
 		return list;
 	}
-
 }

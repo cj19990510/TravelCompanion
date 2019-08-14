@@ -139,7 +139,6 @@
 								</div>
 							</li>
 						</ul>
-						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>
@@ -256,26 +255,6 @@
 			}
 		});
 	</script>
-	<!-- //cart-js -->
-
-	<!-- password-script -->
-	<script>
-		window.onload = function() {
-			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
-		}
-	
-		function validatePassword() {
-			var pass2 = document.getElementById("password2").value;
-			var pass1 = document.getElementById("password1").value;
-			if (pass1 != pass2)
-				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-			else
-				document.getElementById("password2").setCustomValidity('');
-		//empty string means no validation error
-		}
-	</script>
-	<!-- //password-script -->
 
 	<!-- smoothscroll -->
 	<script src="js/SmoothScroll.min.js"></script>
@@ -325,15 +304,8 @@
 			});
 		});
 	</script>
-	<!-- //FlexSlider-->
-
-	<!-- flexisel (for special offers) -->
 	<script src="js/jquery.flexisel.js"></script>
-
-	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
-	<!-- //for bootstrap working -->
-	<!-- //js-files -->
 </body>
 
 
