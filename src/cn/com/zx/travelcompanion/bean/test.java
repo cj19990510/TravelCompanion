@@ -12,7 +12,7 @@ public class test {
 		num.setMaximumFractionDigits(2); 
 		double csdn = 0.6777777; 
 		
-		System.out.println(num.format(csdn));
+		System.out.println(num.format(csdn)+"---");
 	}
 
 }
