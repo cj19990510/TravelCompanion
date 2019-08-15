@@ -61,5 +61,11 @@ public class HotelInfoPictureBean {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+	@Override
+	public String toString() {
+		return "HotelInfoPictureBean [hotelId=" + hotelId + ", hotelName=" + hotelName + ", hotelPhone=" + hotelPhone
+				+ ", cityName=" + cityName + ", hotelLevel=" + hotelLevel + ", hotelInfomation=" + hotelInfomation
+				+ ", type=" + type + ", picture=" + picture + "]";
+	}
     
 }
