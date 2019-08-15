@@ -31,7 +31,7 @@ $(document).ready(function(){
 	    	}
 	    	else{
 	    		$(document).click(function(){
-	    			window.location.href="login.html";
+	    			window.location.href="userlogin.html";
 	    		})
 	    	}
 	     }
@@ -58,6 +58,17 @@ $(document).ready(function(){
 	    	 $.spotLevel.poster(data);
 	     }
 	})
+   //获酒店信息
+	$.ajax({
+	     type:"post",
+	     url:"HotelInfoGetInfoServlet",
+	     data:{
+	    	 type:"酒店" 
+	     },
+	     success:function(data){
+	    	 $.head.hotel(data);
+	     }
+	})
 	$.head={
 		poster:function(e){
 			var obj = eval('(' + e + ')');
@@ -72,11 +83,21 @@ $(document).ready(function(){
 				$($("a[name='aa']")[i]).append("<span class='v_pl_name'>("+item.cityName+")</span>")
 				
 			})
-		}
+		},
+	  hotel:function(e){
+		var obj = eval('(' + e + ')');
+		console.log("jiudian-----------"+e);
+		$.each(obj,function(i,item){
+			$($("div[name='hotel']")[i]).attr('id',item.hotelId);
+			$($("img[name='hImg']")[i]).attr('src',item.picture);
+			$($("div[name='hSta']")[i]).text("当前热度："+item.hotelLevel);
+			$($("h4[name='hName']")[i]).text(item.hotelName);
+			$($("p[name='hCity']")[i]).text("城市："+item.cityName);
+		})
+	}
 	}
 	$.spotLevel={
 		poster:function(e){
-			console.log(e)
 			var obj = eval('(' + e + ')');
 			$.each(obj,function(i,item){
 				var c=Number(i)+Number(1);
@@ -91,9 +112,6 @@ $(document).ready(function(){
 			})
 		}
 	}
-	$("#3").click(function(){
-		alert(11111)
-	})
 })
 	function turnToSpot(e){
 		window.location.href="GetDetailSpotServlet?hotelId="+e.id;

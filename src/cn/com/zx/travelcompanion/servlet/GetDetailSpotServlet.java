@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import com.google.gson.Gson;
 
+import cn.com.zx.travelcompanion.bean.HotelInfoBean;
 import cn.com.zx.travelcompanion.bean.HotelInfoPictureBean;
 import cn.com.zx.travelcompanion.bean.RoomInfoBean;
 import cn.com.zx.travelcompanion.dao.HotelInfoDao;
@@ -31,6 +32,8 @@ public class GetDetailSpotServlet extends HttpServlet {
 		int c=Integer.valueOf(request.getParameter("hotelId"));
 		List<HotelInfoPictureBean> list=hotelDao.getHotelInfo(c);
 		List<RoomInfoBean> listRoom=new RoomInfoDao().getspot(String.valueOf(c));
+		HotelInfoPictureBean weq=list.get(0);
+		System.out.println(weq.getHotelLevel()+"电话0"+weq.getHotelPhone());
 		request.setAttribute("spot",list);
 		request.setAttribute("room",listRoom);
 		request.getRequestDispatcher("single.jsp").forward(request, response);
