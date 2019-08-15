@@ -75,7 +75,7 @@ public class UserInfoDao extends JdbcTemplate implements UserInfoDaoImp{
 		int i=0;
 		try{
 			i=this.set(sql, object);
-			System.out.println(i+"duoshao");
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
