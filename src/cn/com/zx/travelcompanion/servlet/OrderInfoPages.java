@@ -43,8 +43,6 @@ public class OrderInfoPages extends HttpServlet {
 		
 		int userid=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserId();
 		OrderInfoDao orderinfo=new OrderInfoDao();
-		
-		
 		int currentPage = 1;
 		String page = request.getParameter("page");
 		if(page != null && page != "") {
@@ -61,26 +59,13 @@ public class OrderInfoPages extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//获得旅馆信息
-		HotelInfoDao hoteldao=new HotelInfoDao();
-		List<HotelInfoPictureBean> hlist=new LinkedList<HotelInfoPictureBean>();
-		for(int i=0;i<orderlist.size();i++){
-			System.out.println("orderlist+"+orderlist.get(i));
-			int hotelId=orderlist.get(i).getHotelId();
-			List<HotelInfoPictureBean> newhlist=new LinkedList<HotelInfoPictureBean>();
-			System.out.println("hotelId"+hotelId);
-			newhlist=hoteldao.getHotelInfo(hotelId);
-			
-			System.out.println("hotelInfo"+newhlist.get(0).toString());
-			if(newhlist.get(0)!=null){
-				hlist.add(newhlist.get(0));
-			}			
-		}
-		System.out.println("长度"+hlist.size());
+		
+		System.out.println("orderlist+"+orderlist);
+		System.out.println("totalPage+"+totalPage);
 		
 		
 		request.setAttribute("totalPage", totalPage%2 == 0 ?(totalPage/2):(totalPage/2+1));
-		request.setAttribute("list2", hlist);
+		request.setAttribute("orderlist", orderlist);
 		request.setAttribute("curPage", currentPage);
         
 		request.getRequestDispatcher("/myOrder.jsp").forward(request, response);

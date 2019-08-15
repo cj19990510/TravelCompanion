@@ -40,7 +40,7 @@ public class SelectUserInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("Content-type", "text/html;;charset=utf-8");
-		System.out.println("22222222");
+		
 		int  userid=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserId();
 		String userName=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserName();
 		String userPassword=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserPassword();
@@ -51,7 +51,7 @@ public class SelectUserInfoServlet extends HttpServlet {
 		System.out.println(userinfobean.toString());
 		if(userinfobean!=null){
 		    HttpSession session=request.getSession();
-   		    session.setAttribute("userInfomation", userinfobean);
+   		    session.setAttribute("userinfo", userinfobean);
 			request.getRequestDispatcher("userinfo.html").forward(request,response);
 			
 		}else{

@@ -129,5 +129,31 @@ public class UserInfoDao extends JdbcTemplate implements UserInfoDaoImp{
 		}
 		
 		
+	 public UserInfoBean getUserInfoByuserId(int userid){
+			Object[] object=new Object[]{userid};
+			String sql="select * from userinfo where userid=?";
+			List<UserInfoBean> list=new ArrayList<UserInfoBean>();
+			try {
+				list=this.queryForList(new RowMapper<UserInfoBean>(){
+					public UserInfoBean mappingRow(ResultSet rs,int rownum) throws SQLException{
+						UserInfoBean userInfo=new UserInfoBean();
+						userInfo.setUserName(rs.getString("userName"));
+						userInfo.setUserPassword(rs.getString("userPassword"));
+						userInfo.setUserPhone(rs.getString("userPhone"));
+						userInfo.setUserPicture(rs.getString("userPicture"));
+						userInfo.setUserId(rs.getInt("userId"));
+						userInfo.setUserEmail(rs.getString("useremail"));
+						return userInfo;
+					}			
+				}, sql, object);
+			} catch (ClassNotFoundException|SQLException|IOException e) {	
+				e.printStackTrace();
+			}
+			if(list!=null&&list.size()>0){
+				return list.get(0);
+			}else
+			   return null;
+		}
+		
 	 
 }

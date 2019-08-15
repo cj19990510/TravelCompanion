@@ -17,12 +17,13 @@
 
 <script type="text/javascript" src="js/jquery.idcode.js"></script>
 <script src="js/jquery.idcode.js"></script>
+
  <script>
      $(document).ready(function(){
           $.idcode.setCode();//加载生成验证码方法
           $("#login").click(function(){
                 var isBy=$.idcode.validateCode();//调用返回值，返回值结果为true或者false
-                alert("isBy+"+isBy);
+               // alert("isBy+"+isBy);
                 if(!isBy){
                    alert("验证码错误，请注意大小写！");
                    return false;
@@ -37,7 +38,7 @@
                           userpassword:userpassword
                          },
                     success:function(data){
-                        alert("data:"+data);
+                        //alert("data:"+data);
                         var c=data;
                         if(c=="0"){
                            alert("输入的账号密码有误，请重新输入！");
@@ -57,35 +58,37 @@
  
  </script>
 </head>
-<body>	  
+<body style="background-image: url('images/fronts/2.jpg');"> 
+   
       <div style="width:100%;text-align: center;margin: 10 auto;position: absolute; color:white">
       <div id="loginbox">
           <form action="" method="post">
-                <div>
-                    <img src="images/fronts/logo.png" alt="logo" />旅游用户登录界面
+                <div style="width:400px;height:200px;margin-left:20%;">
+                    <img src="images/fronts/logo.png" alt="logo" style="margin-left:25px;margin-top:20px;"/>
+                    <span style="margin-left:-90px;margin-top:-200px;font-size:18px;">旅游用户登录界面</span>
                 </div>
-                <div class="login">
+                <div class="login" style="margin-left:15px;margin-top:5px;font-size:15px;">
                      <tr>
                          <td>用户名:&nbsp;&nbsp;</td>
                          <input type="text" name="username" id="username" /><br>
                      </tr>
-                     <tr>
+                     <tr >
                          <td>密&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;</td>
-                         <input type="password" name="userpassword" id="userpassword"/>
+                         <input type="password" name="userpassword" id="userpassword" style="margin-top:5px;"/>
                      </tr>
                      
                  
                 </div>
-                <div>
-                   <div class="input validate" id="validate" style="display:flex">
+                <div >
+                   <div class="input validate" id="validate" style="display:flex;margin-left:28%;margin-top:5px;">
                            
-							<label for="valiDate" style="margin-left: 140px;margin-top:5px;">&nbsp;验证码&nbsp;&nbsp;</label> 
+							<label for="valiDate" >&nbsp;验&nbsp;证&nbsp;码&nbsp;&nbsp;</label> 
 							<input type="text" id="Txtidcode" class="txtVerification" style="width:110px;"> 
 							<span id="idcode" class="image" style="margin-top: 5px;margin-left:20px;"></span> <!-- class="image" id="randCode" /> -->
 				   </div>                 
                  </div>
                  <div class="form-actions">
-                       <span><input type="button" value="登录" id="login">&nbsp;&nbsp; &nbsp;&nbsp; 
+                       <span><input type="button" value="登录" id="login">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  
                        </span>                     
                        <button style="border:1px solid white;"><a href="userregister.html" > 注册 </a></button> 
                      
@@ -95,7 +98,7 @@
           </form>
       </div>
       </div>
-
+ 
 </body>
 
 </html>

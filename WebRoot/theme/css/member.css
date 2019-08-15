@@ -24,8 +24,8 @@
 .member-about input { width:180px; height:26px; line-height:26px; border:none; border-radius:3px; padding-left:4px; margin-right:10px;}
 .member-form .text-news { width:679px; height:30px; line-height:30px; padding-left:4px; border:1px solid #e0e0e0; float:left; margin-right:30px;}
 .member-form .button-btn{ width:130px; height:32px; line-height:32px; padding-left:4px; border:1px solid #dfdfdf; float:left; background:#dfdfdf; cursor:pointer; border-radius:5px;}
-.member-lists dt { background:#f7f7f7; border-top:3px solid #e0e0e0; border-bottom:1px solid #e0e0e0; height:40px; line-height:35px; font-size:22px; color:#333; padding-left:10px; }
-.member-lists dd { background:#ffffff; border-top:5px solid #ffffff; border-bottom:1px solid #e0e0e0; height:35px; line-height:30px; font-size:20px; color:#333; padding-left: 0px; text-align:center; margin:0 15px; }
+.member-lists dt { background:#f7f7f7; border-top:3px solid #e0e0e0; border-bottom:1px solid #e0e0e0; height:45px; line-height:35px; font-size:25px; color:#333; padding-left:10px; }
+.member-lists dd { background:#ffffff; border-top:5px solid #ffffff; border-bottom:1px solid #e0e0e0; height:50px; line-height:30px; font-size:30px; color:#333; padding-left: 0px; text-align:center; margin:0 15px; }
 
 .member-line { background:#717171; height:1px; margin:15px 0;}
 .pc-search-n { background:#fff url("../icon/s-a1.png") no-repeat right; color:#005aa0; }
@@ -66,10 +66,10 @@
 .member-sites ul li div { float:left; padding-bottom:10px;}
 .member-lists dl { margin-bottom:-1px;width:295px;}
 .member-order dl { margin-top:-1px;}
-.member-lists dd a { display:block;}
+.member-lists dd a { display:block;margin-top:8px;}
 .member-sites .default  a { text-align:center; display:inline-block; border:1px solid #ff4646; padding:4px 25px;}
 .member-sites .pc-event   { float:right;}
-.member-sites .pc-event a { color:#b61d1d; padding-right:10px;}
+.member-sites .pc-event a { color:#b61d1d; padding-right:8px;}
 .member-sites .pc-event .pc-event-d { color:#cccccc; cursor:inherit;}
 .member-sites .user-info1 { width:650px;}
 .member-order .member-seller { width:auto; height:50px; line-height:50px; padding-left:50px; float:none; padding-top:0; }
@@ -325,6 +325,17 @@
 }
 
 
-
+a:link {
+color: #000040; /*连接默认的颜色变化*/
+}
+a:visited {
+color: #0000FF; /*连接访问的颜色变化*/
+}
+a:hover {
+color: #ff0080; /*鼠标经过的颜色变化*/
+}
+a:active { 
+color: #ff0000; /*鼠标按下的颜色变化*/
+}
 
 .navbar-nav li a{color:black;}
