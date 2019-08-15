@@ -12,33 +12,32 @@
 <title>Single</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/styles.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/mob.css">
-<link rel="stylesheet" href="css/animate.css">
- <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+<script type="text/javascript"
+	src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=A6HyQTlMFwu3LzpiUCXg4HdKKSC7OrT4"></script>
 <!--========= Scripts ===========-->
-<script src="js/jquery-1.5.1.min.js "></script>
-<script src="js/jquery-latest.min.js "></script>
-<script src="js/bootstrap.js "></script>
-<script src="js/wow.min.js "></script>
-<script src="js/respond.min.js "></script>
-<script src="html5shiv.js "></script>
+
 <script src="js/custom.js "></script>
 <script type="text/javascript"
 	src="http://api.map.baidu.com/api?v=2.0&ak=A6HyQTlMFwu3LzpiUCXg4HdKKSC7OrT4"></script>
-</head>
-<link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800"
+<link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css"
 	rel="stylesheet">
+
+<script type="text/javascript"
+	src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+<style type="text/css">
+.alert {
+	filter: alpha(opacity = 100); /* IE */
+}
+</style>
+</head>
 </head>
 
 <body>
+
 	<div id="container"></div>
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
@@ -113,61 +112,42 @@
 
 	</section>
 	<div class="banner-bootom-w3-agileits">
-	
+
 		<div class="container">
-		<h3 class="tittle-w3l">
-					商品详细 <span class="heading-style"> <i></i> <i></i> <i></i>
-					</span>
-				</h3>
+			<h3 class="tittle-w3l">
+				商品详细 <span class="heading-style"> <i></i> <i></i> <i></i>
+				</span>
+			</h3>
 			<!-- tittle heading -->
-<%List<HotelInfoPictureBean> spot=(List<HotelInfoPictureBean>)request.getAttribute("spot");
-List<RoomInfoBean> room=(List<RoomInfoBean>)request.getAttribute("room");
-%>
-
+			<%
+				List<HotelInfoPictureBean> spot = (List<HotelInfoPictureBean>) request.getAttribute("spot");
+				List<RoomInfoBean> room = (List<RoomInfoBean>) request.getAttribute("room");
+			%>
 			<!-- //tittle heading -->
-			<div class="col-md-5 single-right-left "  style="margin-top:20px;">
-				<%-- <div class="grid images_3_of_2">
-					<div class="flexslider">
-						<ul class="slides">
-							<li data-thumb="images/si.jpg">
-								<div class="thumb-image">
-								<%List<HotelInfoPictureBean> spot=(List<HotelInfoPictureBean>)request.getAttribute("spot");%>
-									<img src="<%=spot.get(0).getPicture()%>" data-imagezoom="true"
-										class="img-responsive" alt="">
-								</div>
-							</li>
-							<li data-thumb="images/si2.jpg">
-								<div class="thumb-image">
-									<img src="<%=spot.get(0).getPicture()%>" data-imagezoom="true"
-										class="img-responsive" alt="">
-								</div>
-							</li>
-							<li data-thumb="images/si3.jpg">
-								<div class="thumb-image">
-									<img src="<%=spot.get(0).getPicture()%>" data-imagezoom="true"
-										class="img-responsive" alt="">
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div> --%>
-
-
+			<div class="col-md-5 single-right-left " style="margin-top:20px;">
 				<div id="myCarousel" data-ride="carousel" data-interval="4000"
 					class="sui-carousel slide">
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<%for(int i=1;i<spot.size();i++) {%>
+						<%
+							for (int i = 1; i < spot.size(); i++) {
+						%>
 						<li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
-					<%} %>
+						<%
+							}
+						%>
 					</ol>
 					<div class="carousel-inner">
-					<%for(int i=0;i<spot.size();i++) {%>
+						<%
+							for (int i = 0; i < spot.size(); i++) {
+						%>
 						<div class="active item">
 							<img src="<%=spot.get(i).getPicture()%>" data-imagezoom="true"
-										class="img-responsive" alt="">
+								class="img-responsive" alt="">
 						</div>
-						<%} %>
+						<%
+							}
+						%>
 					</div>
 					<a href="#myCarousel" data-slide="prev"
 						class="carousel-control left">‹</a><a href="#myCarousel"
@@ -175,20 +155,26 @@ List<RoomInfoBean> room=(List<RoomInfoBean>)request.getAttribute("room");
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12 p2" style="margin-left: 50px">
-				
+
 				<h3>
-					<%=spot.get(0).getHotelName()%>(<%=spot.get(0).getCityName()%>)<span><i class="fa fa-star" aria-hidden="true"></i>
-						<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
-						aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
-						<i class="fa fa-star-half-o" aria-hidden="true"></i></span>
+					<%=spot.get(0).getHotelName()%>(<%=spot.get(0).getCityName()%>)<span><i
+						class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+						aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i
+						class="fa fa-star" aria-hidden="true"></i> <i
+						class="fa fa-star-half-o" aria-hidden="true"></i></span>
 				</h3>
-<%for(int i=0;i<spot.size();i++) {%>
+				<%
+					for (int i = 0; i < spot.size(); i++) {
+				%>
 				<p><%=room.get(i).getRoomType()%></p>
 				<div class="ticket">
 					<ul>
-						<li>门票状态 :<%=room.get(i).getRoomState()%></</li>
-						<li>成人票价格 :<%=room.get(i).getRoomPrice()%></</li>
-						<li>学生票/老人票价格 :<%=room.get(i).getRoomPrice()%></</li>
+						<li>门票状态 :<%=room.get(i).getRoomState()%></
+						</li>
+						<li>成人票价格 :<%=room.get(i).getRoomPrice()%></
+						</li>
+						<li>学生票/老人票价格 :<%=room.get(i).getRoomPrice()%></
+						</li>
 					</ul>
 				</div>
 				<div class="ticket">
@@ -204,9 +190,13 @@ List<RoomInfoBean> room=(List<RoomInfoBean>)request.getAttribute("room");
 						<li><a href="tour-details.html" class="link-btn">更多优惠</a></li>
 					</ul>
 				</div>
-				<%} %>
+				<%
+					}
+				%>
 				<div class="featur">
-					<h4>当前热度：<%=spot.get(0).getHotelLevel()%>&nbsp 排名 1</h4>
+					<h4>
+						当前热度：<%=spot.get(0).getHotelLevel()%>&nbsp 排名 1
+					</h4>
 					<span class="glyphicon glyphicon-phone-alt">&nbsp咨询电话：<%=spot.get(0).getHotelPhone()%></span>
 				</div>
 			</div>
@@ -214,110 +204,57 @@ List<RoomInfoBean> room=(List<RoomInfoBean>)request.getAttribute("room");
 		</div>
 		<div class="clearfix"></div>
 	</div>
-	</div>
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<!-- //jquery -->
 
-	<!-- popup modal (for signin & signup)-->
-	<script src="js/jquery.magnific-popup.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.popup-with-zoom-anim').magnificPopup({
-				type : 'inline',
-				fixedContentPos : false,
-				fixedBgPos : true,
-				overflowY : 'auto',
-				closeBtnInside : true,
-				preloader : false,
-				midClick : true,
-				removalDelay : 300,
-				mainClass : 'my-mfp-zoom-in'
-			});
-	
-		});
-	</script>
-	<!-- Large modal -->
-	<!-- <script>
-		$('#').modal('show');
-	</script> -->
-	<!-- //popup modal (for signin & signup)-->
+	<button id="J_addsuppliers" data-toggle="modal"
+		data-target="#J_addsuppliersDialog" data-width="large"
+		data-backdrop="static" class="sui-btn btn-primary">添加供应商</button>
+	<div id="J_addsuppliersDialog" tabindex="-1" role="dialog"
+		class="sui-modal alert fade modal-dialog" style="background: ">
+			<div class="modal-content" style="width: 100%;height: 100%">
+				<div class="modal-header">
+					<button type="button" data-dismiss="modal" aria-hidden="true"
+						class="sui-close">×</button>
+					<h4 id="myModalLabel" class="modal-title">供应商收编</h4>
+				</div>
+				<div class="modal-body sui-form form-horizontal">
+					<div class="sui-msg msg-block msg-default msg-tips">
+						<div class="msg-con">以下为供销平台上已经获得小二授权经营您的品牌但还未被您进行收编的供应商</div>
+						<s class="msg-icon"></s>
+					</div>
+					<table class="sui-table table-bordered-simple">
+						<thead>
+							<tr>
+								<th>供应商昵称</th>
+								<th>公司名称</th>
+								<th>供应商类型</th>
+								<th>分销商数量</th>
+								<th>授权品牌</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span>only淘宝商城官方旗舰店</span></td>
+								<td><span>九牧官方旗舰店</span></td>
+								<td><span>企业</span></td>
+								<td><span class="distributor-num">432</span></td>
+								<td>
+									<ul class="authorize-brand">
+										<li>海尔</li>
+										<li>统帅</li>
+									</ul>
+								</td>
+								<td data-supplierid="111">
+									<button class="sui-btn btn-small J_addOneSupplier">添加</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
-	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
-	<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
-	
-		paypalm.minicartk.cart.on('checkout', function(evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
-	
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
-	
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
-	</script>
 
-	<!-- smoothscroll -->
-	<script src="js/SmoothScroll.min.js"></script>
-	<!-- //smoothscroll -->
-
-	<!-- start-smooth-scrolling -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
-	<script>
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event) {
-				event.preventDefault();
-	
-				$('html,body').animate({
-					scrollTop : $(this.hash).offset().top
-				}, 1000);
-			});
-		});
-	</script>
-	<!-- //end-smooth-scrolling -->
-
-	<!-- smooth-scrolling-of-move-up -->
-	<script>
-		$(document).ready(function() {
-			/*
-			var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-			};
-			*/
-			$().UItoTop({
-				easingType : 'easeOutQuart'
-			});
-	
-		});
-	</script>
-	<!-- FlexSlider -->
-	<script src="js/jquery.flexslider.js"></script>
-	<script>
-		// Can also be used with $(document).ready()
-		$(window).load(function() {
-			$('.flexslider').flexslider({
-				animation : "slide",
-				controlNav : "thumbnails"
-			});
-		});
-	</script>
-	<script src="js/jquery.flexisel.js"></script>
-	<script src="js/bootstrap.js"></script>
-	 
-  <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
 </body>
 
 

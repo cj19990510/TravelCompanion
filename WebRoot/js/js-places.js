@@ -3,46 +3,6 @@
  */
  var ac=1;
 $(document).ready(function() {
-
-	/*	alert(111);
-		var map = new BMap.Map("container");
-		var point = new BMap.Point(116.3964,39.9093);
-		map.centerAndZoom(point,13);
-		map.enableScrollWheelZoom();
-		//定位到当前位置
-		var geolocation = new BMap.Geolocation();
-		geolocation.getCurrentPosition(function(r){
-			if(this.getStatus() == BMAP_STATUS_SUCCESS){
-				var mk = new BMap.Marker(r.point);
-				map.addOverlay(mk);
-				map.panTo(r.point);
-				var city=r.address.city;
-				$("#loaction").append(city)
-			}
-			else {
-				alert('failed'+this.getStatus());
-			}        
-		});*/
-	//获得用户信息
-	/*	$.ajax({
-		     type:"post",
-		     url:"getUserInfoServlet",
-		     data:{
-		    	 type:"景点" 
-		     },
-		     success:function(data){
-		    	if(data==0){
-		    		$("#login").css("display","none")
-		    		$("#regin").css("display","none")
-		    	}
-		    	else{
-		    		$(document).click(function(){
-		    			window.location.href="login.html";
-		    		})
-		    	}
-		     }
-		})*/
-	//获得景点信息
 	$.ajax({
 		type : "post",
 		url : "HotelInfoGetInfo1Servlet",
@@ -57,8 +17,8 @@ $(document).ready(function() {
 	})
 	$.head = {
 		poster : function(e,j) {
-			var obj = eval('(' + e + ')');
-			$.each(obj, function(i, item) {
+			var obj = eval('('+e+')');
+			$.each(obj,function(i,item){
 				$("#inner-page-title").append("<div class='col-md-4 col-sm-6 col-xs-12 b_packages ' name='spot' onclick='turnToSpot(this)'>"+
 						"<div class='v_place_img '><img src='images/t4.png ' alt='Tour Booking 'title='Tour Booking ' name='im' style='height:220px;width: 200px'/>"
 						+"</div><div class='b_pack rows '><div class='col-md-8 col-sm-8 '><h4>"
