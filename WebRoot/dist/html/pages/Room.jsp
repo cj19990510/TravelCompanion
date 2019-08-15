@@ -185,76 +185,82 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </nav>
             </div>
             <!-- Main Content -->
+             
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">您有未处理的订单</span>
-                        <div class="description">选择是否接单</div>
+                        <span class="title">请添加您的房间信息</span>
+                        <div class="description">房间</div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="card">
-                                <div class="card-header">
-
-                                    <div class="card-title">
-                                    <div class="title">Table</div>
-                                    </div>
-                                </div>
+                                <div class="card-title">
+                                    <div class="title">房间信息</div>
+                                    </div>                            
+                                
                                 <div class="card-body">
-                                    <table class="datatable table table-striped" cellspacing="0" width="100%">
+                                <div class="btn-toolbar" role="toolbar">
+                                            <div class="btn-group">
+                                                <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                                    Large button <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Action</a></li>
+                                                    <li><a href="#">Another action</a></li>
+                                                    <li><a href="#">Something else here</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">Separated link</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>订单号</th>
-                                                <th>订单时间</th>                              
-                                                <th>预定天数</th>
+                                                <th>#</th>
                                                 <th>房间类型</th>
-                                                <th>入住时间</th>
-                                                 
-                                                <th>是否接单</th>
-                 <button type="button" class="navbar-expand-toggle">
-                            <i class="fa fa-bars icon"></i>
-                        </button>
+                                                <th>房间价格</th>
+                                                <th>房间总数</th>
+                                                <th>剩余空房数</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>订单号</th> 
-                                                <th>订单时间</th>                                 
-                                                <th>预定天数</th>
-                                                <th>房间类型</th>
-                                                <th>入住时间</th>                                               
-                                                <th>是否接单</th>
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
-                            <c:forEach var="item" items="${oi}">
-                              <tr>
-                             <td>${item.orderId}</td>
-                             <td>${item.orderTime}</td>
-                             <td>${item.dayNum}天</td>
-                             <td>${item.roomId}</td><!-- 暂用 待会改成房间类型  加个a标签 查看此房间剩余数量-->
-                             <td>${item.inTime}</td>
-                             
-                          <!--   <td><input type="checkbox" class="toggle-checkbox" name="my-checkbox" checked=" " ></td> --> 
-                             <td>                               
-                              <button type="button" class="btn btn-link" >确认</button>  <button type="button" class="btn btn-link" >拒绝</button>
-                               </td>
-                             </tr>
-                              </c:forEach>
-                             
-                                
-                                          
+                                         <tr>
+                                                <th scope="row">1</th>
+                                                <td>单人床</td>
+                                                <td>100</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>双人床</td>
+                                                <td>200</td>
+                                                <td>30</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>三人床</td>
+                                                <td>400</td>
+                                                <td>40</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>豪华单人间</td>
+                                                <td>500</td>
+                                                <td>20</td>
+                                            </tr>
+                                             <tr>
+                                                <th scope="row">1</th>
+                                                <td>豪华双人间</td>
+                                                <td>600</td>
+                                                <td>30</td>
+                                            </tr>
                                         </tbody>
                                     </table>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+             </div>            
+                         
+                                
+        
         <footer class="app-footer">
-            <div class="wrapper"> <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> 2019年8月15日完成制作
+            <div class="wrapper"> <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> 2019年8月15日制作
             </div>
         </footer>
     <div>
@@ -276,4 +282,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 </html>
-

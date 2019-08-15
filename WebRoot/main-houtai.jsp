@@ -12,7 +12,7 @@
 
 <body>
 		<div style="display: flex;">
-			<div style="width:13%;background-color:#265A88;height:750px;text-align: center;position:fixed;">
+			<div style="width:13%;background-color:#265A88;height:1000px;text-align: center;position:fixed;">
 				<div class="jumbotron" style="background-color:#265A88;">
 					<h2 style="font-family:STXingkai;font-size:30px;left:25px;top:20px;position: absolute; color:rosybrown;">
 					伴旅后台</br>管理系统</h2>
@@ -44,14 +44,14 @@
 		
 	<div id="d1" style="width:1100px;height:600px;background-color: white;float:right ">
 	<a >  
-	<span  style="left:210px;top:20px;position: fixed; font-size:30px; color:burlywood">
+	<span  style="left:260px;top:20px;position: fixed; font-size:30px; color:burlywood">
 	        <script type="text/javascript">
             var date = new Date();
             document.write(date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + " 星期" + "日一二三四五六".charAt(date.getDay()));
            </script></span>
 	<span style="right:30px;top:20px;position: fixed; font-size:30px;">${adminid}号管理员</span>
 	</a>
-	<div class="d3" style="background:#f5f5fa;width:1150px;height:600px; left:190px;top:80px;position: absolute;">
+	<div class="d3" style="background:#f5f5fa;width:2000px;height:800px; left:250px;top:80px;position: absolute;">
 		<h1 style="font-size:60px;font-family:STXingkai;top:30px;left:50px;position: absolute;color: skyblue;">欢迎登录伴旅后台管理页面</h1>
 	</div>
 		

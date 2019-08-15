@@ -9,8 +9,8 @@ public interface RoomInfoDao {
   //改变房间状态
   //添加房间信息״̬
   public List<RoomInfoBean> getRoomInfoByHotel(int hotelId);
-  public RoomInfoBean changeRoomState(int roomId, String roonState);
-  public Boolean insertRoomInfoBean(int hotelId,String roomType,String roomPrice,String roomState) ;
+  public Boolean changeRoomState(int roomId, String roomState);
+  public Boolean insertRoomInfoBean(int hotelId,String roomType,String roomPrice) ;
   
   
 }

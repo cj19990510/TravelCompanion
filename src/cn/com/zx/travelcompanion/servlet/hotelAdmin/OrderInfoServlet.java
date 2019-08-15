@@ -25,7 +25,7 @@ public class OrderInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 
-	  //通过酒店id获取用户订单
+	  //通过酒店id获取新的用户订单
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		getOrderInfoService goi=new getOrderInfoServiceImpl();//获取订单信息
 		HttpSession session = req.getSession();	 
@@ -36,9 +36,9 @@ public class OrderInfoServlet extends HttpServlet {
 	     {
 	    	 System.out.println(oi.get(i).toString());
 
-	     }
-	     System.out.println("oi保存的ֵ"+oi.get(0).getOrderState());	     
+	     }     
 	     session.setAttribute("oi", oi);
+	     
 		req.getRequestDispatcher("dist/html/table/datatable.jsp").forward(req, resp);
 	}
 

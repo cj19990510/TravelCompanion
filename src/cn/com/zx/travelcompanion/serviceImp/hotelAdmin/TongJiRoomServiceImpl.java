@@ -20,9 +20,8 @@ public class TongJiRoomServiceImpl implements TongJiRoomService{
 	}
 
 	@Override
-	//��ȡ�շ����� 
-	//��ȡ��ͬ���Ϳշ�����
-	//�жϴ����ͷ����Ƿ��п��� ѡ��ӵ�
+	//获取全部房间 
+	
 	public int getEmptyRoom(int hotelId,String state) {
 		List<RoomInfoBean> ri=rid.getRoomInfoByHotel(hotelId);
 		int count=0;
@@ -36,6 +35,20 @@ public class TongJiRoomServiceImpl implements TongJiRoomService{
 	    return count;
 		
 	}
-	
+	//获取空房间
+	public int getEmRoom(int hoteId)
+	{
+		List<RoomInfoBean> ri=rid.getRoomInfoByHotel(hoteId);
+		
+		int count=0;
+		for(int i=0;i<ri.size();i++)
+		{
+			if(ri.get(i).getRoomState().equals("空闲"));
+			{
+			count++;	
+			}
+		}
+		return count;
+	}
 
 }

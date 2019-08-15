@@ -49,7 +49,6 @@ public class HotelInfoGetInfoServlet extends HttpServlet {
 		List<HotelInfoPictureBean> list=hotelDao.getHotelInfo(type);
 		Gson gson=new Gson();
 		String hotel=gson.toJson(list);
-		System.out.println(hotel);
 		PrintWriter out=response.getWriter();
 		out.print(hotel);
 		out.flush();

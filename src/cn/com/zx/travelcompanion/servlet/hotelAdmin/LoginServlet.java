@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-		//登录成功 前往主页面
+		//登录成功 前往主页面 同时写入一些酒店属性
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			// TODO Auto-generated method stub	
 			String haid = req.getParameter("uname");//酒管id

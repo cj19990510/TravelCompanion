@@ -7,7 +7,7 @@
 <title>管理员注册</title>
 </head>
 <body>
-  <div style="text-align:center; background-image:url(images/bg7.jpg);width:100%;height:100%;position: absolute; ">
+  <div style="text-align:center; background-image:url(images/fronts/banner_slide_03.jpg);width:100%;height:100%;position: absolute; ">
      <img src="images/logo.png" style="left:12px;top:10px;position: absolute;" />
    <br/><br/><br/>
    <h1 style="color:steelblue;font-size:40px; font-family:LiSu">伴旅后台管理注册</h1>

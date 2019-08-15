@@ -26,21 +26,17 @@ public class HotelServlet extends HttpServlet {
 		//super.doGet(req, resp);
 		resp.setCharacterEncoding("utf-8");
 		req.setCharacterEncoding("utf-8");
-		resp.setHeader("Content-Type", "text/html;charset=utf-8");
-		
+		resp.setHeader("Content-Type", "text/html;charset=utf-8");		
 		HotelService hotelService=new HotelService();
-		List<HotelApply> list=hotelService.chaxun();
-		
+		List<HotelApply> list=hotelService.chaxun();		
 		HttpSession session = req.getSession();
-		session.setAttribute("list4", list);
-		
+		session.setAttribute("list4", list);		
 		req.getRequestDispatcher("jiudian.jsp").forward(req, resp);
+		
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//this.doGet(req, resp);
 		
 	}
 

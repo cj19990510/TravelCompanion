@@ -27,7 +27,7 @@
 
 <body>
 		<div style="display: flex;">
-			<div style="width:13%;background-color:#265A88;height:750px;text-align: center;position:fixed;">
+			<div style="width:13%;background-color:#265A88;height:1000px;text-align: center;position:fixed;">
 				<div class="jumbotron" style="background-color:#265A88;">
 					<h2 style="font-family:STXingkai;font-size:30px;left:25px;top:20px;position: absolute; color:rosybrown;">
 					伴旅后台</br>管理系统</h2>
@@ -60,7 +60,7 @@
 	<div id="d1"
 		style="width:1100px;height:900px;background-color: white;float:right ">
 		<a> <span
-			style="left:210px;top:20px;position: fixed; font-size:30px; color:burlywood">
+			style="left:260px;top:20px;position: fixed; font-size:30px; color:burlywood">
 				<script type="text/javascript">
 					var date = new Date();
 					console.log("123");
@@ -70,7 +70,7 @@
 		</a>
 
 		<div class="d3"
-			style="background:#f5f5fa;width:1150px;height:700px; left:190px;top:80px;position:absolute;">
+			style="background:#f5f5fa;width:2000px;height:700px; left:250px;top:80px;position:absolute;">
 
           <form action="houtai" method="post" >
           
