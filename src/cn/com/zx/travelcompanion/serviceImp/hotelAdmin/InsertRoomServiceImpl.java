@@ -8,8 +8,8 @@ public class InsertRoomServiceImpl implements InsertRoomService{
       RoomInfoDao ri=new RoomInfoDaoImpl();
       
 	@Override
-	public Boolean insertRoomByHotel(int hotelId,String roomType,String roomPrice,String roomState) {
-		Boolean  rib=ri.insertRoomInfoBean(hotelId, roomType, roomPrice, roomState);
+	public Boolean insertRoomByHotel(int hotelId,String roomType,String roomPrice) {
+		Boolean  rib=ri.insertRoomInfoBean(hotelId, roomType, roomPrice);
 		return rib;
 	}
 

@@ -16,15 +16,15 @@ import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.getRoomInfoServiceImpl;
 @WebServlet("/getRoomInfoServlet")
 public class getRoomInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	//传入房间信息 
+	//获取房间信息 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    getRoomInfoService sri=new getRoomInfoServiceImpl();
 	    
+	    
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		doGet(request, response);
 	}
 

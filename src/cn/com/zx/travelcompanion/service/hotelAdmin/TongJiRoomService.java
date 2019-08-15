@@ -7,4 +7,5 @@ package cn.com.zx.travelcompanion.service.hotelAdmin;
 public interface TongJiRoomService {
 	public int getAllRoom(int hotelId);
 	public int getEmptyRoom(int hotelId, String state);
+	public int getEmRoom(int hoteId);
 }

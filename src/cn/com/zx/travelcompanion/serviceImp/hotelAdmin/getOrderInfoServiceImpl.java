@@ -12,7 +12,6 @@ public class getOrderInfoServiceImpl implements getOrderInfoService{
 	@Override
 	public List<OrderInfoBean> getOrderInfo(int hotelid) {
 		List<OrderInfoBean> oi=oid.getOrderInfo(hotelid);
-
 		
 		return oi;
 	}

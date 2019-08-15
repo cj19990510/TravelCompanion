@@ -21,7 +21,7 @@ public class HotelApplyDaoImpl extends JdbcTemplate implements HotelApplyDao{
 		ResultSet rs = null; 
 		int flag=0;
 	
-		String sql1="insert into hotelapply (hotelName,hotelPhone,cityId,hotelInfomation,type,Apply,licenseNumber,licensePicture) values(?,?,?,?,?,?,?,?,?)";
+		String sql1="insert into hotelapply (hotelName,hotelPhone,cityId,hotelInfomation,type,Apply,licenseNumber,licensePicture) values(?,?,?,?,?,?,?,?)";
 	    Object[]inparams=new Object[] {hotelName,hotelPhone,cityId,hotelInfomation,type,apply,licenseNumber,licensePicture};
 	    try {    	    	
 	    	conn = DbUtil.getConnection();
@@ -45,10 +45,11 @@ public class HotelApplyDaoImpl extends JdbcTemplate implements HotelApplyDao{
 		else
 			return false;
 	}
-
-	public static void main(String[] args) {
-		System.out.println("");
-	}
+//数据库测试代码
+//	public static void main(String[] args) {
+//		HotelApplyDao ha=new HotelApplyDaoImpl();
+//	     ha.insertApply("hn", "hp", 1,null , "ht", null, "187156461", null);
+//	}
 }
 
 	 

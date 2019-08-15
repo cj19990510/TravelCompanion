@@ -63,16 +63,40 @@ public class RoomInfoDaoImpl extends JdbcTemplate implements RoomInfoDao {
 	}
     //改变房间状态 ： 1.自动改变为空 2.收到订单自动改变为
 	@Override
-	public RoomInfoBean changeRoomState(int roomId, String roomState) {
+	public Boolean changeRoomState(int roomId, String roomState) {
 		// TODO Auto-generated method stub
-		String sql="update RoomInfo roomState=? set  where roomId = ?";
+		Connection conn = null; 
+		PreparedStatement pre = null; 
+		ResultSet rs = null;
+		String sql="update RoomInfo set roomState=?  where roomId = ?";		
+     	Object[]inparams=new Object[] {roomState,roomId};
+     	int flag=0;
+     	 try {    	    	
+ 	    	conn = DbUtil.getConnection();
+ 			conn.setAutoCommit(false);
+ 			pre=conn.prepareStatement(sql);
+ 			  setParams(inparams,pre);
+ 			 flag = pre.executeUpdate();
+ 			
+ 			  conn.commit();
+ 		} catch (SQLException e) {
+ 			e.printStackTrace();
+ 		} catch (Exception e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}finally{
+ 			DbUtil.closeConnection(conn, pre, rs);
+ 		}
+ 	  
+ 		if(flag==1)
+ 		return true;
+ 		else
+ 			return false;
+ 	}
 		
-		
-		
-		return null;
-	}
+	
 	//加入房间信息
-	public Boolean insertRoomInfoBean(int hotelId,String roomType,String roomPrice ,String roomState) {
+	public Boolean insertRoomInfoBean(int hotelId,String roomType,String roomPrice) {
 		Connection conn = null; 
 		PreparedStatement pre = null; 
 		ResultSet rs = null; 
@@ -103,15 +127,16 @@ public class RoomInfoDaoImpl extends JdbcTemplate implements RoomInfoDao {
 			return false;
 	}
 	
-//sql测试
-//   public static void main(String[] args) {
-//	RoomInfoDao rd=new RoomInfoDaoImpl();
-//	rd.insertRoomInfoBean(3, "200", "1imim", "kong");
-//}
-//
-//   
+
+//	  public static void main(String[] args) {
+//			RoomInfoDao rd=new RoomInfoDaoImpl();
+//			rd.changeRoomState(1001, "空闲");
+//	  }
+}
+
+   
 
     
 	
 	
-}
+

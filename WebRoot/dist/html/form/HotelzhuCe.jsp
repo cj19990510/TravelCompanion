@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -28,10 +28,95 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="dist/css/themes/flat-blue.css">
      <script src="dist/js/city.js"></script>
      <script src="dist/js/method.js"></script>
-</head>
+     <script src="dist/js/jquery-3.3.1.js"></script>
+			<script>
+			
+			function checkHotelName(){
+			var hotelName=$("#hotelName").val();
+			var flag=!(hotelName=="");
+			
+			if(flag){
+				$("#hotelName").css("border","");
+			}else{
+				$("#hotelName").css("border","1px solid red");
+			}
+			return flag;
+		}
+			
+		function checkTelephone(){
+			var telephone=$("#telephone").val();
+			var flag=!(telephone=="");
+			
+			if(flag){
+				$("#telephone").css("border","");
+			}else{
+				$("#telephone").css("border","1px solid red");
+			}
+			return flag;
+		}
+			
+			function checkXinxi(){
+			var hotelName=$("#xinxi").val();
+			var flag=!(hotelName=="");
+			
+			if(flag){
+				$("#xinxi").css("border","");
+			}else{
+				$("#xinxi").css("border","1px solid red");
+			}
+			return flag;
+		}
+			
+			function checkCCity(){
+			var hotelName=$("#ccity").val();
+			var flag=!(hotelName=="");
+			
+			if(flag){
+				$("#ccity").css("border","");
+			}else{
+				$("#ccity").css("border","1px solid red");
+			}
+			return flag;
+		}
+			
+			function checkSqnr(){
+			var hotelName=$("#sqnr").val();
+			var flag=!(hotelName=="");
+			
+			if(flag){
+				$("#sqnr").css("border","");
+			}else{
+				$("#sqnr").css("border","1px solid red");
+			}
+			return flag;
+		}
+				
+				function checkYyzzh(){
+			var hotelName=$("#yyzzh").val();
+			var flag=!(hotelName=="");
+			
+			if(flag){
+				$("#yyzzh").css("border","");
+			}else{
+				$("#yyzzh").css("border","1px solid red");
+			}
+			return flag;
+		}
+				
+				$(function(){
+					$("#jdzcb").blur(checkHotelName);
+				  $("#telephone").blur(checkTelephone);
+					$("#xinxi").blur(checkXinxi);
+					$("#ccity").blur(checkCCity);
+					$("#sqnr").blur(checkSqnr);
+					$("#yyzzh").blur(checkYyzzh);
+				});
+						
+			</script>
+
 
   </head>
-  <form class="form" action="HotelApply" method="post" >
+  <form class="form" id="formkk" action="HotelApply" method="post" enctype="multipart/form-data">
  
  <body class="flat-blue">
     <div class="app-container">
@@ -46,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>Form</li>
                             <li class="active">酒店注册表</li>
                         </ol>
-                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs" id="jdzcb">
                             <i class="fa fa-th icon"></i>
                         </button>
                     </div>
@@ -80,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="side-body">
                     <div class="page-title">
                         <span class="title">加盟申请</span>
-                        <div class="description">请准确输入您的公司信息</div>
+                        <div class="description" id="xinxi">请准确输入您的公司信息</div>
                     </div>
                     
                     
@@ -118,9 +203,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     选择您所加盟的类型
                                     <div class="sub-title">公司名称</div>
                                     <div>
-                                        <input type="text" class="form-control" name="hotelName" placeholder="Text input">
+                                        <input type="text" class="form-control" id="hotelname" name="hotelName" placeholder="Text input">
                                     </div>
-                                         <div class="sub-title">联系电话</div>
+                                         <div class="sub-title" id="telephone">联系电话</div>
                                     <div>
                                         <input type="text" class="form-control" name="telephone" placeholder="Text input">
                                     </div>
@@ -131,24 +216,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     
           <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">选择城市</div>
+                                        <div class="title" class="ccity">选择城市</div>
                                     </div>
                                 </div>                 
     <fieldset>
       
             <label for="addr-show">您选择的是：
-                <input type="text" name="city" value="" id="addr-show">
+                <input type="text" name="city1" value="" id="addr-show">
             </label>
             <br/>
  
             <!--省份选择-->
-            <select id="prov" onchange="showCity(this)">
+            <select id="prov" name="province" onchange="showCity(this)">
                 <option>=请选择省份=</option>
  
             </select>
  
             <!--城市选择-->
-            <select id="city" onchange="showCountry(this)">
+            <select id="city" name="city" onchange="showCountry(this)">
                 <option>=请选择城市=</option>
             </select>
  
@@ -160,7 +245,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
     </fieldset>
 
-                                   <div class="sub-title">申请内容</div>
+                                   <div class="sub-title" id="sqnr">申请内容</div>
                                     <div>
                                         <textarea class="form-control" name="apply" rows="3"></textarea>
                                     </div>
@@ -179,14 +264,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                                 <div class="card-body">
                                 
-                                            <div class="sub-title">营业执照号</div>
+                                            <div class="sub-title" id="yyzzh">营业执照号</div>
                                     <div>
                                         <input type="text" class="form-control" name="zhizhao" placeholder="Text input">
                                     </div>
                                   
                                         <div class="form-group">
                                             <label for="exampleInputFile">营业执照图片</label>
-                                            <input type="file" name="lpicture" id="exampleInputFile">
+                                            <input type="file" name="lpicture" id="exampleInputFile" >
                                             <p class="help-block">Example block-level help text here.</p>
                                         </div>
                                         <div class="checkbox">
@@ -204,10 +289,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
              </form>
                    
-        <footer class="app-footer">
-            <div class="wrapper"> <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span>  <a href="http://www.cssmoban.com/" target="_blank" title="妯℃澘涔嬪">2019</a> - Collect from <a href="http://www.cssmoban.com/" title="联系我们" target="_blank">联系我们</a>
-            </div>
-        </footer>    
+         
             <!-- Javascript Libs -->
             <script type="text/javascript" src="dist/lib/js/jquery.min.js"></script>
             <script type="text/javascript" src="dist/lib/js/bootstrap.min.js"></script>

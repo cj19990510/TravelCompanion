@@ -6,6 +6,8 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
 <html>
   <head>
      <title>酒店管理系统</title>
@@ -162,41 +164,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                 </div>
                             </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                             <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-Room">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">房间信息</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
-                                <div id="component-example" class="panel-collapse collapse">
+                                <div id="dropdown-Room" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="components/pricing-table.html">Pricing Table</a>
-                                            </li>
-                                            <li><a href="components/chartjs.html">Chart.JS</a>
+                                            <li><a href="dist/html/pages/Room.jsp">房间信息</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-example">
-                                    <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-example" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="pages/login.html">Login</a>
-                                            </li>
-                                            <li><a href="pages/index.html">Landing Page</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
+                           </ul>
+                           
+                           </div>
+               
+                           </nav>
+                           
                           
                     <!-- /.navbar-collapse -->
                 </nav>
