@@ -23,4 +23,5 @@ public interface HotelInfoDaoImp {
 		List<HotelInfoPictureBean> getRecommendHotelInfo(String type,String[] recimmendiion);
 		//获取智能推荐的值
 	   List<HotelInfoPictureBean> getHotelInfo(int hotelid);
+	   List<HotelInfoPictureBean> getHotelInfo1(int number,String type);
 }

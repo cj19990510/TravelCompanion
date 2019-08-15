@@ -17,7 +17,7 @@ public class RoomInfoDao extends JdbcTemplate implements RoomInfoDaoImp{
 	@Override
 	public List<RoomInfoBean> getspot(String hotelid) {
 		Object[] object=new Object[] {hotelid};
-		String sql="SELECT * from roominfo info WHERE hotelid=?";
+		String sql="SELECT * from roominfo WHERE hotelid=?";
 		List<RoomInfoBean> list=null;
 		try {
 			list = this.queryForList(new RowMapper<RoomInfoBean>() {
