@@ -31,7 +31,7 @@ $(document).ready(function(){
 	    	}
 	    	else{
 	    		$(document).click(function(){
-	    			window.location.href="login.html";
+	    			window.location.href="userlogin.html";
 	    		})
 	    	}
 	     }

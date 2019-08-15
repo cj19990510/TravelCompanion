@@ -12,4 +12,5 @@ public interface OrderInfoDaoImp {
   
   //订单查询
   public List<OrderInfoBean> getOrderInfoByuserid(int userid);
+  public int insertOrderInfoByuserid(OrderInfoBean order);
 }

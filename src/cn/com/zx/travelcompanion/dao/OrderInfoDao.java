@@ -310,5 +310,20 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 			int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
 			return dayOfMonth;
 		}
+
+		@Override
+		public int insertOrderInfoByuserid(OrderInfoBean order) {
+			String sql = "insert into orderinfo values(?,?,?,?,?,?,?)";
+			Object[] params = {order.getUserId(),order.getHotelId(),
+					order.getRoomId(),order.getDayNum(),order.getOrderMoney(),
+					order.getOrderTime(),order.getOrderState()};
+			try {
+				this.set(sql, params);
+			} catch (ClassNotFoundException | IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			        return 0;
+		}
 		
 }
