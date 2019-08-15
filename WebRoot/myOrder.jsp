@@ -187,9 +187,10 @@
 			                    <div class="order-info " style="float:left;width:25%;display:inline;">
 			                       	  <div class="info-box">
 			                       	       <a class="link" href="" target="_blank">
-			                       	           <p class="order-title">酒店名称:${orderlist.hotelName }</p>
+			                       	           <p class="order-title">${orderlist.type}:${orderlist.hotelName}</p>
 			                       	       </a>
-			                       	       <p class="info">酒店描述</p>
+			                       	       
+			                       	       <p class="info">描述:${orderlist.hotelInfomation }</p>
 			                       	       <p class="info">时间:${orderlist.orderTime}</p>
 			                       	  </div>                      
 			                    </div>

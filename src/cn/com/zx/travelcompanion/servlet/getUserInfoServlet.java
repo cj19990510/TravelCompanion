@@ -35,11 +35,11 @@ public class getUserInfoServlet extends HttpServlet {
 		Object user=session.getAttribute("userinfo");
 		PrintWriter out=response.getWriter();
 		if(user==null){
-			out.print(1);
+			out.print("1");
 			out.flush();
 		}
 		else{
-			out.print(0);
+			out.print("0");
 		}
 		
 	}
