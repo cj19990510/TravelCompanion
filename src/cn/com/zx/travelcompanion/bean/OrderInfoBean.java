@@ -14,6 +14,14 @@ public class OrderInfoBean {
     public String orderState;//订单状态
     public Timestamp inTime;//入住时间
     public String hotelName;//酒店名
+    public String pictureUrl;//酒店图片
+    public String getPictureUrl() {
+		return pictureUrl;
+	}
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
+	}
+
     
 	public int getOrderId() {
 		return orderId;

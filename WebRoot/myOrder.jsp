@@ -113,11 +113,11 @@
 									<div class="dropdown ">
 										<button class="dropbtn " style="width: 80px; margin-top: 10px;margin-left: 20px;">个人中心</button>
 										<div class="dropdown-content " style="margin-left: 130px; ">								
-											<a href="# "><i class="fa fa-bookmark-o " aria-hidden="true "></i> 个人中心</a>
-											<a href="# "><i class="fa fa-umbrella " aria-hidden="true "></i>我的订单</a>
-											<a href="# "><i class="fa fa-bed " aria-hidden="true "></i>账单</a>
+											<a href="SelectUserInfoServlet"><i class="fa fa-bookmark-o " aria-hidden="true "></i> 个人中心</a>
+											<a href="OrderInfoPages "><i class="fa fa-umbrella " aria-hidden="true "></i>我的订单</a>
+											<a href="myPrperty.jsp"><i class="fa fa-bed " aria-hidden="true "></i>账单</a>
 											<a href="# "><i class="fa fa-ban " aria-hidden="true "></i> 我的消息</a>
-											<a href="# "><i class="fa fa-sign-in " aria-hidden="true "></i>退出账号</a>	
+											<a href="userlogin.html"><i class="fa fa-sign-in " aria-hidden="true "></i>退出账号</a>	
 
 										</div>
 									</div>
@@ -153,14 +153,14 @@
 		            <div class="member-lists" style="margin-top:40px;">
 		                <dl style="margin-top:40px;">
 		                    <dt>个人中心</dt>
-		                    <dd class="cur" ><a href="#userinfo.html"><h3>我的信息</h3></a></dd>
-		                    <dd><a href="#myOrder.jsp"><h3>我的订单</h3></a></dd>		                    
-		                    <dd><a href="#myProperty.jsp"><h3>我的财产</h3></a></dd> 
+		                    <dd ><a href="SelectUserInfoServlet">我的信息</a></dd>
+		                    <dd class="cur" ><a href="OrderInfoPages">我的订单</a></dd>	                    
+		                    <dd><a href="myProperty.jsp" >我的财产</a></dd> 
 		                </dl>
 		                <dl>
 		                    <dt>客户服务</dt>
-		                    <dd><a href="#">退货申请</a></dd>
-		                    <dd><a href="#">退货/退款记录</a></dd>
+		                    <dd><a href="#" style="color:#0000FF">退货申请</a></dd>
+		                    <dd><a href="#" style="color:#0000FF">退货/退款记录</a></dd>
 		                </dl>		                
 		            </div>
 		        </div>
@@ -174,35 +174,36 @@
 		            <div class="order-body" style="height:800px;">
 		               <div style="height:800px;">
 			               	
-			               	<c:forEach var="i" begin="0" end="${fn:length(orderlist)-1}" step="1">	
+			               	<c:forEach  var="orderlist" items="${orderlist}">	
 			               		<div class="order-item clearfix" style="width:100%;display:inline;">	
 			               			           
 			                    <div class="order-img" style="float:left;width:25%;display:inline;">
 			                       	 <a class="link" href="" target="_blank">
 			                       	    <div>
-			                       	         <img src="${hlist.get(i).picture}" style="width:150px;height:100px;"  class="">
+			                       	         <img src="${orderlist.pictureUrl}" style="width:150px;height:100px;"  class="">
 			                       	    </div>
 			                       	 </a>                     
 			                    </div>
 			                    <div class="order-info " style="float:left;width:25%;display:inline;">
 			                       	  <div class="info-box">
 			                       	       <a class="link" href="" target="_blank">
-			                       	           <p class="order-title">酒店名称:${hlist.get(i).hotelName}</p>
+			                       	           <p class="order-title">酒店名称:${orderlist.hotelName }</p>
 			                       	       </a>
 			                       	       <p class="info">酒店描述</p>
-			                       	       <p class="info">时间:${orderlist.get(i).orderTime}</p>
+			                       	       <p class="info">时间:${orderlist.orderTime}</p>
 			                       	  </div>                      
 			                    </div>
-			                    <div class="order-price" style="float:left;width:25%;display:inline;">预定价格：￥${orderlist.get(i).orderMoney}  
+			                    <div class="order-price" style="float:left;width:25%;display:inline;">预定价格：￥${orderlist.orderMoney}  
 			                    	                      
 			                    </div>
-			                    <div class="order-state" style="float:left;width:25%;display:inline;">预定状态：${orderlist.get(i).orderState}		                    	                      
+			                    <div class="order-state" style="float:left;width:25%;display:inline;">预定状态：${orderlist.orderState}		                    	                      
 			                    </div>
 			                   
 			                     </div> 
 			                     <br>
 			                </c:forEach>
 			                
+			                <div style="margin-top:30px;">
 			                <div align = "center">
 								
 								第<c:out value="${curPage}"/>页/共<c:out value="${totalPage}" />页
@@ -216,6 +217,7 @@
 								 	<a href="OrderInfoPages?page=<c:out value="${totalPage }" />">尾页</a> | 
 								</c:if>
 								
+							</div>
 							</div>
 						 
 				        
