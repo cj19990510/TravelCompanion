@@ -7,15 +7,14 @@ public class UserInfoBean {
     private  String userPhone;//用户手机号
     private  String userPicture;//用户头像
     private  String userEmail;//用户邮箱
+    private String count;
+    private String countSuccess;
+    
     
     public UserInfoBean(){
     	
     }
-    @Override
-	public String toString() {
-		return "UserInfoBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
-				+ ", userPhone=" + userPhone + ", userPicture=" + userPicture + ", userEmail=" + userEmail + "]";
-	}
+	
 	public UserInfoBean(int userId, String userName, String userPassword, String userPhone, String userPicture,
 			String userEmail) {
 		super();
@@ -62,5 +61,24 @@ public class UserInfoBean {
 	public void setUserPicture(String userPicture) {
 		this.userPicture = userPicture;
 	}
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
+	}
+	public String getCountSuccess() {
+		return countSuccess;
+	}
+	public void setCountSuccess(String countSuccess) {
+		this.countSuccess = countSuccess;
+	}
+	@Override
+	public String toString() {
+		return "UserInfoBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
+				+ ", userPhone=" + userPhone + ", userPicture=" + userPicture + ", userEmail=" + userEmail + ", count="
+				+ count + ", countSuccess=" + countSuccess + "]";
+	}
+	
        
 }
