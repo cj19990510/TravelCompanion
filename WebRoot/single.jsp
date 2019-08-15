@@ -1,3 +1,4 @@
+<%@page import="cn.com.zx.travelcompanion.bean.RoomInfoBean"%>
 <%@page import="cn.com.zx.travelcompanion.bean.HotelInfoPictureBean"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
@@ -20,6 +21,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/mob.css">
 <link rel="stylesheet" href="css/animate.css">
+ <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
 <!--========= Scripts ===========-->
 <script src="js/jquery-1.5.1.min.js "></script>
 <script src="js/jquery-latest.min.js "></script>
@@ -111,12 +113,20 @@
 
 	</section>
 	<div class="banner-bootom-w3-agileits">
+	
 		<div class="container">
+		<h3 class="tittle-w3l">
+					商品详细 <span class="heading-style"> <i></i> <i></i> <i></i>
+					</span>
+				</h3>
 			<!-- tittle heading -->
+<%List<HotelInfoPictureBean> spot=(List<HotelInfoPictureBean>)request.getAttribute("spot");
+List<RoomInfoBean> room=(List<RoomInfoBean>)request.getAttribute("room");
+%>
 
 			<!-- //tittle heading -->
-			<div class="col-md-5 single-right-left ">
-				<div class="grid images_3_of_2">
+			<div class="col-md-5 single-right-left "  style="margin-top:20px;">
+				<%-- <div class="grid images_3_of_2">
 					<div class="flexslider">
 						<ul class="slides">
 							<li data-thumb="images/si.jpg">
@@ -140,26 +150,45 @@
 							</li>
 						</ul>
 					</div>
+				</div> --%>
+
+
+				<div id="myCarousel" data-ride="carousel" data-interval="4000"
+					class="sui-carousel slide">
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<%for(int i=1;i<spot.size();i++) {%>
+						<li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
+					<%} %>
+					</ol>
+					<div class="carousel-inner">
+					<%for(int i=0;i<spot.size();i++) {%>
+						<div class="active item">
+							<img src="<%=spot.get(i).getPicture()%>" data-imagezoom="true"
+										class="img-responsive" alt="">
+						</div>
+						<%} %>
+					</div>
+					<a href="#myCarousel" data-slide="prev"
+						class="carousel-control left">‹</a><a href="#myCarousel"
+						data-slide="next" class="carousel-control right">›</a>
 				</div>
 			</div>
-			<div class="col-md-6 col-sm-6 col-xs-12 p2">
-				<h3 class="tittle-w3l">
-				商品详细 <span class="heading-style"> <i></i> <i></i> <i></i>
-				</span>
-			</h3>
+			<div class="col-md-6 col-sm-6 col-xs-12 p2" style="margin-left: 50px">
+				
 				<h3>
-					武陵源(张家界)<span><i class="fa fa-star" aria-hidden="true"></i>
+					<%=spot.get(0).getHotelName()%>(<%=spot.get(0).getCityName()%>)<span><i class="fa fa-star" aria-hidden="true"></i>
 						<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
 						aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
 						<i class="fa fa-star-half-o" aria-hidden="true"></i></span>
 				</h3>
-
-				<p>武陵源双飞二人游</p>
+<%for(int i=0;i<spot.size();i++) {%>
+				<p><%=room.get(i).getRoomType()%></p>
 				<div class="ticket">
 					<ul>
-						<li>门票状态 :充裕</li>
-						<li>成人票价格 :358</li>
-						<li>学生票/老人票价格 :218</li>
+						<li>门票状态 :<%=room.get(i).getRoomState()%></</li>
+						<li>成人票价格 :<%=room.get(i).getRoomPrice()%></</li>
+						<li>学生票/老人票价格 :<%=room.get(i).getRoomPrice()%></</li>
 					</ul>
 				</div>
 				<div class="ticket">
@@ -175,30 +204,10 @@
 						<li><a href="tour-details.html" class="link-btn">更多优惠</a></li>
 					</ul>
 				</div>
-				<p>武陵源双飞二人游</p>
-				<div class="ticket">
-					<ul>
-						<li>门票状态 :充裕</li>
-						<li>成人票价格 :358</li>
-						<li>学生票/老人票价格 :218</li>
-					</ul>
-				</div>
-				<div class="ticket">
-					<ul>
-						<li>营业时间 :夏 8:00~7:00</li>
-						<li>冬 8:30~6:00</li>
-					</ul>
-				</div>
-				<div class="p2_book">
-					<ul>
-						<li><a href="booking.html" class="link-btn">立即预定</a></li>
-						<li><a href="tour-details.html" class="link-btn">更多优惠</a></li>
-					</ul>
-				</div>
-												
+				<%} %>
 				<div class="featur">
-					<h4>当前热度：2035&nbsp 排名 1</h4>
-					<span class="glyphicon glyphicon-phone-alt">&nbsp咨询电话：15211180672</span>
+					<h4>当前热度：<%=spot.get(0).getHotelLevel()%>&nbsp 排名 1</h4>
+					<span class="glyphicon glyphicon-phone-alt">&nbsp咨询电话：<%=spot.get(0).getHotelPhone()%></span>
 				</div>
 			</div>
 
@@ -306,6 +315,9 @@
 	</script>
 	<script src="js/jquery.flexisel.js"></script>
 	<script src="js/bootstrap.js"></script>
+	 
+  <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
 </body>
 
 
