@@ -224,11 +224,11 @@
 					<table class="sui-table table-bordered-simple">
 						<thead>
 							<tr>
-								<th>供应商昵称</th>
-								<th>公司名称</th>
-								<th>供应商类型</th>
-								<th>分销商数量</th>
-								<th>授权品牌</th>
+								<th></th>
+								<th>景点名称</th>
+								<th>数量</th>
+								<th>类型</th>
+								<th>金额</th>
 								<th>操作</th>
 							</tr>
 						</thead>
