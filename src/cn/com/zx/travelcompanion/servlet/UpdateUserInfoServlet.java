@@ -39,6 +39,8 @@ public class UpdateUserInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("Content-type", "text/html;;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		String userName=request.getParameter("username");
 		String userPassword=request.getParameter("userpassword");
 		String userPhone=request.getParameter("userphone");
@@ -61,10 +63,9 @@ public class UpdateUserInfoServlet extends HttpServlet {
 			}
 		}else{
 			HttpSession session=request.getSession();
-			session.setAttribute("userinfo", userinfobean);
-			int i=userinfo.updateUserInfo(userinfobean);
+			int i=userinfo.updateUserInfo(userinfobean);						
 			if(i==1){
-				request.getRequestDispatcher("SelectUserInfoServlet").forward(request,response);
+				response.getWriter().write("2");
 			}
 			
 		}		

@@ -64,14 +64,12 @@
 			 	
 			 	//修改个人信息
 			   $("#xiugai").click(function(){
-			   	  
-			      
 			      $("#username").removeAttr("readOnly");
 			      $("#userpassword").removeAttr("readOnly");
 			      $("#reuserpassword").removeAttr("readOnly");
 			      $("#userphone").removeAttr("readOnly");
-			      $("#useremail").removeAttr("readOnly");			  
-			      
+			      $("#useremail").removeAttr("readOnly");	
+			      		 			      
 			   });
 			   
 			   //确定修改个人信息
@@ -86,6 +84,7 @@
 			   	  if(userpassword!==reuserpassword){
 			   	       alert("密码不一致，请重新输入");
 			   	  }
+		
 			      $.ajax({
 			         type:"post",
 			         url:"UpdateUserInfoServlet",
@@ -100,7 +99,10 @@
 			             if(da==1){
 			               alert("信息修改成功");
 			               window.location.href="userlogin.html";
-			             }    
+			             } 
+			             if(da==2){
+			               window.location.href="userinfo.html";
+			             }   
 			         }
 			      });
 

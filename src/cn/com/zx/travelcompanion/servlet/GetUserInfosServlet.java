@@ -42,6 +42,7 @@ public class GetUserInfosServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           response.setHeader("Content-type", "text/html;;charset=utf-8");
           int userid=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserId();
+          System.out.println("userid+"+userid);
           UserInfoDao userinfo=new UserInfoDao();
           UserInfoBean userbean=new UserInfoBean();
           userbean=userinfo.getUserInfoByuserId(userid);

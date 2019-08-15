@@ -40,7 +40,8 @@ public class SelectUserInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("Content-type", "text/html;;charset=utf-8");
-		
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		int  userid=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserId();
 		String userName=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserName();
 		String userPassword=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserPassword();
@@ -53,7 +54,7 @@ public class SelectUserInfoServlet extends HttpServlet {
 		    HttpSession session=request.getSession();
    		    session.setAttribute("userinfo", userinfobean);
 			request.getRequestDispatcher("userinfo.html").forward(request,response);
-			
+		
 		}else{
 			request.setAttribute("msg", "您还没有登录,请登录！");
     		request.getRequestDispatcher("userlogin.html").forward(request,response);
