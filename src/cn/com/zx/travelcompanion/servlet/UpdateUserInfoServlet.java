@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.com.zx.travelcompanion.DB.Md5;
 import cn.com.zx.travelcompanion.bean.UserInfoBean;
 import cn.com.zx.travelcompanion.dao.UserInfoDao;
 
@@ -48,27 +49,33 @@ public class UpdateUserInfoServlet extends HttpServlet {
 		String userEmail=request.getParameter("useremail");
 		int userId=Integer.parseInt(request.getParameter("userid"));
 		//int userid=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserId();
-		UserInfoBean userinfobean=new UserInfoBean(userId, userName, userPassword, userPhone, userPicture,userEmail);
-		UserInfoDao userinfo=new UserInfoDao();
-		String olduserName=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserName();
-		String oldpassword=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserPassword();
-		/*String oldphone=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserPhone();
-		String oldemail=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserEmail();*/
-		if(!userPassword.equals(oldpassword)||!userName.equals(olduserName)){			
-			int i=userinfo.updateUserInfo(userinfobean);
-			if(i==1){
-				response.getWriter().write("1");
-			}else{
-				response.getWriter().write("0");
-			}
-		}else{
-			HttpSession session=request.getSession();
-			int i=userinfo.updateUserInfo(userinfobean);						
-			if(i==1){
-				response.getWriter().write("2");
-			}
-			
-		}		
 		
+		Md5 md5=new Md5();
+		String newuserPassword;
+		try{
+			newuserPassword=md5.EncoderByMd5(userPassword);
+			UserInfoBean userinfobean=new UserInfoBean(userId, userName, newuserPassword, userPhone, userPicture,userEmail);
+			UserInfoDao userinfo=new UserInfoDao();
+			String olduserName=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserName();
+			String oldpassword=((UserInfoBean)request.getSession().getAttribute("userinfo")).getUserPassword();
+            System.out.println("新密码"+newuserPassword);
+            System.out.println("旧密码"+oldpassword);
+			if(!newuserPassword.equals(oldpassword)||!userName.equals(olduserName)){			
+				int i=userinfo.updateUserInfo(userinfobean);
+				if(i==1){
+					response.getWriter().write("1");
+				}else{
+					response.getWriter().write("0");
+				}
+			}else{
+				HttpSession session=request.getSession();
+				int i=userinfo.updateUserInfo(userinfobean);						
+				if(i==1){
+					response.getWriter().write("2");
+				}				
+			}		
+		}catch(Exception e){
+			e.printStackTrace();
+		}				
 	}
 }

@@ -3,7 +3,7 @@ package cn.com.zx.travelcompanion.bean;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class OrderInfoBean {
+public class OrderInfoHotelBean {
 	public int orderId;//订单id
     public int userId;//用户id
     public int hotelId;//酒店id
@@ -13,7 +13,31 @@ public class OrderInfoBean {
     public Timestamp orderTime;//订单时间
     public String orderState;//订单状态
     public Timestamp inTime;//入住时间
+    public String hotelName;//酒店名
+    public String pictureUrl;//酒店图片
+    public String type;
+    public String hotelInfomation;//
+    public String getHotelInfomation() {
+		return hotelInfomation;
+	}
+	public void setHotelInfomation(String hotelInfomation) {
+		this.hotelInfomation = hotelInfomation;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+    public String getPictureUrl() {
+		return pictureUrl;
+	}
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
+	}
 
+    
 	public int getOrderId() {
 		return orderId;
 	}
@@ -68,16 +92,22 @@ public class OrderInfoBean {
 	public void setInTime(Timestamp inTime) {
 		this.inTime = inTime;
 	}
+	public String getHotelName() {
+		return hotelName;
+	}
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
 	@Override
 	public String toString() {
 		return "OrderInfoBean [orderId=" + orderId + ", userId=" + userId + ", hotelId=" + hotelId + ", roomId="
 				+ roomId + ", dayNum=" + dayNum + ", orderMoney=" + orderMoney + ", orderTime=" + orderTime
-				+ ", orderState=" + orderState + ", inTime=" + inTime + "]";
+				+ ", orderState=" + orderState + ", inTime=" + inTime + ", hotelName=" + hotelName + ", pictureUrl="
+				+ pictureUrl + ", type=" + type + "]";
 	}
-	
-
 	
 	
 	
     
 }
+

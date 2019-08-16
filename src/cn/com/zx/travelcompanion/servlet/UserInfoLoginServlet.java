@@ -47,19 +47,24 @@ public class UserInfoLoginServlet extends HttpServlet {
     	  
     	  
     	  System.out.println("userpassword"+userPassword);
-		  UserInfoDao userdao=new UserInfoDao();
-    	  //
-    	  userinfo=userdao.getUserInfoByuserName(userName, userPassword);
-    	  Writer out=response.getWriter();
-    	  if(userinfo==null){
-    		  out.write("0");
-    	  }else{
-    		  HttpSession session=request.getSession();
-    		  session.setAttribute("userinfo", userinfo);
-    		  out.write("1");
-    		  out.flush();
+    	  Md5 md5=new Md5();
+    	  try{
+    		  String newuserPassword=md5.EncoderByMd5(userPassword);
+    		  UserInfoDao userdao=new UserInfoDao();
+        	  //
+        	  userinfo=userdao.getUserInfoByuserName(userName, newuserPassword);
+        	  Writer out=response.getWriter();
+        	  if(userinfo==null){
+        		  out.write("0");
+        	  }else{
+        		  HttpSession session=request.getSession();
+        		  session.setAttribute("userinfo", userinfo);
+        		  out.write("1");
+        		  out.flush();
+        	  }
+    	  }catch(Exception e){
+    		  e.printStackTrace();
     	  }
-    	  
     	  
     	 
     }
