@@ -1,5 +1,6 @@
 package cn.com.zx.travelcompanion.AI;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,5 +24,6 @@ abstract class StringBaseCalculate {
         return res;
 
     }
+
 }
 

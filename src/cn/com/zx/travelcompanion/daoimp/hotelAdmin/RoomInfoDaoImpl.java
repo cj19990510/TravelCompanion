@@ -103,7 +103,7 @@ public class RoomInfoDaoImpl extends JdbcTemplate implements RoomInfoDao {
 		int flag=0;
 		String insertsql="insert into RoomInfo(hotelId,roomType,roomPrice,roomState)"
 				 +"values(?,?,?,?)";
-	    Object[]inparams=new Object[] {hotelId,roomPrice,roomType,"空闲"};
+	    Object[]inparams=new Object[] {hotelId,roomType,roomPrice,"空闲"};
 	    try {    	    	
 	    	conn = DbUtil.getConnection();
 			conn.setAutoCommit(false);
@@ -125,6 +125,44 @@ public class RoomInfoDaoImpl extends JdbcTemplate implements RoomInfoDao {
 		return true;
 		else
 			return false;
+	}
+	@Override
+	public RoomInfoBean getRoomInfoByRoomId(int roomId) {
+		String sql="select*from RoomInfo where roomId=?";
+		List<RoomInfoBean> list = new ArrayList<RoomInfoBean>();
+		Object[] params = new Object[]{roomId};
+		try {
+			list = this.queryForList(new RowMapper<RoomInfoBean>(){
+     
+				@Override
+				public RoomInfoBean mappingRow(ResultSet rs, int rownum) throws SQLException {
+					
+					// TODO Auto-generated method stub
+					RoomInfoBean ri =new RoomInfoBean();
+					ri.setHotelId(rs.getInt("hotelId"));
+					ri.setRoomId(rs.getInt("roomId"));
+				    ri.setRoomPrice(rs.getBigDecimal("roomPrice"));
+					ri.setRoomState(rs.getString("roomState"));		
+					ri.setRoomType(rs.getString("roomType"));
+					return ri ;
+				}
+				
+			}, sql, params);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(list != null && list.size() > 0) {
+			return list.get(0);
+		}else {
+			return null;
+		}
 	}
 	
 

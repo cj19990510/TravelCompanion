@@ -10,5 +10,7 @@ public interface OrderInfoDao {
 	public List<OrderInfoBean>  getWOrderInfo(int hotelid,String orderState);
 	//改变此订单状态
 	public  Boolean updateOrderInfo(int orderid,String orderState);
+	//通过订单号获取订单信息
+	public OrderInfoBean getOrderInfoByOrderid(int orderid);
 	
 }

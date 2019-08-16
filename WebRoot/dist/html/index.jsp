@@ -42,6 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
                             <li class="active">您好,${hotel.hotelName}${hotel.type}</li>
+                            <h1>您所在的城市是</h1>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -119,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="side-menu-container">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="dist/html/index.jsp">
                                 <div class="icon fa fa-paper-plane"></div>
                                 <div class="title">酒店管理</div>
                             </a>
@@ -129,22 +130,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html">
+                                <a href="dist/html/index.jsp">
                                     <span class="icon fa fa-tachometer"></span><span class="title">主页</span>
                                 </a>
                             </li>
                             
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">订单表</span>
+                                    <span class="icon fa fa-table"></span><span class="title">酒店订单</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="dist/html/table/table.html">新的用户订单表</a>
+                                            <li><a href="OrderInfoServlet">新的用户订单</a>
                                             </li>
-                                            <li><a href="OrderInfoServlet">用户订单</a>
+                                            <li><a href="OrderInfoall">全部订单</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -172,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div id="dropdown-Room" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="dist/html/pages/Room.jsp">房间信息</a>
+                                            <li><a href="getRoomInfoServlet">房间信息</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -269,7 +270,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
                                     <div class="thumbnail no-margin-bottom">
-                                        <img src="../img/thumbnails/picjumbo.com_IMG_4566.jpg" class="img-responsive">
+                                        <img src="dist/img/thumbnails/picjumbo.com_IMG_4566.jpg" class="img-responsive">
                                         <div class="caption">
                                             <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -279,7 +280,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="thumbnail no-margin-bottom">
-                                        <img src="../img/thumbnails/picjumbo.com_IMG_3241.jpg" class="img-responsive">
+                                        <img src="dist/img/thumbnails/picjumbo.com_IMG_3241.jpg" class="img-responsive">
                                         <div class="caption">
                                             <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -325,7 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <ul class="message-list">
                                         <a href="#">
                                             <li>
-                                                <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
+                                                <img src="dist/img/profile/profile-1.jpg" class="profile-img pull-left">
                                                 <div class="message-block">
                                                     <div><span class="username">Tui2Tone</span> <span class="message-datetime">12 min ago</span>
                                                     </div>
@@ -335,7 +336,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </a>
                                         <a href="#">
                                             <li>
-                                                <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
+                                                <img src="dist/img/profile/profile-1.jpg" class="profile-img pull-left">
                                                 <div class="message-block">
                                                     <div><span class="username">Tui2Tone</span> <span class="message-datetime">15 min ago</span>
                                                     </div>
@@ -345,7 +346,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </a>
                                         <a href="#">
                                             <li>
-                                                <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
+                                                <img src="dist/img/profile/profile-1.jpg" class="profile-img pull-left">
                                                 <div class="message-block">
                                                     <div><span class="username">Tui2Tone</span> <span class="message-datetime">2 hour ago</span>
                                                     </div>
@@ -355,7 +356,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </a>
                                         <a href="#">
                                             <li>
-                                                <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
+                                                <img src="dist/img/profile/profile-1.jpg" class="profile-img pull-left">
                                                 <div class="message-block">
                                                     <div><span class="username">Tui2Tone</span> <span class="message-datetime">1 day ago</span>
                                                     </div>

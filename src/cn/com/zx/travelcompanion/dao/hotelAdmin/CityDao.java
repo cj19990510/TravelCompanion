@@ -7,4 +7,6 @@ public interface CityDao {
 	public Boolean insertCity(String city,String prvovince);
 	//获取数据库中的城市id 通过此城市名
 	public CityInfoBean cityId(String city);
+	//通过城市id 获取城市信息
+	public CityInfoBean cityInfo(int cityid);
 }

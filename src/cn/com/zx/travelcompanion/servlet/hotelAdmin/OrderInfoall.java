@@ -24,8 +24,8 @@ import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.getRoomInfoServiceImpl;
 /**
  * Servlet implementation class OrderInfoServlet
  */
-@WebServlet("/OrderInfoServlet")
-public class OrderInfoServlet extends HttpServlet {
+@WebServlet("/OrderInfoall")
+public class OrderInfoall extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 
@@ -37,7 +37,7 @@ public class OrderInfoServlet extends HttpServlet {
 			int hotelid=(int) a;
 		//保存此酒店id的信息
 		
-	     List<OrderInfoBean> oi=goi.getOrderInfoBy(hotelid, "待接单");
+	     List<OrderInfoBean> oi=goi.getOrderInfo(hotelid);
 	     for(int i=0;i<oi.size();i++)
 	     {
 	    	 System.out.println(oi.get(i).toString());
@@ -53,7 +53,7 @@ public class OrderInfoServlet extends HttpServlet {
 	     session.setAttribute("type", type);
 	     session.setAttribute("oi", oi);
 	     //获取未接单信息
-		req.getRequestDispatcher("dist/html/table/datatable.jsp").forward(req, resp);
+		req.getRequestDispatcher("dist/html/table/Order.jsp").forward(req, resp);
 	}
 
 	
