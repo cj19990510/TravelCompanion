@@ -1,23 +1,18 @@
 package cn.com.zx.travelcompanion.servlet.hotelAdmin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import cn.com.zx.travelcompanion.bean.HotelAdminInfoBean;
 import cn.com.zx.travelcompanion.service.hotelAdmin.CityService;
-import cn.com.zx.travelcompanion.service.hotelAdmin.HotelAdminService;
 import cn.com.zx.travelcompanion.service.hotelAdmin.HotelApplyService;
 import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.CityServiceImpl;
-import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.HotelAdminServiceImpl;
 import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.HotelApplyServiceImp;
-@WebServlet("/HotelApply")
+@WebServlet("/HhotelApply")
 public class HotelApply extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -69,3 +64,4 @@ public class HotelApply extends HttpServlet {
 	}            
 
 }
+

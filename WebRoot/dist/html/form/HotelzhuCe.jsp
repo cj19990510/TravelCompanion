@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
   </head>
-  <form class="form" id="formkk" action="HotelApply" method="post" enctype="multipart/form-data">
+  <form class="form" id="formkk" action="HhotelApply" method="post" enctype="multipart/form-data">
  
  <body class="flat-blue">
     <div class="app-container">
