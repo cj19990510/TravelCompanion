@@ -17,6 +17,8 @@
 <script type="text/javascript"
 	src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript"
+	src="js/single.js"></script>
+<script type="text/javascript"
 	src="http://api.map.baidu.com/api?v=2.0&ak=A6HyQTlMFwu3LzpiUCXg4HdKKSC7OrT4"></script>
 <!--========= Scripts ===========-->
 
@@ -45,7 +47,7 @@
 	<!--==导航栏========== -->
 	<section>
 		<div class="rows head" data-spy="affix" data-offset-top="120"
-			style="background-color:#1B6D85;height:80px">
+			style="background-color:#1B6D85">
 			<div class="container" style="margin-left: 10px;width: 90%;">
 				<div style="display: flex;">
 					<!--====== BRANDING LOGO ==========-->
@@ -53,14 +55,14 @@
 						style="display: flex;">
 						<a href="index.html"><img alt="" src="images/logo.png"
 							style="position: absolute;"></a>
-						<p style="color:white;margin-left:55px;margin-top: 10px;">爱生活，爱旅行</p>
+						<p style="color:white;margin-left:60px;margin-top: 10px;">爱生活，爱旅行</p>
 					</div>
 					<!-- NAVIGATION MENU -->
 					<div class="collapse navbar-collapse " id="myNavbar"
-						style="width:100%;margin-left: 100px;">
+						style="width:100%;">
 						<ul class="nav navbar-nav">
-							<li><a href="index.html ">主页</a></li>
-							<li><a href="family-package.html ">旅游</a></li>
+							<li><a href="index.html">主页</a></li>
+							<li><a href="places.html ">旅游</a></li>
 							<li><a href="hotels-list.html ">酒店</a>
 							<li><a href="blog.html ">轰趴</a></li>
 							<li><a href="places.html ">农家乐</a></li>
@@ -85,14 +87,13 @@
 									<button class="dropbtn "
 										style="width: 80px; margin-top: 10px;margin-left: 20px;">个人中心</button>
 									<div class="dropdown-content " style="margin-left: 130px; ">
-										<a href="# "><i class="fa fa-sign-in " aria-hidden="true "></i>登录</a>
-										<a href="# "><i class="fa fa-address-book-o "
-											aria-hidden="true "></i> 注册</a> <a href="# "><i
+										 <a
+											href="SelectUserInfoServlet "><i
 											class="fa fa-bookmark-o " aria-hidden="true "></i> 个人中心</a> <a
-											href="# "><i class="fa fa-umbrella " aria-hidden="true "></i>我的订单</a>
-										<a href="# "><i class="fa fa-bed " aria-hidden="true "></i>账单</a>
-										<a href="# "><i class="fa fa-ban " aria-hidden="true "></i>
-											我的消息</a>
+											href="myOrder.jsp"><i class="fa fa-umbrella "
+											aria-hidden="true "></i>我的订单</a> <a href="# "><i
+											class="fa fa-bed " aria-hidden="true "></i>账单</a> <a href="# "><i
+											class="fa fa-ban " aria-hidden="true "></i> 我的消息</a>
 
 									</div>
 								</div>
@@ -101,13 +102,11 @@
 					</div>
 					<div style="margin-left:20px; width: 180px;" id="loaction">
 						<div class="glyphicon glyphicon-map-marker"
-							style="margin-top: 15px;"></div>
+							style="margin-top: 15px;">长沙市</div>
 					</div>
 				</div>
-				</nav>
 			</div>
 
-		</div>
 		</div>
 
 	</section>
@@ -186,8 +185,11 @@
 
 				<div class="p2_book">
 					<ul>
-						<li><a href="booking.html" class="link-btn">立即预定</a></li>
-						<li><a href="tour-details.html" class="link-btn">更多优惠</a></li>
+						<li>
+							<button id="J_addsuppliers" data-toggle="modal"
+								data-target="#J_addsuppliersDialog" data-width="large"
+								data-backdrop="static" class="sui-btn btn-primary link-btn">立即预定</button>
+						</li>
 					</ul>
 				</div>
 				<%
@@ -205,57 +207,124 @@
 		<div class="clearfix"></div>
 	</div>
 
-	<button id="J_addsuppliers" data-toggle="modal"
-		data-target="#J_addsuppliersDialog" data-width="large"
-		data-backdrop="static" class="sui-btn btn-primary">添加供应商</button>
 	<div id="J_addsuppliersDialog" tabindex="-1" role="dialog"
 		class="sui-modal alert fade modal-dialog" style="background: ">
-			<div class="modal-content" style="width: 100%;height: 100%">
-				<div class="modal-header">
-					<button type="button" data-dismiss="modal" aria-hidden="true"
-						class="sui-close">×</button>
-					<h4 id="myModalLabel" class="modal-title">供应商收编</h4>
+		<div class="modal-content" style="width: 100%;height: 100%">
+			<div class="modal-header">
+				<button type="button" data-dismiss="modal" aria-hidden="true"
+					class="sui-close">×</button>
+				<h4 id="myModalLabel" class="modal-title">预定商品</h4>
+			</div>
+			<div class="modal-body sui-form form-horizontal">
+				<div class="sui-msg msg-block msg-default msg-tips">
+					<div class="msg-con">以下为平台官方售价，购买后不能退矿</div>
+					<s class="msg-icon"></s>
 				</div>
-				<div class="modal-body sui-form form-horizontal">
-					<div class="sui-msg msg-block msg-default msg-tips">
-						<div class="msg-con">以下为供销平台上已经获得小二授权经营您的品牌但还未被您进行收编的供应商</div>
-						<s class="msg-icon"></s>
-					</div>
-					<table class="sui-table table-bordered-simple">
-						<thead>
-							<tr>
-								<th>供应商昵称</th>
-								<th>公司名称</th>
-								<th>供应商类型</th>
-								<th>分销商数量</th>
-								<th>授权品牌</th>
-								<th>操作</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><span>only淘宝商城官方旗舰店</span></td>
-								<td><span>九牧官方旗舰店</span></td>
-								<td><span>企业</span></td>
-								<td><span class="distributor-num">432</span></td>
-								<td>
-									<ul class="authorize-brand">
-										<li>海尔</li>
-										<li>统帅</li>
+				<table class="sui-table table-bordered-simple">
+					<thead>
+						<tr>
+							<th>景点名称</th>
+							<th>套餐类型</th>
+							<th>数量</th>
+							<th>类型</th>
+							<th>金额</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="order">
+						<tr>
+							<td><span id="<%=spot.get(0).getHotelId()%>"><%=spot.get(0).getHotelName()%></span></td>
+							<td><span id="<%=room.get(0).getRoomId()%>"><%=room.get(0).getRoomType()%></span></td>
+							<td><span id="<%=room.get(0).getRoomPrice()%>">1</span></td>
+							<td><label class="radio-pretty inline checked"> <input
+									type="radio" checked="checked" name="radio"><span>成人票</span>
+
+							</label> <label class="radio-pretty inline"> <input type="radio"
+									name="radio"><span>学生票</span>
+							</label></td>
+							<td><span class="distributor-num"><%=room.get(0).getRoomPrice()%></span></td>
+							<td data-supplierid="111">
+								<button class="sui-btn btn-small J_addOneSupplier" onclick="cc()">下单</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!--====== FOOTER 2 ==========-->
+	<section style="margin-top: 40px">
+		<div class="rows ">
+			<div class="footer ">
+				<div class="container ">
+					<div class="foot-sec2 ">
+						<div>
+							<div class="row ">
+								<div class="col-sm-3 foot-spec foot-com ">
+									<h4>
+										<span>旅行</span>游玩 &休闲
+									</h4>
+									<p>世界领先的旅游预订网站，结束 全球30000万多家合作伙伴</p>
+								</div>
+								<div class="col-sm-3 foot-spec foot-com ">
+									<h4>
+										<span>地址</span> & 联系方式
+									</h4>
+									<p>果园湖路28800号，法明顿山180号套房， 美国地标:紧邻机场</p>
+									<p>
+										<span class="strong ">电话: </span> <span class="highlighted ">+101-1231-1231</span>
+									</p>
+								</div>
+								<div class="col-sm-3 col-md-3 foot-spec foot-com ">
+									<h4>
+										<span>支持</span> & 帮助
+									</h4>
+									<ul class="two-columns ">
+										<li><a href="# ">关于我们</a></li>
+										<li><a href="# ">FAQ</a></li>
+										<li><a href="# ">回馈</a></li>
+										<li><a href="# ">博客 </a></li>
+										<li><a href="# ">用例</a></li>
+										<li><a href="# ">建议</a></li>
+										<li><a href="# ">交流讨论</a></li>
+										<li><a href="# ">假期</a></li>
+										<li><a href="# ">加入我们</a></li>
+										<li><a href="# ">联系我们</a></li>
 									</ul>
-								</td>
-								<td data-supplierid="111">
-									<button class="sui-btn btn-small J_addOneSupplier">添加</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+								</div>
+								<div class="col-sm-3 foot-social foot-spec foot-com ">
+									<h4>
+										<span>和我们一起</span>
+									</h4>
+									<p>为千万旅游者提供更优质的旅行环境</p>
+									<ul>
+										<li><a href="# "><i class="fa fa-facebook "
+												aria-hidden="true "></i></a></li>
+										<li><a href="# "><i class="fa fa-google-plus "
+												aria-hidden="true "></i></a></li>
+										<li><a href="# "><i class="fa fa-twitter "
+												aria-hidden="true "></i></a></li>
+										<li><a href="# "><i class="fa fa-linkedin "
+												aria-hidden="true "></i></a></li>
+										<li><a href="# "><i class="fa fa-youtube "
+												aria-hidden="true "></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+	</section>
 
-
-</body>
-
-
+	<!--====== FOOTER - COPYRIGHT ==========-->
+	<section>
+		<div class="rows copy ">
+			<div class="container ">
+				<p>Copyrights © 2017 Company Name. All Rights Reserved</p>
+			</div>
+		</div>
+	</section>
+	</body>
 </html>

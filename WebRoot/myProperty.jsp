@@ -39,7 +39,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="js/bootstrap.js"></script>
 		<script src="js/wow.min.js"></script>
 		<script src="js/custom.js"></script>
-
+ <script>
+     $(document).ready(function(){
+          $("#check").click(function(){
+              var year=$("#year").val();
+              var month=$("#month").val();
+              //alert(year+month);
+              $.ajax({
+                    type:"post",
+                    url:"CheckServlet",
+                    data:{year:year,
+                          month:month,
+                    },
+                    success:function(data){
+                        var c=data;
+                        //alert(data);
+                        if(c=="0"){
+                        	$(".order-item").css('display','none');
+                        	$("#totalMoney").val("0");
+                            alert("该月没有产生账单");
+                        }else{
+                            window.location.href="myProperty.jsp";
+                        }
+                    }
+                });
+          });
+     });
+ 
+ </script>
 		<script src="js/bootstrap.js"></script>
 	
 		<link rel="shortcut icon" type="image/x-icon" href="theme/icon/favicon.ico">
@@ -109,11 +136,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="dropdown ">
 										<button class="dropbtn " style="width: 80px; margin-top: 10px;margin-left: 20px;">个人中心</button>
 										<div class="dropdown-content " style="margin-left: 130px; ">								
-											<a href="# "><i class="fa fa-bookmark-o " aria-hidden="true "></i> 个人中心</a>
-											<a href="# "><i class="fa fa-umbrella " aria-hidden="true "></i>我的订单</a>
-											<a href="# "><i class="fa fa-bed " aria-hidden="true "></i>账单</a>
+											<a href="SelectUserInfoServlet"><i class="fa fa-bookmark-o " aria-hidden="true "></i> 个人中心</a>
+											<a href="OrderInfoPages"><i class="fa fa-umbrella " aria-hidden="true "></i>我的订单</a>
+											<a href="myProperty.jsp"><i class="fa fa-bed " aria-hidden="true "></i>账单</a>
 											<a href="# "><i class="fa fa-ban " aria-hidden="true "></i> 我的消息</a>
-											<a href="# "><i class="fa fa-sign-in " aria-hidden="true "></i>退出账号</a>	
+											<a href="userlogin.html"><i class="fa fa-sign-in " aria-hidden="true "></i>退出账号</a>	
 
 										</div>
 									</div>
@@ -149,9 +176,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            <div class="member-lists" style="margin-top:40px;">
 		                <dl style="margin-top:40px;">
 		                    <dt>个人中心</dt>
-		                    <dd class="cur" ><a href="#userinfo.html"><h3>我的信息</h3></a></dd>
-		                    <dd><a href="#myOrder.jsp"><h3>我的订单</h3></a></dd>		                    
-		                    <dd><a href="#myProperty.jsp"><h3>我的财产</h3></a></dd> 
+		                    <dd class="cur" ><a href="userinfo.html">我的信息</a></dd>
+		                    <dd><a href="OrderInfoPages">我的订单</a></dd>		                    
+		                    <dd><a href="myProperty.jsp">我的财产</a></dd> 
 		                </dl>
 		                <dl>
 		                    <dt>客户服务</dt>
@@ -164,14 +191,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <div class="member-right fr id="div1" style="height:800px;">
 		            <div class="member-head" >
 		                <div class="member-heels fl">
-		                    <h3 style="display:inline;">&nbsp;我的订单</h3>
+		                    <h3 style="display:inline;">&nbsp;我的账单</h3>
 		               </div>  
 		            </div>
 		            <div class="order-body" style="height:800px;">
 		               <div style="height:800px;">
 			               	
 			               	<label for="pet-select">请选择年份:</label>
-								<select id="pet-select">
+								<select id="year">
     								<option value="2021">2021</option>
     								<option value="2020">2020</option>
     								<option value="2019" selected>2019</option>
@@ -181,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     								<option value="2015">2015</option>
 								</select>
 			               	<label for="pet-select">请选择月份:</label>
-								<select id="pet-select">
+								<select id="month">
     								<option value="1" selected>1</option>
     								<option value="2">2</option>
     								<option value="3">3</option>
@@ -195,53 +222,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     								<option value="11">11</option>
     								<option value="12">12</option>
 								</select>
-							<input type="button" value="查询">
+							<input type="button" value="查询" id="check">
 			               	<c:forEach  var="orderlist" items="${orderlist}">	
 			               		<div class="order-item clearfix" style="width:100%;display:inline;">	
 			               			           
-			                    <div class="order-img" style="float:left;width:25%;display:inline;">
-			                       	 <a class="link" href="" target="_blank">
-			                       	    <div>
-			                       	         <img src="${orderlist.pictureUrl}" style="width:150px;height:100px;"  class="">
-			                       	    </div>
-			                       	 </a>                     
-			                    </div>
+			                    
 			                    <div class="order-info " style="float:left;width:25%;display:inline;">
 			                       	  <div class="info-box">
 			                       	       <a class="link" href="" target="_blank">
 			                       	           <p class="order-title">酒店名称:${orderlist.hotelName }</p>
 			                       	       </a>
-			                       	       <p class="info">酒店描述</p>
+			                       	      
 			                       	       <p class="info">时间:${orderlist.orderTime}</p>
 			                       	  </div>                      
 			                    </div>
-			                    <div class="order-price" style="float:left;width:25%;display:inline;">预定价格：￥${orderlist.orderMoney}  
+			                    <div class="order-price" style="float:left;width:25%;display:inline;">价格：￥${orderlist.orderMoney}  
 			                    	                      
-			                    </div>
+			                    <%-- </div>
 			                    <div class="order-state" style="float:left;width:25%;display:inline;">预定状态：${orderlist.orderState}		                    	                      
-			                    </div>
+			                    </div> --%>
 			                   
 			                     </div> 
 			                     <br>
 			                </c:forEach>
 			                
-			                <div align = "center">
-								
-								第<c:out value="${curPage}"/>页/共<c:out value="${totalPage}" />页
-								<c:if test="${curPage != 1 }">
-									<a href="OrderInfoPages?page=1">首页</a> | 
-									<a href="OrderInfoPages?page=<c:out value="${curPage -1 }" />">上一页</a>|
-								</c:if>
-								
-								<c:if test="${curPage != totalPage }">
-								 	<a href="OrderInfoPages?page=<c:out value="${curPage + 1 }" />">下一页</a> |
-								 	<a href="OrderInfoPages?page=<c:out value="${totalPage }" />">尾页</a> | 
-								</c:if>
-								
-							</div>
-						 
-				        
-		              
+			                <br><br><br>
+			                <c:if test="${empty TotalMoney}">
+			                	本月总共花费：<input type="text" value="0元" readonly>
+			                </c:if>
+			                 <c:if test="${not empty TotalMoney}">
+								本月总共花费：<input type="text" value="${TotalMoney}" readonly id="totalMoney">
+			                </c:if>			                		              
 		            </div>
 		        </div>	
 		     </div>	     

@@ -49,11 +49,17 @@ public class HotelInfoGetInfoServlet extends HttpServlet {
 		List<HotelInfoPictureBean> list=hotelDao.getHotelInfo(type);
 		Gson gson=new Gson();
 		String hotel=gson.toJson(list);
-		System.out.println(hotel);
 		PrintWriter out=response.getWriter();
 		out.print(hotel);
 		out.flush();
 		
+	}
+	public static void main(String[] args) {
+		HotelInfoDao hotelDao=new HotelInfoDao();
+		List<HotelInfoPictureBean> list=hotelDao.getHotelInfo("景点");
+		Gson gson=new Gson();
+		String hotel=gson.toJson(list);
+		System.out.println(hotel);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

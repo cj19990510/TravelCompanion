@@ -24,7 +24,8 @@
 		<script src="js/custom.js"></script>
 
 		<script src="js/bootstrap.js"></script>
-	
+		<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    	<script type="text/javascript" src="js/jquery.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="theme/icon/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="theme/css/base.css">
 		<link rel="stylesheet" type="text/css" href="theme/css/member.css">
@@ -71,6 +72,24 @@
 			      $("#useremail").removeAttr("readOnly");	
 			      		 			      
 			   });
+			   var userphone=document.getElementById("userphone");
+			   userphone.onblur=function(){
+			      var myreg=/^[1][3,5,7,8][0-9]{9}$/;
+			      if(!myreg.test(userphone.value)){
+			         alert("手机号必须以13,15,17,18开头的11位数字"); 
+			      }
+			   };
+			   var useremail=document.getElementById("useremail");
+			   useremail.onblur=function(){
+			      var myemail=/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+			      if(!myemail.test(useremail.value)){			      
+			         document.getElementById("email").innerHTML="<font color='red'>邮箱格式不正确</font>";
+			         return false;
+			      }else{
+			         document.getElementById("email").innerHTML="<font color='green'>邮箱格式正确</font>";
+			         return true;
+			      }
+			   };
 			   
 			   //确定修改个人信息
 			   $("#qdxiugai").click(function(){
@@ -214,7 +233,7 @@
 		                    <dt>个人中心</dt>
 		                    <dd class="cur" ><a href="SelectUserInfoServlet">我的信息</a></dd>
 		                    <dd><a href="OrderInfoPages">我的订单</a></dd>		                    
-		                    <dd><a href="myProperty.jsp" style="color:#0000FF">我的财产</a></dd> 
+		                    <dd><a href="myProperty.jsp" >我的财产</a></dd> 
 		                    <!--  <dd id="dingdan" onclick="showDivs('div2')">我的订单</dd>          
 		                    <dd id="caichan" onclick="showDivs('div3')">我的财产</dd> -->
 		                  
@@ -271,14 +290,14 @@
 		                       <dt>
 		                             <b>用户手机：</b>
 		                             <input type="text" name="userphone" id="userphone"  readonly="readonly">
-		                             <span ></span>                                  
+		                             <span id="phone" style="color:green;font-size:25px;"></span>                                  
 		                       </dt>		                      
 		                   </dl>
 		                   <dl class="member-custom clearfix ">
 		                       <dt>
 		                              <b>用户邮箱：</b>
 		                             <input type="text" name="useremail" id="useremail" readonly="readonly" > 
-		                             <span ></span>                                
+		                             <span id="email" style="color:green;font-size:25px;"></span>                              
 		                       </dt> 
 		                   </dl>
 		                   

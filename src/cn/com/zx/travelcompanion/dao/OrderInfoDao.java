@@ -19,6 +19,7 @@ import cn.com.zx.travelcompanion.DB.RowMapper;
 import cn.com.zx.travelcompanion.bean.HotelInfoPictureBean;
 import cn.com.zx.travelcompanion.bean.IntAndInt;
 import cn.com.zx.travelcompanion.bean.OrderInfoBean;
+import cn.com.zx.travelcompanion.bean.OrderInfoHotelBean;
 import cn.com.zx.travelcompanion.daoimp.OrderInfoDaoImp;
 
 public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
@@ -26,15 +27,15 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 	@Override
 	public String[] getValueToAI(String type) {
 		Object[] object=new Object[] {type};
-		String sql="SELECT c.userid,h.hotelid FROM hotelinfo h,orderinfo c WHERE h.type=? AND h.hotelid=c.hotelid LIMIT 1024 order by c.userid";
+		String sql="SELECT c.userid,h.hotelid FROM hotelinfo h,orderinfo c WHERE h.type=? AND h.hotelid=c.hotelid order by c.userid  LIMIT 1024 ";
 		String[] test=null;
 		List<IntAndInt> list=null;
 		try {
 			list = this.queryForList(new RowMapper<IntAndInt>() {
 				public IntAndInt mappingRow(ResultSet rs, int rownum) throws SQLException {
 					IntAndInt iToI= new IntAndInt();
-					iToI.setI(rs.getInt(0));
 					iToI.setI(rs.getInt(1));
+					iToI.setI(rs.getInt(2));
 					return iToI;
 				}
 				
@@ -54,13 +55,13 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 	@Override
 	public String getPersonValueToAI(String type, int userid) {
 		Object[] object=new Object[] {type,userid};
-		String sql="SELECT h.hotelid FROM hotelinfo h,orderinfo c WHERE h.type=? AND h.userid=? h.hotelid=c.hotelid LIMIT 1024 order by c.userid";
-		String test=null;
+		String sql="SELECT h.hotelid FROM hotelinfo h,orderinfo c WHERE h.type=? AND c.userid=? and h.hotelid=c.hotelid";
+		String test=new String();
 		List<Integer> list=null;
 		try {
 			list = this.queryForList(new RowMapper<Integer>() {
 				public Integer mappingRow(ResultSet rs, int rownum) throws SQLException {
-					Integer i=new Integer(rs.getInt(0));
+					Integer i=new Integer(rs.getInt(1));
 					return i;
 				}
 				
@@ -123,15 +124,15 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 		}
 	  
 	}
-	//根据用户id查出订单信息，图片信息，酒店信息
-	public List<OrderInfoBean> getOrderInfoandHotelInfoByuserid(int userid){
+	/*//根据用户id查出订单信息，图片信息，酒店信息
+	public List<OrderInfoHotelBean> getOrderInfoandHotelInfoByuserid(int userid){
 		Object[] params=new Object[]{userid};
 		String sql="select t.* ,h.hotelname,p.pictureUrl from orderinfo t,hotelinfo h,pictureinfo p where t.hotelid=h.hotelid and h.hotelid=p.hotelid and t.userid=?";
 		List<OrderInfoBean> list=null;
 		try{
 			list=this.queryForList(new RowMapper<OrderInfoBean>(){
 				public OrderInfoBean mappingRow(ResultSet rs, int rownum) throws SQLException {
-					OrderInfoBean orderinfo=new OrderInfoBean();
+					OrderInfoHotelBean orderinfo=new OrderInfoHotelBean();
 					orderinfo.setOrderId(rs.getInt("orderid"));
 					orderinfo.setUserId(rs.getInt("userid"));
 					orderinfo.setHotelId(rs.getInt("hotelid"));
@@ -155,13 +156,13 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 			 return list;
 		}
 	  
-	}
+	}*/
 	
 	
 	
 	
 	//订单分页查询
-		public List<OrderInfoBean> chaXunDan(int currentPage,int userId) throws ParseException {
+		public List<OrderInfoHotelBean> chaXunDan(int currentPage,int userId) throws ParseException {
 			
 			int pageSize = 2;
 			int startIndex = 0;
@@ -170,7 +171,7 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 			}
 			
 			//String sql="select * from orderinfo where userId=? order by orderTime desc limit ?, ?";
-			String sql="select t.* ,h.hotelname,p.pictureUrl from orderinfo t,hotelinfo h,pictureinfo p where t.hotelid=h.hotelid and h.hotelid=p.hotelid and t.userid=? order by orderTime desc limit ?, ?";
+			String sql="select t.* ,h.hotelname,p.pictureUrl,h.type,h.hotelinfomation from orderinfo t,hotelinfo h,pictureinfo p where t.hotelid=h.hotelid and h.hotelid=p.hotelid and t.userid=? order by orderTime desc limit ?, ?";
 			/*String str=time+" 00:00:00";
 		     Date dt = sdf.parse(str);  
 		     Calendar rightNow = Calendar.getInstance();  
@@ -179,7 +180,7 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 		     String time1=sdf.format(rightNow.getTime());
 		     String t= time1.substring(0,str.indexOf(" "));*/
 
-			List<OrderInfoBean> list1=new ArrayList<OrderInfoBean>();
+			List<OrderInfoHotelBean> list1=new ArrayList<OrderInfoHotelBean>();
 
 			Connection con = null;
 		    PreparedStatement pre = null;
@@ -192,7 +193,7 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 		     pre.setObject(3,pageSize);
 		     rs = pre.executeQuery();
 		     while (rs.next()) {
-		    	 OrderInfoBean order =new OrderInfoBean();
+		    	 OrderInfoHotelBean order =new OrderInfoHotelBean();
 		    	 
 		    	 order.setOrderId(rs.getInt(1));
 		    	 order.setUserId(rs.getInt(2));
@@ -205,6 +206,8 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 		    	 order.setInTime(rs.getTimestamp(9));
 		    	 order.setHotelName(rs.getString(10));
 		    	 order.setPictureUrl(rs.getString(11));
+		    	 order.setType(rs.getString(12));
+		    	 order.setHotelInfomation(rs.getString(13));
 		        list1.add(order);
 
 		     }
@@ -251,23 +254,34 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 		
 		
 		//账单查询
-			public List<OrderInfoBean> chaXunOrder(int year,int month,int userId) throws ParseException {
+			public List<OrderInfoHotelBean> chaXunOrder(int year,int month,int userId) throws ParseException {
 					int day=getMonthDay(year,month);
 					SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					String startMonth="";
 					String EndMonth="";
 					if(month>=1&&month<=9){
 						startMonth=year+"-"+"0"+month+"-"+"01"+" 00:00:00";
-						EndMonth=year+"-"+"0"+month+"-"+day+" 00:00:00";
+						if(day>=1&&day<=9){
+							EndMonth=year+"-"+"0"+month+"-0"+day+" 00:00:00";
+						}
+						else{
+							EndMonth=year+"-"+"0"+month+"-"+day+" 00:00:00";
+						}
+						
 					}else{
 						startMonth=year+"-"+month+"-"+"01"+" 00:00:00";
-						EndMonth=year+"-"+month+"-"+day+" 00:00:00";
+						if(day>=1&&day<=9){
+							EndMonth=year+"-"+month+"-0"+day+" 00:00:00";
+						}
+						else{
+							EndMonth=year+"-"+month+"-"+day+" 00:00:00";
+						}
 					}
-					Date startTime = simpleDateFormat.parse(startMonth);
-					Date endTime = simpleDateFormat.parse(EndMonth);
+					
+					System.out.println(startMonth+" "+EndMonth);
 					//String sql="select * from orderinfo where userId=? order by orderTime desc limit ?, ?";
 					String sql="SELECT t.* ,h.hotelname,p.pictureUrl FROM orderinfo t,hotelinfo h,pictureinfo p WHERE t.hotelid=h.hotelid AND h.hotelid=p.hotelid AND t.userid=?  AND t.orderTime>=? AND  t.orderTime<=?  AND t.orderState='预订成功'  ORDER BY t.orderTime DESC";
-					List<OrderInfoBean> list1=new ArrayList<OrderInfoBean>();
+					List<OrderInfoHotelBean> list1=new ArrayList<OrderInfoHotelBean>();
 
 					Connection con = null;
 				    PreparedStatement pre = null;
@@ -276,11 +290,11 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 				     con = DbUtil.getConnection();
 				     pre = con.prepareStatement(sql);
 				     pre.setObject(1,userId);
-				     pre.setObject(2,startTime);
-				     pre.setObject(3,endTime);
+				     pre.setObject(2,startMonth);
+				     pre.setObject(3,EndMonth);
 				     rs = pre.executeQuery();
 				     while (rs.next()) {
-				    	 OrderInfoBean order =new OrderInfoBean();
+				    	 OrderInfoHotelBean order =new OrderInfoHotelBean();
 				    	 
 				    	 order.setOrderId(rs.getInt(1));
 				    	 order.setUserId(rs.getInt(2));
@@ -313,10 +327,11 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 
 		@Override
 		public int insertOrderInfoByuserid(OrderInfoBean order) {
-			String sql = "insert into orderinfo values(?,?,?,?,?,?,?)";
-			Object[] params = {order.getUserId(),order.getHotelId(),
+			int id=(int) System.currentTimeMillis();
+			String sql = "insert into orderinfo values(?,?,?,?,?,?,?,?,?)";
+			Object[] params = {id,order.getUserId(),order.getHotelId(),
 					order.getRoomId(),order.getDayNum(),order.getOrderMoney(),
-					order.getOrderTime(),order.getOrderState()};
+					order.getOrderTime(),order.getOrderState(),order.getOrderTime()};
 			try {
 				this.set(sql, params);
 			} catch (ClassNotFoundException | IOException | SQLException e) {

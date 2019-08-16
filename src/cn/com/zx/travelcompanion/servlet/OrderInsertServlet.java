@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import cn.com.zx.travelcompanion.DB.GetNowTime;
 import cn.com.zx.travelcompanion.bean.OrderInfoBean;
 import cn.com.zx.travelcompanion.bean.UserInfoBean;
-
+import cn.com.zx.travelcompanion.dao.OrderInfoDao;
 /**
  * Servlet implementation class OrderInsertServlet
  */
@@ -46,8 +48,11 @@ public class OrderInsertServlet extends HttpServlet {
 		order.setOrderMoney(mon);
 		order.setOrderTime(GetNowTime.getNowTime());
 		order.setOrderState("待接单");
+		Gson gson=new Gson();
+		OrderInfoDao od=new OrderInfoDao();
+		od.insertOrderInfoByuserid(order);
+		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
