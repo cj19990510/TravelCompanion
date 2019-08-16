@@ -12,4 +12,5 @@ public interface getOrderInfoService {
 	public List<OrderInfoBean> getOrderInfoBy(int hotelid,String State);
 	//通过订单号获取订单信息
 	public OrderInfoBean getOrderInfoByOrderid(int orderid);
+
 }

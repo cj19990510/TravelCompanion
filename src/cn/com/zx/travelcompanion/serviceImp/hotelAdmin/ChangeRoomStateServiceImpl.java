@@ -6,11 +6,11 @@ import cn.com.zx.travelcompanion.service.hotelAdmin.ChangeRoomStateService;
 
 public class ChangeRoomStateServiceImpl implements ChangeRoomStateService{
     RoomInfoDao rid=new RoomInfoDaoImpl();
-	
+	//更改状态为住满
 	public Boolean changeRoomState(int roomid) {
 		// TODO Auto-generated method stub
-		rid.changeRoomState(roomid, "住满");
-		return null;
+		return rid.changeRoomState(roomid, "住满");
+		
 	}
 	
 }
