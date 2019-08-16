@@ -37,6 +37,8 @@ public class getUserInfoServlet extends HttpServlet {
 		if(user==null){
 			out.print(1);
 			out.flush();
+			
+			
 		}
 		else{
 			out.print(0);
