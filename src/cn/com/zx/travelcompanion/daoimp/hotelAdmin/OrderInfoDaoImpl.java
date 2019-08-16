@@ -35,6 +35,8 @@ public class OrderInfoDaoImpl extends JdbcTemplate implements OrderInfoDao{
 					oi.setDayNum(rs.getInt("dayNum"));	//预定天数
 					oi.setOrderMoney(rs.getBigDecimal("orderMoney"));
 					oi.setOrderState(rs.getString("orderState"));
+					oi.setInTime(rs.getTimestamp("intime"));
+					oi.setRoomId(rs.getInt("roomId"));
 					return oi;
 				}
 				
@@ -70,6 +72,9 @@ public class OrderInfoDaoImpl extends JdbcTemplate implements OrderInfoDao{
 					oi.setDayNum(rs.getInt("dayNum"));	//预定天数
 					oi.setOrderMoney(rs.getBigDecimal("orderMoney"));
 					oi.setOrderState(rs.getString("orderState"));
+					oi.setInTime(rs.getTimestamp("intime"));
+					oi.setRoomId(rs.getInt("roomId"));
+				
 					return oi;
 				}
 				
@@ -87,7 +92,7 @@ public class OrderInfoDaoImpl extends JdbcTemplate implements OrderInfoDao{
 		return list;
 	
 	}
-	//
+	//改变订单状态
 public  Boolean updateOrderInfo(int orderid,String orderState){
 	Connection conn = null; 
 	PreparedStatement pre = null; 
@@ -119,6 +124,41 @@ public  Boolean updateOrderInfo(int orderid,String orderState){
 	
 }
 	
+public OrderInfoBean getOrderInfoByOrderid(int orderid) {
+	String sql ="select * from OrderInfo where orderId=?";//获取此酒店的订单信息
+	List<OrderInfoBean> list = new ArrayList<OrderInfoBean>();
+	Object[] params = new Object[]{orderid};
+	try {
+		list = this.queryForList(new RowMapper<OrderInfoBean>(){    
+			@Override
+			public OrderInfoBean mappingRow(ResultSet rs, int rownum) throws SQLException {
+				
+				// TODO Auto-generated method stub
+				OrderInfoBean oi=new OrderInfoBean();
+				oi.setOrderId(rs.getInt("orderId"));   //订单号
+				oi.setOrderTime(rs.getTimestamp("orderTime")); //订单金额
+				oi.setDayNum(rs.getInt("dayNum"));	//预定天数
+				oi.setOrderMoney(rs.getBigDecimal("orderMoney"));
+				oi.setOrderState(rs.getString("orderState"));
+				oi.setInTime(rs.getTimestamp("intime"));
+				oi.setRoomId(rs.getInt("roomId"));
+				return oi;
+			}
+			
+		}, sql, params);
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return list.get(0);
+
+}
 	
 
 }

@@ -12,5 +12,5 @@ public interface RoomInfoDao {
   public Boolean changeRoomState(int roomId, String roomState);
   public Boolean insertRoomInfoBean(int hotelId,String roomType,String roomPrice) ;
   
-  
+  public RoomInfoBean getRoomInfoByRoomId(int roomId);
 }

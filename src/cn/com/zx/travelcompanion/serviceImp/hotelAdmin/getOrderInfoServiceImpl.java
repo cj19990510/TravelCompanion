@@ -15,5 +15,19 @@ public class getOrderInfoServiceImpl implements getOrderInfoService{
 		
 		return oi;
 	}
+	@Override
+	public List<OrderInfoBean> getOrderInfoBy(int hotelid, String State) {
+		// TODO Auto-generated method stub
+  List<OrderInfoBean> oi=oid.getWOrderInfo(hotelid, State);
+	
+  return oi;
+	
+	}
+	@Override
+	public OrderInfoBean getOrderInfoByOrderid(int orderid) {
+		// TODO Auto-generated method stub
+		OrderInfoBean oi=oid.getOrderInfoByOrderid(orderid);
+		return oi;
+	}
 
 }

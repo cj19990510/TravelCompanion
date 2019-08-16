@@ -14,7 +14,7 @@ import cn.com.zx.travelcompanion.DB.DbUtil;
 import cn.com.zx.travelcompanion.DB.JdbcTemplate;
 import cn.com.zx.travelcompanion.DB.RowMapper;
 import cn.com.zx.travelcompanion.bean.CityInfoBean;
-
+import cn.com.zx.travelcompanion.bean.HotelAdminInfoBean;
 import cn.com.zx.travelcompanion.dao.hotelAdmin.CityDao;
 
 public class CityDaoImpl extends JdbcTemplate implements CityDao{
@@ -90,8 +90,41 @@ public class CityDaoImpl extends JdbcTemplate implements CityDao{
 		}
 	
 	}
-public static void main(String[] args) {
-	CityDao c=new CityDaoImpl();
-	System.out.println(c.cityId("长沙").province);
+
+@Override
+public CityInfoBean cityInfo(int cityid) {
+	String sql ="select * from cityinfo where cityId=?";
+	List<CityInfoBean> list = new ArrayList<CityInfoBean>();
+	Object[] params = new Object[]{cityid};
+	try {
+		list = this.queryForList(new RowMapper<CityInfoBean>(){
+
+			@Override
+			public CityInfoBean mappingRow(ResultSet rs, int rownum) throws SQLException {
+				// TODO Auto-generated method stub
+				CityInfoBean cib=new CityInfoBean();
+				cib.setProvince(rs.getString("province"));
+				cib.setCityName(rs.getString("cityName"));
+				return cib;
+			}
+			
+		}, sql, params);
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	if(list != null && list.size() > 0) {
+		return list.get(0);
+	}else {
+		return null;
+	}
+
+
 }
 }

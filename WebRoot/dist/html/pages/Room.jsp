@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page isELIgnored="false"%>
 <%
@@ -33,26 +33,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body class="flat-blue">
   
-    <div class="app-container">
-        <div class="row content-container">
-            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
-                <div class="container-fluid">
+ <div class="app-container">
+     <div class="row content-container">
+         <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+             <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-expand-toggle">
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li>订单服务</li>
-                            <li class="active">新的用户订单表</li>
+                            <li>房间服务</li>
+                            <li class="active">房间信息</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
                         </button>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
-                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                            <i class="fa fa-times icon"></i>
-                        </button>
+                     
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
                             <ul class="dropdown-menu animated fadeInDown">
@@ -131,21 +129,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="../index.html">
-                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+                                <a href="dist/html/index.jsp">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">回到主页</span>
                                 </a>
                             </li>
-                          <li class="panel panel-default dropdown">
+                         <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">订单表</span>
+                                    <span class="icon fa fa-table"></span><span class="title">酒店订单</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="table/table.html">新的用户订单表</a>
+                                            <li><a href="OrderInfoServlet">新的用户订单</a>
                                             </li>
-                                            <li><a href="OrderInfoServlet">用户订单</a>
+                                            <li><a href="OrderInfoall">全部订单</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -153,35 +151,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">酒店注册</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-form" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="dist/html/form/ui-kits.html">酒店注册</a>
+                                            <li><a href="dist/html/form/HotelzhuCe.jsp">酒店注册表</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                             <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-Room">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">房间信息</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
-                                <div id="component-example" class="panel-collapse collapse">
+                                <div id="dropdown-Room" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="components/pricing-table.html">Pricing Table</a>
-                                            </li>
-                                            <li><a href="components/chartjs.html">Chart.JS</a>
+                                            <li><a href="dist/html/pages/Room.jsp">房间信息</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
+                        
                 </nav>
             </div>
             <!-- Main Content -->
@@ -189,32 +185,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">请添加您的房间信息</span>
-                        <div class="description">房间</div>
+                        <span class="title">请设置您的房间信息</span>
+                    
                     </div>
                                 <div class="card-title">
-                                    <div class="title">房间信息</div>
+                                    <div class="title"><h4>房间信息</h4></div>
                                     </div>                            
-                                
-                                <div class="card-body">
-                                <div class="btn-toolbar" role="toolbar">
-                                            <div class="btn-group">
-                                                <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Large button <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Action</a></li>
-                                                    <li><a href="#">Another action</a></li>
-                                                    <li><a href="#">Something else here</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Separated link</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                    
+ <div class="card-body">                             
+      
+     <form class="form"  action="setRoomInfoServlet" method="post" >
+     <fieldset> 
+        选择您的房间类型：
+        <input list="type" name="type"/>
+        <datalist id="type">
+            <option>双人床</option>
+                                                <option>单人床</option>
+                                                <option >三人床</option>   
+                                              <option >豪华单人间</option>  
+                                                 <option >豪华双人间</option>       
+                                                 <option >其他类型</option>  
+         </datalist>
+            </select>
+ 
+            
+             此类型房间的价格设定为：
+                <input type="text" name="price" value="" id="price">
+         
+            
+              此类型房间的个数设定为：
+                <input type="text" name="number" value="" id="price">        
+            <button type="submit" class="btn met1"  id="button-show" >确定</button>    
+    </fieldset>
+    </form>
+             <div>
                                     <table class="table">
                                         <thead>
-                                            <tr>
-                                                <th>#</th>
+                                            <tr>                                           
                                                 <th>房间类型</th>
                                                 <th>房间价格</th>
                                                 <th>房间总数</th>
@@ -222,38 +229,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </tr>
                                         </thead>
                                         <tbody>
-                                         <tr>
-                                                <th scope="row">1</th>
-                                                <td>单人床</td>
-                                                <td>100</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>双人床</td>
-                                                <td>200</td>
-                                                <td>30</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>三人床</td>
-                                                <td>400</td>
-                                                <td>40</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">4</th>
-                                                <td>豪华单人间</td>
-                                                <td>500</td>
-                                                <td>20</td>
-                                            </tr>
-                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>豪华双人间</td>
-                                                <td>600</td>
-                                                <td>30</td>
-                                            </tr>
+                                        
+                                        
+                             <c:forEach var="hoteltype" items="${hoteltype}" varStatus="loop">
+                           
+                              <tr>
+                              
+                             <td>${hoteltype}</td>
+                             <td>${RoomPrice[loop.count-1]}元</td>
+                             <td>${RoomAll[loop.count-1]}</td>
+                             <td>${RoomE[loop.count-1]}</td>
+                             
+                             </tr>
+                              </c:forEach>
+                              
+                          
+                                            
                                         </tbody>
                                     </table>
+                                    </div>
                             </div>
              </div>            
                          
