@@ -14,9 +14,8 @@ function cc(){
 	    	 money:a,
 	     },
 	     success:function(data){
-	    	
-	    	window.location.href="index.html";
-	    	alert("购买成功，请去我的订单查看");;
+	    	window.location.href="OrderInfoPages";
+	    	alert("购买成功，请去我的订单查看");
 	     }
 	})
 }

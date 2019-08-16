@@ -14,8 +14,11 @@ public class OrderInfoBean {
     public String orderState;//订单状态
     public Timestamp inTime;//入住时间
     public String hotelName;
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> fa8c006146d00364aceb4783ab4a97c07bf2e34e
 	public String getHotelName() {
 		return hotelName;
 	}

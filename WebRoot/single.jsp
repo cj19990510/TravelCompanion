@@ -252,8 +252,9 @@
 			</div>
 		</div>
 	</div>
+
 	<!--====== FOOTER 2 ==========-->
-	<section style="margin-top: 40px">
+	<section>
 		<div class="rows ">
 			<div class="footer ">
 				<div class="container ">
@@ -288,7 +289,7 @@
 										<li><a href="# ">建议</a></li>
 										<li><a href="# ">交流讨论</a></li>
 										<li><a href="# ">假期</a></li>
-										<li><a href="# ">加入我们</a></li>
+										<li><a href="dist/html/form/HotelzhuCe.jsp">加入我们</a></li>
 										<li><a href="# ">联系我们</a></li>
 									</ul>
 								</div>
