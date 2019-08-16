@@ -33,7 +33,6 @@ public class GetDetailSpotServlet extends HttpServlet {
 		List<HotelInfoPictureBean> list=hotelDao.getHotelInfo(c);
 		List<RoomInfoBean> listRoom=new RoomInfoDao().getspot(String.valueOf(c));
 		HotelInfoPictureBean weq=list.get(0);
-		System.out.println(weq.getHotelLevel()+"电话0"+weq.getHotelPhone());
 		request.setAttribute("spot",list);
 		request.setAttribute("room",listRoom);
 		request.getRequestDispatcher("single.jsp").forward(request, response);

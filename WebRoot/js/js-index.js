@@ -107,7 +107,9 @@ $(document).ready(function(){
 				"<td class='e_h1 '>"+item.hotelLevel+"</td>"+
 				"<td class='e_h1 '>"+item.hotelPhone+"</td>"+
 				"<td class='e_h1 '>"+item.cityName+"</td>"+
-				"<td><a href=''booking.html' class='link-btn'>查看详细</a></td></tr>"
+				"<td><a class='link-btn' id='"
+				+item.hotelId+
+				"' onclick='turnToSpot(this)'>查看详细</a></td></tr>"
 			)
 			})
 		}

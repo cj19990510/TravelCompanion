@@ -26,15 +26,15 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 	@Override
 	public String[] getValueToAI(String type) {
 		Object[] object=new Object[] {type};
-		String sql="SELECT c.userid,h.hotelid FROM hotelinfo h,orderinfo c WHERE h.type=? AND h.hotelid=c.hotelid LIMIT 1024 order by c.userid";
+		String sql="SELECT c.userid,h.hotelid FROM hotelinfo h,orderinfo c WHERE h.type=? AND h.hotelid=c.hotelid order by c.userid  LIMIT 1024 ";
 		String[] test=null;
 		List<IntAndInt> list=null;
 		try {
 			list = this.queryForList(new RowMapper<IntAndInt>() {
 				public IntAndInt mappingRow(ResultSet rs, int rownum) throws SQLException {
 					IntAndInt iToI= new IntAndInt();
-					iToI.setI(rs.getInt(0));
 					iToI.setI(rs.getInt(1));
+					iToI.setI(rs.getInt(2));
 					return iToI;
 				}
 				
@@ -54,13 +54,13 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 	@Override
 	public String getPersonValueToAI(String type, int userid) {
 		Object[] object=new Object[] {type,userid};
-		String sql="SELECT h.hotelid FROM hotelinfo h,orderinfo c WHERE h.type=? AND h.userid=? h.hotelid=c.hotelid LIMIT 1024 order by c.userid";
-		String test=null;
+		String sql="SELECT h.hotelid FROM hotelinfo h,orderinfo c WHERE h.type=? AND c.userid=? and h.hotelid=c.hotelid";
+		String test=new String();
 		List<Integer> list=null;
 		try {
 			list = this.queryForList(new RowMapper<Integer>() {
 				public Integer mappingRow(ResultSet rs, int rownum) throws SQLException {
-					Integer i=new Integer(rs.getInt(0));
+					Integer i=new Integer(rs.getInt(1));
 					return i;
 				}
 				
@@ -313,10 +313,11 @@ public class OrderInfoDao extends JdbcTemplate implements OrderInfoDaoImp{
 
 		@Override
 		public int insertOrderInfoByuserid(OrderInfoBean order) {
-			String sql = "insert into orderinfo values(?,?,?,?,?,?,?)";
-			Object[] params = {order.getUserId(),order.getHotelId(),
+			int id=(int) System.currentTimeMillis();
+			String sql = "insert into orderinfo values(?,?,?,?,?,?,?,?,?)";
+			Object[] params = {id,order.getUserId(),order.getHotelId(),
 					order.getRoomId(),order.getDayNum(),order.getOrderMoney(),
-					order.getOrderTime(),order.getOrderState()};
+					order.getOrderTime(),order.getOrderState(),order.getOrderTime()};
 			try {
 				this.set(sql, params);
 			} catch (ClassNotFoundException | IOException | SQLException e) {
