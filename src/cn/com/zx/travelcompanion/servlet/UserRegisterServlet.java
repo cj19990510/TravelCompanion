@@ -29,13 +29,15 @@ public class UserRegisterServlet extends HttpServlet{
     	 System.out.println(userName+"11111..."+userPassword+"11...."+userPhone+"111.."+userEmail);
     	 UserInfoDao userinfo=new UserInfoDao();
     	 System.out.println(userName+"11111..."+userPassword+"11...."+userPhone+"111.."+userEmail);
-    	 if((userName!=null||!"".equals(userName))&&(userPassword!=null||!"".equals(userPassword))&&(userPhone!=null||!"".equals(userPhone))){
+    	 if((userName!=null||!"".equals(userName))&&(userPassword!=null||!"".equals(userPassword))&&(userPhone!=null||!"".equals(userPhone))&&(userEmail!=null||!"".equals(userEmail))){
+    		 
     		 int i=userinfo.userRegister(userName, userPassword,userPhone,userEmail);
+    		 System.out.println("!+i"+i);
         	 if(i==1){
-        		 response.getWriter().write("用户注册成功");
+        		 response.getWriter().write("1");
         	 }	 
     	 }else{
-    		   response.getWriter().write("请把信息填完整");
+    		   response.getWriter().write("0");
     	 }
     
      }

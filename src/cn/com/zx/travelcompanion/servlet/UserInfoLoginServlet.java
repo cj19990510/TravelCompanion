@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
-
+import cn.com.zx.travelcompanion.DB.Md5;
 import cn.com.zx.travelcompanion.bean.UserInfoBean;
 import cn.com.zx.travelcompanion.dao.UserInfoDao;
 
@@ -44,8 +44,11 @@ public class UserInfoLoginServlet extends HttpServlet {
     	  UserInfoBean userinfo=new UserInfoBean();
     	  String userName=request.getParameter("username");//得到页面js里面的data
     	  String userPassword=request.getParameter("userpassword");
-    	  //System.out.println("userName"+userName);
-    	  UserInfoDao userdao=new UserInfoDao();
+    	  
+    	  
+    	  System.out.println("userpassword"+userPassword);
+		  UserInfoDao userdao=new UserInfoDao();
+    	  //
     	  userinfo=userdao.getUserInfoByuserName(userName, userPassword);
     	  Writer out=response.getWriter();
     	  if(userinfo==null){
@@ -56,6 +59,9 @@ public class UserInfoLoginServlet extends HttpServlet {
     		  out.write("1");
     		  out.flush();
     	  }
+    	  
+    	  
+    	 
     }
 
 }
