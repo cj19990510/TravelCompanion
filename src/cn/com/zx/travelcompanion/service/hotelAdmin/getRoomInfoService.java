@@ -6,4 +6,5 @@ import cn.com.zx.travelcompanion.bean.RoomInfoBean;
 //获取房间信息
 public interface getRoomInfoService {
 	public List<RoomInfoBean> getRoomInfo(int hotelId);
+    public RoomInfoBean getRoomInfobyRoomid(int roomid);
 }

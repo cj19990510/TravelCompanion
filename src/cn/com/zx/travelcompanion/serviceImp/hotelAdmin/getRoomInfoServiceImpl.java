@@ -16,6 +16,15 @@ public class getRoomInfoServiceImpl implements getRoomInfoService{
 		List<RoomInfoBean> ri=rid.getRoomInfoByHotel(hotelId);
 		return ri;
 	}
+	@Override
+	public RoomInfoBean getRoomInfobyRoomid(int roomid) {
+		// TODO Auto-generated method stub
+		RoomInfoBean ri=rid.getRoomInfoByRoomId(roomid);
+		return ri;
+	}
+	
+
+
 	
 	
 

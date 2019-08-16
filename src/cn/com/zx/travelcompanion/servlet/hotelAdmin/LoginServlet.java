@@ -13,8 +13,12 @@ import javax.servlet.http.HttpSession;
 
 import cn.com.zx.travelcompanion.bean.HotelAdminInfoBean;
 import cn.com.zx.travelcompanion.bean.HotelInfoBean;
+import cn.com.zx.travelcompanion.dao.CityInfoDao;
+import cn.com.zx.travelcompanion.dao.hotelAdmin.CityDao;
+import cn.com.zx.travelcompanion.service.hotelAdmin.CityService;
 import cn.com.zx.travelcompanion.service.hotelAdmin.HotelAdminService;
 import cn.com.zx.travelcompanion.service.hotelAdmin.HotelInfoService;
+import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.CityServiceImpl;
 import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.HotelAdminServiceImpl;
 import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.HotelInfoServiceImpl;
 
@@ -54,6 +58,9 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("hotel",hib);	
 			session.setAttribute("hotelid", hotelid);
 		    session.setAttribute("user", haib);	    
+		    
+		    
+		    
 			req.getRequestDispatcher("dist/html/index.jsp").forward(req, resp);
 				
 				

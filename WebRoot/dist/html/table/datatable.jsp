@@ -130,22 +130,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </button>
                         </div>
                         <ul class="nav navbar-nav">
-                            <li>
-                                <a href="../index.html">
-                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+                             <li>
+                                <a href="dist/html/index.jsp">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">主页</span>
                                 </a>
                             </li>
-                          <li class="panel panel-default dropdown">
+                         <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">订单表</span>
+                                    <span class="icon fa fa-table"></span><span class="title">酒店订单</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="table/table.html">新的用户订单表</a>
+                                            <li><a href="OrderInfoServlet">新的用户订单</a>
                                             </li>
-                                            <li><a href="OrderInfoServlet">用户订单</a>
+                                            <li><a href="OrderInfoall">全部订单</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -153,35 +153,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">酒店注册</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-form" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="dist/html/form/ui-kits.html">酒店注册</a>
+                                            <li><a href="dist/html/form/HotelzhuCe.jsp">酒店注册表</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                             <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-Room">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">房间信息</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
-                                <div id="component-example" class="panel-collapse collapse">
+                                <div id="dropdown-Room" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="components/pricing-table.html">Pricing Table</a>
-                                            </li>
-                                            <li><a href="components/chartjs.html">Chart.JS</a>
+                                            <li><a href="dist/html/pages/Room.jsp">房间信息</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
+               
                 </nav>
             </div>
             <!-- Main Content -->
@@ -227,18 +225,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                            <c:forEach var="item" items="${oi}">
+                                       
+                            <c:forEach var="item" items="${oi}" varStatus="loop">
                               <tr>
                              <td>${item.orderId}</td>
                              <td>${item.orderTime}</td>
                              <td>${item.dayNum}天</td>
-                             <td>${item.roomId}</td><!-- 暂用 待会改成房间类型  加个a标签 查看此房间剩余数量-->
+                             <td>${type[loop.count-1]}</td>
                              <td>${item.inTime}</td>
                              
                           <!--   <td><input type="checkbox" class="toggle-checkbox" name="my-checkbox" checked=" " ></td> --> 
+                           
                              <td>                               
-                              <button type="button" class="btn btn-link" >确认</button>  <button type="button" class="btn btn-link" >拒绝</button>
+                              <a href="OrderChange?orderId=${item.orderId}">是</a>&emsp;&emsp;
+							<a href="OrderNo?orderId=${item.orderId}">否</a>
                                </td>
+                         
                              </tr>
                               </c:forEach>
                              

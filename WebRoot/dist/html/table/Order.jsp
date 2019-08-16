@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
                             <li>订单服务</li>
-                            <li class="active">新的用户订单表</li>
+                            <li class="active">所有用户订单</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="navbar-header">
                             <a class="navbar-brand" href="dist/html/index.jsp">
                                 <div class="icon fa fa-paper-plane"></div>
-                                <div class="title">回到主页</div>
+                                <div class="title">酒店管理</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -131,21 +131,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="../index.html">
-                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+                                <a href="dist/html/index.jsp">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">主页</span>
                                 </a>
                             </li>
-                          <li class="panel panel-default dropdown">
+                         <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">订单表</span>
+                                    <span class="icon fa fa-table"></span><span class="title">酒店订单</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="table/table.html">新的用户订单表</a>
+                                            <li><a href="OrderInfoServlet">新的用户订单</a>
                                             </li>
-                                            <li><a href="OrderInfoServlet">用户订单</a>
+                                            <li><a href="OrderInfoall">全部订单</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -153,43 +153,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">酒店注册</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-form" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="dist/html/form/ui-kits.html">酒店注册</a>
+                                            <li><a href="dist/html/form/HotelzhuCe.jsp">酒店注册表</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                             <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-Room">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">房间信息</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
-                                <div id="component-example" class="panel-collapse collapse">
+                                <div id="dropdown-Room" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="components/pricing-table.html">Pricing Table</a>
-                                            </li>
-                                            <li><a href="components/chartjs.html">Chart.JS</a>
+                                            <li><a href="dist/html/pages/Room.jsp">房间信息</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
+               
                 </nav>
             </div>
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">请添加你的房间信息</span>
-                        <div class="description">房间信息</div>
+                        <span class="title">您的所有订单</span>
+                 
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -200,30 +198,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <div class="title">Table</div>
                                     </div>
                                 </div>
-                                 <div class="btn-toolbar" role="toolbar">
-                                            <div class="btn-group">
-                                                <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Large button <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Action</a></li>
-                                                    <li><a href="#">Another action</a></li>
-                                                    <li><a href="#">Something else here</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Separated link</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                 <div class="card-body">
                                     <table class="datatable table table-striped" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>订单号</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>订单时间</th>
-                                                <th>是否接单</th>
+                                                <th>订单时间</th>                              
+                                                <th>预定天数</th>
+                                                <th>房间类型</th>
+                                                <th>入住时间</th>
+                                                  <th>订单状态</th>
+                                          
                  <button type="button" class="navbar-expand-toggle">
                             <i class="fa fa-bars icon"></i>
                         </button>
@@ -231,26 +216,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>订单号</th> 
+                                                <th>订单时间</th>                                 
+                                                <th>预定天数</th>
+                                                <th>房间类型</th>
+                                                <th>入住时间</th>                                               
+                                                <th>订单状态</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                            <c:forEach var="item" items="${oi}">
+                            <c:forEach var="item" items="${oi}" varStatus="loop">
                               <tr>
                              <td>${item.orderId}</td>
-                             <td>${item.userId}</td>
-				             <td>${item.dayNum}天</td>
-                             <td>${item.orderMoney}</td>
                              <td>${item.orderTime}</td>
+                             <td>${item.dayNum}天</td>
+                             <td>${type[loop.count-1]}</td>
+                             <td>${item.inTime}</td>
+                             <td>${item.orderState}</td>
                           <!--   <td><input type="checkbox" class="toggle-checkbox" name="my-checkbox" checked=" " ></td> --> 
-                             <td>                               
-                              <button type="button" class="btn btn-link" >确认</button>  <button type="button" class="btn btn-link" >拒绝</button>
-                               </td>
+                           
                              </tr>
                               </c:forEach>
                              
@@ -266,7 +250,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
         <footer class="app-footer">
-            <div class="wrapper"> <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> 2019 <a href="http://www.cssmoban.com/" target="_blank" title="妯℃澘涔嬪">妯℃澘涔嬪</a> - Collect from <a href="http://www.cssmoban.com/" title="缃戦〉妯℃澘" target="_blank">缃戦〉妯℃澘</a>
+            <div class="wrapper"> <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> 2019年8月15日完成制作
             </div>
         </footer>
     <div>
