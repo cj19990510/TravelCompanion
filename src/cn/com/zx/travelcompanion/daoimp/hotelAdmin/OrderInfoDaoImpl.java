@@ -98,15 +98,14 @@ public  Boolean updateOrderInfo(int orderid,String orderState){
 	PreparedStatement pre = null; 
 	ResultSet rs = null;
 	String sql="update OrderInfo set orderState=?  where orderId = ?";		
- 	Object[]inparams=new Object[] {orderid,orderState};
+ 	Object[]inparams=new Object[] {orderState,orderid};
  	int flag=0;
  	 try {    	    	
 	    	conn = DbUtil.getConnection();
 			conn.setAutoCommit(false);
 			pre=conn.prepareStatement(sql);
 			  setParams(inparams,pre);
-			 flag = pre.executeUpdate();
-			
+			 flag = pre.executeUpdate();	
 			  conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
