@@ -13,7 +13,16 @@ public class OrderInfoBean {
     public Timestamp orderTime;//订单时间
     public String orderState;//订单状态
     public Timestamp inTime;//入住时间
+    public String hotelName;
 
+    
+
+	public String getHotelName() {
+		return hotelName;
+	}
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
 	public int getOrderId() {
 		return orderId;
 	}

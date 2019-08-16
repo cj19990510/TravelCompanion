@@ -226,22 +226,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			               	<c:forEach  var="orderlist" items="${orderlist}">	
 			               		<div class="order-item clearfix" style="width:100%;display:inline;">	
 			               			           
-				                    
-				                    <div class="order-info " style="float:left;width:25%;display:inline;">
-				                       	  <div class="info-box">
-				                       	       <a class="link" href="" target="_blank">
-				                       	           <p class="order-title">酒店名称:${orderlist.hotelName }</p>
-				                       	       </a>
-				                       	      
-				                       	       <p class="info">时间:${orderlist.orderTime}</p>
-				                       	  </div>                      
-				                    </div>
-			                    <div class="order-price" style="float:left;width:25%;display:inline;">价格：￥${orderlist.orderMoney}  
+			                    
+			                    <div class="order-info " style="float:left;width:25%;display:inline;">
+			                       	  <div class="info-box">
+			                       	       <a class="link" href="" target="_blank">
+			                       	           <p class="order-title">酒店名称:${orderlist.hotelName }</p>
+			                       	       </a>
+			                       	      
+			                       	       <p class="info">时间:${orderlist.orderTime}</p>
+			                       	  </div>                      
 			                    </div>
-			                     <%-- <div class="order-state" style="float:left;width:25%;display:inline;">预定状态：${orderlist.orderState}		                    	                      
-			                    </div> --%>
+			                    <div class="order-price" style="float:left;width:25%;display:inline;">价格：￥${orderlist.orderMoney}  
+			                    	                      
+			                 </div>
+			                    <%-- <div class="order-state" style="float:left;width:25%;display:inline;">预定状态：${orderlist.orderState}		                    	                      
+			                    </div> --%> --%>
 			                   
-			                   </div> 
+			                     </div> 
 			                     <br>
 			                </c:forEach>
 			                

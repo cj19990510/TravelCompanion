@@ -42,8 +42,10 @@ public class OrderChange extends HttpServlet {
 		
 		String Orderid=req.getParameter("orderId");
 		int oi=Integer.parseInt(Orderid);
+		System.out.println(oi+"oi");
 				ChangeOrderInfoService co=new ChangeOrderInfoServiceImpl();
 				co.changeOrder(oi, "预定成功");
+				
 				//获取订单信息
 			 getOrderInfoService goi=new getOrderInfoServiceImpl();
 			  OrderInfoBean oib=goi.getOrderInfoByOrderid(oi);
@@ -53,8 +55,7 @@ public class OrderChange extends HttpServlet {
 			   
 				//改变房间类型为 满
 			
-			 
-		req.getRequestDispatcher("OrderInfoServlet").forward(req, resp);
+			 req.getRequestDispatcher("OrderInfoServlet").forward(req, resp);
 	}
 
 	

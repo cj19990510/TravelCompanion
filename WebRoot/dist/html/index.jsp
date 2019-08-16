@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
                             <li class="active">您好,${hotel.hotelName}${hotel.type}</li>
-                            <h1>您所在的城市是</h1>
+                          
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>

@@ -76,7 +76,7 @@
           
 				<div style="border-top: 1px solid  black;">
 					<div style="text-align: center;background-color: white;width: 100%;" >
-						<div class="input-group input-group-sm" style="width:250px; margin-left:35%;margin-top:30px;">
+						<div class="input-group input-group-sm" style="width:250px; margin-left:20%;margin-top:30px;">
 							<input type="text" class="form-control" aria-describedby="sizing-addon1" name="userid">
 							<button class="input-group-addon" TYPE="submit" id="btn" 
 							style="top:0;left:250px;position:absolute;width:40px;" >查询</button>
@@ -95,7 +95,7 @@
 					<div style="position:absolute;top:80px;left:200px;">
 						<c:forEach var="item" items="${list}">
 						<h2>${item.userName}</h2>
-						<h2 style="margin-left:130px;">${item.userPhone}</h2>
+						<h2 style="margin-left:60px;">${item.userPhone}</h2>
 						<h2>${item.count}</h2>
 						<h2>${item.countSuccess}</h2>
 						</c:forEach>

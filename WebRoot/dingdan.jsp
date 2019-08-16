@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<span style="right:30px;top:20px;position: fixed; font-size:30px;">${adminid}号管理员</span>
 	</a>
 	
-	<div class="d3" style="background:#f5f5fa;width:2000px;height:700px; left:250px;top:80px;position: absolute;">
+	<div class="d3" style="background:#f5f5fa;width:1400px;height:700px; left:220px;top:80px;position: absolute;">
 
       <form action="dingdan" method="get" >
           
