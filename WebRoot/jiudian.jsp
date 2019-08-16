@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<span style="right:30px;top:20px;position: fixed; font-size:30px;">${adminid}号管理员</span>
 	</a>
 	
-	<div class="d3" style="background:#f5f5fa;width:2000px;height:700px; left:250px;top:80px;position: fixed;">
+	<div class="d3" style="background:#f5f5fa;width:1300px;height:700px; left:220px;top:80px;position: fixed;">
 	
 	<div align="center" >
          <table class="sui-table table-primary" width="100%" align="center" style="position: absolute;top:30px;">

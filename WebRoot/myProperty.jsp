@@ -238,9 +238,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                    </div>
 			                    <div class="order-price" style="float:left;width:25%;display:inline;">价格：￥${orderlist.orderMoney}  
 			                    	                      
-			                    <%-- </div>
-			                    <div class="order-state" style="float:left;width:25%;display:inline;">预定状态：${orderlist.orderState}		                    	                      
-			                    </div> --%>
+			                 </div>
+			                    <%-- <div class="order-state" style="float:left;width:25%;display:inline;">预定状态：${orderlist.orderState}		                    	                      
+			                    </div> --%> --%>
 			                   
 			                     </div> 
 			                     <br>

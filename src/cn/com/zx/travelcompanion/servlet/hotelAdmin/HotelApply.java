@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +17,9 @@ import cn.com.zx.travelcompanion.service.hotelAdmin.HotelApplyService;
 import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.CityServiceImpl;
 import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.HotelAdminServiceImpl;
 import cn.com.zx.travelcompanion.serviceImp.hotelAdmin.HotelApplyServiceImp;
-
+@WebServlet("/HotelApply")
 public class HotelApply extends HttpServlet {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	
@@ -46,10 +44,11 @@ public class HotelApply extends HttpServlet {
 				String LN=req.getParameter("zhizhao");//营业执照号 LN
 		        String apply=req.getParameter("apply");//申请内容
 		        String lp=req.getParameter("lpicture");//图片
-		       
+
+			 	req.getRequestDispatcher("dist/html/index.jsp").forward(req, resp);
 		        String city1=req.getParameter("city1");
 		        String []arr=city1.split("-");
-		        System.out.println(arr[0]);
+		       
 		    	String city=arr[1];//城市
 		  	    String pro=arr[0];//省份
 		        System.out.println("省会"+pro);
